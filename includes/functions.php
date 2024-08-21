@@ -18,19 +18,36 @@ function getTableById($pdo, $id) {
     }
 }
 
-function addTable($pdo, $nome, $descricao) {
+function addTable($pdo, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria) {
     try {
-        $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao) VALUES (?, ?)");
-        return $stmt->execute([$nome, $descricao]);
+        $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao, nome_do_mestre, numero_max_jogadores, categoria) VALUES (?, ?, ?, ?, ?)");
+        return $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria]);
     } catch (PDOException $e) {
         return false;
     }
 }
 
-function updateTable($pdo, $id, $nome, $descricao) {
+function addTableForm($pdo) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nome = $_POST['nome'];
+        $descricao = $_POST['descricao'];
+        $nome_do_mestre = $_POST['nome_do_mestre'];
+        $numero_max_jogadores = $_POST['numero_max_jogadores'];
+        $categoria = $_POST['categoria'] === 'Outro' ? $_POST['categoria_custom'] : $_POST['categoria'];
+
+        addTable($pdo, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria);
+
+        header('Location: index.php');
+        exit();
+    }
+}
+
+addTableForm($pdo);
+
+function updateTable($pdo, $id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria) {
     try {
-        $stmt = $pdo->prepare("UPDATE mesas SET nome = ?, descricao = ? WHERE id = ?");
-        return $stmt->execute([$nome, $descricao, $id]);
+        $stmt = $pdo->prepare("UPDATE mesas SET nome = ?, descricao = ?, nome_do_mestre = ?, numero_max_jogadores = ?, categoria = ? WHERE id = ?");
+        return $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria, $id]);
     } catch (PDOException $e) {
         return false;
     }
