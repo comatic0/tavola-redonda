@@ -23,14 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/nav.php'; ?>
 
-<h1>Editar Mesa de RPG</h1>
-<form method="post">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($mesa['nome']); ?>" required>
-    <label for="descricao">Descrição:</label>
-    <textarea id="descricao" name="descricao"><?php echo htmlspecialchars($mesa['descricao']); ?></textarea>
-    <button type="submit">Salvar</button>
-</form>
+<h1 class="evil-aura">Editar Mesa de RPG</h1>
+<p>Página de edição de mesa. Formulários marcados com * são obrigatórios.</p>
+<div class="form-container">
+    <form method="post">
+        <label for="nome">*Nome:</label>
+        <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($mesa['nome']); ?>" required>
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao"><?php echo htmlspecialchars($mesa['descricao']); ?></textarea>
+        <button type="submit">Salvar</button>
+    </form>
+</div>
 
 <a href="../index.php">Voltar</a>
 
