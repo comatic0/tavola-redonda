@@ -12,6 +12,7 @@ $mesas = getAllTables($pdo);
         <tr>
             <th>ID</th>
             <th>Nome</th>
+            <th>Categoria</th>
             <th>Descrição</th>
             <th>Mestre</th>
             <th>Número Máximo de Jogadores</th>
@@ -23,6 +24,7 @@ $mesas = getAllTables($pdo);
             <tr>
                 <td><?php echo htmlspecialchars($mesa['id']); ?></td>
                 <td><?php echo htmlspecialchars($mesa['nome']); ?></td>
+                <td><?php echo htmlspecialchars($mesa['categoria']); ?></td>
                 <td><?php echo htmlspecialchars($mesa['descricao']); ?></td>
                 <td><?php echo htmlspecialchars($mesa['nome_do_mestre']); ?></td>
                 <td><?php echo htmlspecialchars($mesa['numero_max_jogadores']); ?></td>
