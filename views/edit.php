@@ -47,10 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </select>
         <input type="text" id="categoria_custom" name="categoria_custom" style="display:<?php echo !in_array($mesa['categoria'], ['Fantasia', 'Sci-Fi', 'Terror']) ? 'block' : 'none'; ?>;" placeholder="Digite a categoria" value="<?php echo !in_array($mesa['categoria'], ['Fantasia', 'Sci-Fi', 'Terror']) ? htmlspecialchars($mesa['categoria']) : ''; ?>">
         <button type="submit">Salvar</button>
+        <button class="back-button" onclick="window.location.href='../index.php'">Voltar</button>
     </form>
 </div>
-
-<a href="../index.php">Voltar</a>
 
 <script>
 function toggleCustomCategory(select) {
