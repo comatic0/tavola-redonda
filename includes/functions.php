@@ -18,19 +18,19 @@ function getTableById($pdo, $id) {
     }
 }
 
-function addTable($pdo, $nome, $descricao) {
+function addTable($pdo, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores) {
     try {
-        $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao) VALUES (?, ?)");
-        return $stmt->execute([$nome, $descricao]);
+        $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao, nome_do_mestre, numero_max_jogadores) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores]);
     } catch (PDOException $e) {
         return false;
     }
 }
 
-function updateTable($pdo, $id, $nome, $descricao) {
+function updateTable($pdo, $id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores) {
     try {
-        $stmt = $pdo->prepare("UPDATE mesas SET nome = ?, descricao = ? WHERE id = ?");
-        return $stmt->execute([$nome, $descricao, $id]);
+        $stmt = $pdo->prepare("UPDATE mesas SET nome = ?, descricao = ?, nome_do_mestre = ?, numero_max_jogadores = ? WHERE id = ?");
+        return $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $id]);
     } catch (PDOException $e) {
         return false;
     }
