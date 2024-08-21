@@ -11,16 +11,25 @@ if (!$id) {
 $mesa = getTableById($pdo, $id);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    if (!is_numeric($id)) {
+        die('Invalid ID');
+    }
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $nome_do_mestre = $_POST['nome_do_mestre'];
     $numero_max_jogadores = $_POST['numero_max_jogadores'];
     $categoria = $_POST['categoria'] === 'Outro' ? $_POST['categoria_custom'] : $_POST['categoria'];
     
-    updateTable($pdo, $id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria);
+    $result = updateTable($pdo, $id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria);
     
-    header('Location: index.php');
-    exit();
+    if ($result) {
+        header('Location: index.php');
+        exit();
+    } else {
+        error_log("Failed to update table with ID $id.");
+        echo "Failed to update table.";
+    }
 }
 ?>
 <?php include '../includes/header.php'; ?>
@@ -30,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <p>Página de edição de mesa. Formulários marcados com * são obrigatórios.</p>
 <div class="form-container">
     <form method="post">
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($mesa['id']); ?>">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($mesa['nome']); ?>" required>
         <label for="descricao">Descrição:</label>
