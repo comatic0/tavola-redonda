@@ -26,6 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="nome" name="nome" required>
         <label for="descricao">Descrição:</label>
         <textarea id="descricao" name="descricao"></textarea>
+        <label for="nome_do_mestre">Mestre:</label>
+        <input type="text" id="nome_do_mestre" name="nome_do_mestre">
         <label for="numero_max_jogadores">Número Máximo de Jogadores:</label>
         <input type="number" id="numero_max_jogadores" name="numero_max_jogadores" required>
         <label for="categoria">Categoria:</label>
@@ -37,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </select>
         <input type="text" id="categoria_custom" name="categoria_custom" style="display:none;" placeholder="Digite a categoria">
         <button type="submit">Salvar</button>
-        <a href="../index.php">Voltar</a>
-    </form>
-</div>
+        <button class="back-button" onclick="window.location.href='../index.php'">Voltar</button>
+        </form>
+    </div>
 
 <?php include '../includes/footer.php'; ?>
