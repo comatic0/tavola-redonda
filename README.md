@@ -33,17 +33,31 @@
    cd tavola-redonda
 
 2. **Configure o Banco de Dados:**
-   - Crie um banco de dados MySQL.
-   - Atualize o arquivo `config.json` com as credenciais do banco de dados:
+    - Crie um banco de dados MySQL.
+    - Atualize o arquivo `config.json` com as credenciais do banco de dados:
 
-     ```json
-     {
-       "DB_HOST": "localhost",
-       "DB_NAME": "rpg_db",
-       "DB_USER": "root",
-       "DB_PASS": ""
-     }
-     ```
+       ```json
+       {
+          "DB_HOST": "localhost",
+          "DB_NAME": "rpg_db",
+          "DB_USER": "root",
+          "DB_PASS": ""
+       }
+       ```
+
+    - Importe o arquivo `sql/rpg_db.sql` para preparar as tabelas no banco de dados. Você pode fazer isso usando a linha de comando ou uma ferramenta como o phpMyAdmin.
+
+       **Usando a linha de comando:**
+
+       ```sh
+       mysql -u root -p rpg_db < caminho/para/sql/rpg_db.sql
+       ```
+
+       **Usando o phpMyAdmin:**
+       1. Abra o phpMyAdmin e selecione o banco de dados `rpg_db`
+       2. Vá para a aba "Importar".
+       3. Clique em "Escolher arquivo" e selecione o arquivo `sql/rpg_db.sql`
+       4. Clique em "Executar" para importar o arquivo e criar as tabelas.
 3. **Inicie o Servidor:**
    - Se estiver usando o XAMPP (que atualmente é utilizado pelos desenvolvedores), mova a pasta do projeto para o diretório `htdocs`.
    - Acesse `http://localhost/tavola-redonda` no seu navegador.
