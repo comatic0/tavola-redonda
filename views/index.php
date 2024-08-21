@@ -6,11 +6,12 @@ $mesas = getAllTables($pdo);
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/nav.php'; ?>
 
-<h1>Mesas de RPG</h1>
+<h1 class="evil-aura">Mesas de RPG</h1>
+<p>Essa são as listas de mesas existentes no nosso banco de dados.</p>
 <table>
     <thead>
         <tr>
-            <th>ID</th>
+            <th>♛ ID</th>
             <th>Nome</th>
             <th>Categoria</th>
             <th>Descrição</th>

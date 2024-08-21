@@ -18,38 +18,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/nav.php'; ?>
 
-<h1>Adicionar Mesa de RPG</h1>
-<form method="post">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required>
-    <label for="descricao">Descrição:</label>
-    <textarea id="descricao" name="descricao"></textarea>
-    <label for="nome_do_mestre">Mestre:</label>
-    <input type="text" id="nome_do_mestre" name="nome_do_mestre" required>
-    <label for="numero_max_jogadores">Número Máximo de Jogadores:</label>
-    <input type="number" id="numero_max_jogadores" name="numero_max_jogadores" required>
-    <label for="categoria">Categoria:</label>
-    <select id="categoria" name="categoria" onchange="toggleCustomCategory(this)">
-        <option value="Fantasia">Fantasia</option>
-        <option value="Sci-Fi">Sci-Fi</option>
-        <option value="Terror">Terror</option>
-        <option value="Outro">Outro / Não listado</option>
-    </select>
-    <input type="text" id="categoria_custom" name="categoria_custom" style="display:none;" placeholder="Digite a categoria">
-    <button type="submit">Salvar</button>
-</form>
-
-<a href="../index.php">Voltar</a>
-
-<script>
-function toggleCustomCategory(select) {
-    var customCategoryInput = document.getElementById('categoria_custom');
-    if (select.value === 'Outro') {
-        customCategoryInput.style.display = 'block';
-    } else {
-        customCategoryInput.style.display = 'none';
-    }
-}
-</script>
+<h1 class="evil-aura">Adicionar Mesa de RPG</h1>
+<p>Página de criação de mesa. Formulários marcados com * são obrigatórios.</p>
+<div class="form-container">
+    <form method="post">
+        <label for="nome">*Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao"></textarea>
+        <label for="nome_do_mestre">Mestre:</label>
+        <input type="text" id="nome_do_mestre" name="nome_do_mestre">
+        <label for="numero_max_jogadores">Número Máximo de Jogadores:</label>
+        <input type="number" id="numero_max_jogadores" name="numero_max_jogadores" required>
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" onchange="toggleCustomCategory(this)">
+            <option value="Fantasia">Fantasia</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Terror">Terror</option>
+            <option value="Outro">Outro / Não listado</option>
+        </select>
+        <input type="text" id="categoria_custom" name="categoria_custom" style="display:none;" placeholder="Digite a categoria">
+        <button type="submit">Salvar</button>
+        <button class="back-button" onclick="window.location.href='../index.php'">Voltar</button>
+        </form>
+    </div>
 
 <?php include '../includes/footer.php'; ?>
