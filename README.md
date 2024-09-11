@@ -75,10 +75,10 @@
 
 
 ### Sprint Planning
-Iteração 1
+### Iteração 1
 Duração: 2 semanas 
 Início: 21/08/24
-Término: 11/09/24
+Término: 04/09/24
 
 ### Sprint 1:  Sistema de Gestão de Mesas e Personagens com Interface Intuitiva
 
