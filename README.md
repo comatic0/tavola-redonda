@@ -119,3 +119,8 @@ Visualização e edição dos detalhes da ficha do personagem.
 Exclusão de personagens.
 
 Exportação de fichas para PDF, facilitando o compartilhamento e armazenamento.
+
+### User Stories e Prototipação
+
+link do figma:
+https://www.figma.com/proto/XRtVmx6cYXFqCAnXDwrnau/Tabula-Redonda?node-id=0-1&t=FSuhYp1hLdezC1Qp-1
