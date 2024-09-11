@@ -73,5 +73,49 @@
 
  ### Funcionamento 
 
-    - O funcionamento do projeto está ocorrendo tudo dentro dos conformes, até o momento, lá contratempos que tivemos foram corrigidos o mais rápido possível para o melhor uso do usuário.
 
+### Sprint Planning
+Iteração 1
+Duração: 2 semanas 
+Início: 21/08/24
+Término: 11/09/24
+
+### Sprint 1:  Sistema de Gestão de Mesas e Personagens com Interface Intuitiva
+
+### Valor da Sprint:
+Desenvolver uma interface completa e acessível que integre a criação e gestão de mesas e fichas de personagens. O sistema permitirá que mestres de RPG ou educadores possam facilmente registrar, editar e gerenciar suas mesas e fichas de personagens, além de oferecer uma experiência de usuário intuitiva e personalizável com modos noturno e claro.
+
+### Funcionalidades:
+
+Opções de autenticação: Sign in, Sign up e Disconnect.
+
+Interface e Usabilidade (Página Inicial):
+
+Criação de uma página inicial acessível, atraente e intuitiva que facilite a navegação pelos recursos.
+
+Alternar entre modos noturno e claro.
+
+Informações claras sobre o projeto, suas funcionalidades e objetivos.
+
+
+### Gestão de Mesas (Registro de Mesas):
+
+Registro e criação de mesas, com descrição detalhada da história, sistema de jogo, e outras opções personalizáveis.
+
+Visualização de informações atuais da mesa, incluindo jogadores, níveis de experiência, etc.
+
+Edição e modificação de informações das mesas e jogadores.
+
+Exclusão de mesas e jogadores.
+
+Sistema para agendamento de horários e dias de sessões.
+
+Gestão de Fichas de Personagens (Registro de Ficha de Personagem):
+
+Registro e criação de personagens, com detalhes como nome, descrição e controlador.
+
+Visualização e edição dos detalhes da ficha do personagem.
+
+Exclusão de personagens.
+
+Exportação de fichas para PDF, facilitando o compartilhamento e armazenamento.
