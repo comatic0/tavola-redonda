@@ -14,7 +14,7 @@
 
 | **Nome**                                | **Função**                                    |
 |-----------------------------------------|----------------------------------------------|
-| Yuri Barbosa Takahashi                  | Desenvolvimento (Front-End & Back-End)       |
+| Yuri Barbosa Takahashi                  | Desenvolvimento (Front-End & Back-End) Líder       |
 | Henrique Wendler Gomes                  | Desenvolvimento (Back-End)                   |
 | Vitor Leal Ferreira                     | Documentação Técnica                         |
 | Emanuel Badaró Fonseca                  | Desenvolvimento (Back-End)                   |
