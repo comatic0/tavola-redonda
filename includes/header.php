@@ -11,7 +11,4 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $base_path; ?>/assets/icons/favicon-16x16.png">
 </head>
 <body>
-<div class="header-container">
-        <img src="<?php echo $base_path; ?>/assets/icons/tavola-redonda.jpg" alt="Távola Redonda Logo" width="5%" height="5%">
-        <h1>Távola Redonda - Gerenciamento de Mesas de RPG</h1>
-    </div>
+</body>
