@@ -110,6 +110,8 @@ Exclusão de mesas.
 
 ### valor: 
 
+Possibilatar ao usuário o cadastro de personagens, tal como a edição e exclusão dos mesmos, funções adicionais no gerenciamento de mesas, possibilitando o ingresso de jogadores nas mesas, cadastro de mestres, login de usuários e mestres.
+
 ### Funcionalidades:
 Sistema para agendamento de horários e dias de sessões.
 
