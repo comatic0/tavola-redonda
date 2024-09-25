@@ -1,4 +1,6 @@
 # Távola Redonda - Gerenciamento de Mesas de RPG
+![image](https://github.com/user-attachments/assets/fe3efe8b-56a5-456e-b540-6bcacc916dcf)
+
 
 ## Informações do Projeto
 
