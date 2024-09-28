@@ -14,13 +14,23 @@
         <a href="#">Fichas</a>
     </nav>
     <div class="user">
-        <div class="dropdown">
-            <button class="dropbtn">Minha Conta</button>
-            <div class="dropdown-content">
-                <a href="<?php echo $base_path; ?>/views/register.php">Registrar</a>
-                <a href="<?php echo $base_path; ?>/views/login.php">Logar</a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <div class="dropdown">
+                <button class="dropbtn"><?php echo htmlspecialchars($_SESSION['username']); ?></button>
+                <div class="dropdown-content">
+                    <a href="<?php echo $base_path; ?>/views/logout.php">Logout</a>
+                </div>
             </div>
-        </div>
-        <img src="<?php echo $base_path; ?>/assets/icons/user-icon.png" alt="User Icon">
+            <img src="<?php echo $base_path; ?>/assets/icons/user-icon.png" alt="User Icon">
+        <?php else: ?>
+            <div class="dropdown">
+                <button class="dropbtn">Minha Conta</button>
+                <div class="dropdown-content">
+                    <a href="<?php echo $base_path; ?>/views/register.php">Registrar</a>
+                    <a href="<?php echo $base_path; ?>/views/login.php">Logar</a>
+                </div>
+            </div>
+            <img src="<?php echo $base_path; ?>/assets/icons/user-icon.png" alt="User Icon">
+        <?php endif; ?>
     </div>
 </header>

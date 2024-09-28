@@ -8,6 +8,27 @@ function getAllTables($pdo) {
     }
 }
 
+function getUserByEmail($pdo, $email) {
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+function getUsersInTable($pdo, $mesa_id) {
+    try {
+        $stmt = $pdo->prepare("SELECT u.username FROM mesa_usuarios mu JOIN usuarios u ON mu.user_id = u.id WHERE mu.mesa_id = ?");
+        $stmt->execute([$mesa_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+
 function getTableById($pdo, $id) {
     try {
         $stmt = $pdo->prepare("SELECT * FROM mesas WHERE id = ?");
@@ -48,7 +69,7 @@ function updateTable($pdo, $id, $nome, $descricao, $nome_do_mestre, $numero_max_
 function deleteTable($pdo, $id) {
     try {
         $stmt = $pdo->prepare("DELETE FROM mesas WHERE id = ?");
-        return $stmt->execute([$id]);
+        $stmt->execute([$id]);
     } catch (PDOException $e) {
         return false;
     }

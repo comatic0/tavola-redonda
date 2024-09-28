@@ -434,3 +434,29 @@ footer {
     from {opacity: 0;}
     to {opacity: 1;}
 }
+.btn-join {
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4CAF50;
+    margin-right: 5px;
+}
+
+.btn-join:hover {
+    background-color: #45a049;
+}
+
+.btn-leave {
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #f44336;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-leave:hover {
+    background-color: #d32f2f;
+}
