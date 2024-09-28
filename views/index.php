@@ -1,11 +1,11 @@
 <?php
+session_start();
 require '../includes/db.php';
 require '../includes/functions.php';
 $mesas = getAllTables($pdo);
 ?>
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/nav.php'; ?>
-
 <main>
     <section class="table-view">
         <h1 class="evil-aura">Mesas de RPG</h1>
@@ -19,6 +19,7 @@ $mesas = getAllTables($pdo);
                     <th>Descrição</th>
                     <th>Mestre</th>
                     <th>Número Máximo de Jogadores</th>
+                    <th>Usuários</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -32,8 +33,33 @@ $mesas = getAllTables($pdo);
                         <td><?php echo htmlspecialchars($mesa['nome_do_mestre']); ?></td>
                         <td><?php echo htmlspecialchars($mesa['numero_max_jogadores']); ?></td>
                         <td>
-                            <a href="edit.php?id=<?php echo $mesa['id']; ?>" class="btn-edit">Editar</a>
-                            <a href="delete.php?id=<?php echo $mesa['id']; ?>" class="btn-delete" onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+                            <?php
+                            $users = getUsersInTable($pdo, $mesa['id']);
+                            foreach ($users as $user) {
+                                echo htmlspecialchars($user['username']) . '<br>';
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php if (isset($_SESSION['user_id']) && $mesa['user_id'] == $_SESSION['user_id']): ?>
+                                <a href="edit.php?id=<?php echo $mesa['id']; ?>" class="btn-edit">Editar</a>
+                                <a href="delete.php?id=<?php echo $mesa['id']; ?>" class="btn-delete" onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+                            <?php endif; ?>
+                            <?php if (isset($_SESSION['user_id'])): ?>
+                                <?php
+                                $user_id = $_SESSION['user_id'];
+                                $stmt = $pdo->prepare("SELECT * FROM mesa_usuarios WHERE mesa_id = ? AND user_id = ?");
+                                $stmt->execute([$mesa['id'], $user_id]);
+                                $isUserInTable = $stmt->fetch();
+                                ?>
+                                <?php if ($isUserInTable): ?>
+                                    <a href="leave.php?id=<?php echo $mesa['id']; ?>" class="btn-leave">Sair</a>
+                                <?php else: ?>
+                                    <a href="join.php?id=<?php echo $mesa['id']; ?>" class="btn-join">Entrar</a>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <a href="login.php" class="btn-join">Entrar</a>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -44,5 +70,4 @@ $mesas = getAllTables($pdo);
         <p>&copy; 2024 Távola Redonda</p>
     </footer>
 </main>
-
 <?php include '../includes/footer.php'; ?>
