@@ -1,4 +1,9 @@
-<?php $base_path = '/tavola-redonda'; ?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$base_path = '/tavola-redonda';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,4 +16,3 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $base_path; ?>/assets/icons/user-icon.png">
 </head>
 <body>
-</body>

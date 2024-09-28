@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
 require '../includes/db.php';
 require '../includes/functions.php';
 
@@ -7,40 +13,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descricao = $_POST['descricao'];
     $nome_do_mestre = $_POST['nome_do_mestre'];
     $numero_max_jogadores = $_POST['numero_max_jogadores'];
-    $categoria = $_POST['categoria'] === 'Outro' ? $_POST['categoria_custom'] : $_POST['categoria'];
+    $categoria = $_POST['categoria'];
+    $user_id = $_SESSION['user_id'];
 
-    addTable($pdo, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria);
-    
-    header('Location: index.php');
-    exit();
+    $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao, nome_do_mestre, numero_max_jogadores, categoria, user_id) VALUES (?, ?, ?, ?, ?, ?)");
+    if ($stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria, $user_id])) {
+        header('Location: ../views/index.php');
+        exit();
+    } else {
+        $error = "Erro ao criar mesa.";
+    }
 }
 ?>
+
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/nav.php'; ?>
-
-<h1 class="evil-aura">Adicionar Mesa de RPG</h1>
-<p>Página de criação de mesa. Formulários marcados com * são obrigatórios.</p>
 <div class="form-container">
-    <form method="post">
-        <label for="nome">*Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-        <label for="descricao">Descrição:</label>
-        <textarea id="descricao" name="descricao"></textarea>
-        <label for="nome_do_mestre">Mestre:</label>
-        <input type="text" id="nome_do_mestre" name="nome_do_mestre">
-        <label for="numero_max_jogadores">Número Máximo de Jogadores:</label>
-        <input type="number" id="numero_max_jogadores" name="numero_max_jogadores" required>
-        <label for="categoria">Categoria:</label>
-        <select id="categoria" name="categoria" onchange="toggleCustomCategory(this)">
-            <option value="Fantasia">Fantasia</option>
-            <option value="Sci-Fi">Sci-Fi</option>
-            <option value="Terror">Terror</option>
-            <option value="Outro">Outro / Não listado</option>
-        </select>
-        <input type="text" id="categoria_custom" name="categoria_custom" style="display:none;" placeholder="Digite a categoria">
-        <button type="submit">Salvar</button>
-        <button class="back-button" onclick="window.location.href='../index.php'">Voltar</button>
-        </form>
-    </div>
-
+    <h2>Criar Mesa</h2>
+    <?php if (isset($error)): ?>
+        <p class="error"><?php echo $error; ?></p>
+    <?php endif; ?>
+    <form action="add.php" method="post">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="nome_do_mestre">Nome do Mestre:</label>
+            <input type="text" id="nome_do_mestre" name="nome_do_mestre" required>
+        </div>
+        <div class="form-group">
+            <label for="numero_max_jogadores">Número Máximo de Jogadores:</label>
+            <input type="number" id="numero_max_jogadores" name="numero_max_jogadores" required>
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria" required>
+        </div>
+        <button type="submit" class="btn">Criar</button>
+    </form>
+</div>
 <?php include '../includes/footer.php'; ?>
