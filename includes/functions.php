@@ -8,6 +8,16 @@ function getAllTables($pdo) {
     }
 }
 
+function getUserByEmail($pdo, $email) {
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
 function getTableById($pdo, $id) {
     try {
         $stmt = $pdo->prepare("SELECT * FROM mesas WHERE id = ?");
