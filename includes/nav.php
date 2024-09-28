@@ -14,7 +14,13 @@
         <a href="#">Fichas</a>
     </nav>
     <div class="user">
-        <a href="<?php echo $base_path; ?>/views/register.php">Crie sua conta</a>
+        <div class="dropdown">
+            <button class="dropbtn">Minha Conta</button>
+            <div class="dropdown-content">
+                <a href="<?php echo $base_path; ?>/views/register.php">Registrar</a>
+                <a href="<?php echo $base_path; ?>/views/login.php">Logar</a>
+            </div>
+        </div>
         <img src="<?php echo $base_path; ?>/assets/icons/user-icon.png" alt="User Icon">
     </div>
 </header>
