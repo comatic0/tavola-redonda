@@ -259,3 +259,72 @@ footer {
     margin: 0;
     padding: 0;
 }
+
+.table-view {
+    padding: 20px;
+    background-color: #FAEBD7;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.styled-table thead tr {
+    background-color: #A0522D;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #A0522D;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #A0522D;
+}
+
+.btn-edit, .btn-delete {
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #4CAF50;
+}
+
+.btn-edit:hover {
+    background-color: #45a049;
+}
+
+.btn-delete {
+    background-color: #f44336;
+}
+
+.btn-delete:hover {
+    background-color: #da190b;
+}
