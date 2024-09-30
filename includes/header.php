@@ -3,6 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $base_path = '/tavola-redonda';
+$dark_mode = $_SESSION['dark_mode'] ?? 0;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -11,6 +12,9 @@ $base_path = '/tavola-redonda';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Távola Redonda</title>
     <link rel="stylesheet" href="<?php echo $base_path; ?>/css/styles.css">
+    <?php if ($dark_mode): ?>
+        <link rel="stylesheet" href="<?php echo $base_path; ?>/css/dark-mode.css">
+    <?php endif; ?>
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $base_path; ?>/assets/icons/image1.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $base_path; ?>/assets/icons/logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $base_path; ?>/assets/icons/user-icon.png">

@@ -1,9 +1,3 @@
-<?php
-session_start();
-require '../includes/db.php';
-require '../includes/functions.php';
-$mesas = getAllTables($pdo);
-?>
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/nav.php'; ?>
 <main>

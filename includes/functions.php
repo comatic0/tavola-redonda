@@ -74,4 +74,15 @@ function deleteTable($pdo, $id) {
         return false;
     }
 }
+
+function getUserDarkMode($pdo, $user_id) {
+    $stmt = $pdo->prepare("SELECT dark_mode FROM usuarios WHERE id = ?");
+    $stmt->execute([$user_id]);
+    return $stmt->fetchColumn();
+}
+
+function setUserDarkMode($pdo, $user_id, $dark_mode) {
+    $stmt = $pdo->prepare("UPDATE usuarios SET dark_mode = ? WHERE id = ?");
+    $stmt->execute([$dark_mode, $user_id]);
+}
 ?>
