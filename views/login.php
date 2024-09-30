@@ -2,6 +2,7 @@
 session_start();
 require '../includes/db.php';
 require '../includes/functions.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -9,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        $_SESSION['dark_mode'] = getUserDarkMode($pdo, $user['id']);
+        $_SESSION['profile_picture'] = $user['profile_picture'] ?? 'user-icon.png';
         header('Location: ../index.php');
         exit();
     } else {

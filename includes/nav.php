@@ -21,9 +21,8 @@
                     <a href="<?php echo $base_path; ?>/views/logout.php">Logout</a>
                 </div>
             </div>
-            <img src="<?php echo $base_path; ?>/assets/icons/user-icon.png" alt="User Icon">
-            <a href="<?php echo $base_path; ?>/views/toggle_dark_mode.php" class="toggle-dark-mode">
-                <?php echo $_SESSION['dark_mode'] ? '🌞' : '🌜'; ?>
+            <a href="<?php echo $base_path; ?>/views/profile.php">
+                <img src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo $_SESSION['profile_picture'] ?? 'user-icon.png'; ?>" alt="User Icon">
             </a>
         <?php else: ?>
             <div class="dropdown">
@@ -33,10 +32,6 @@
                     <a href="<?php echo $base_path; ?>/views/login.php">Logar</a>
                 </div>
             </div>
-            <img src="<?php echo $base_path; ?>/assets/icons/user-icon.png" alt="User Icon">
-            <a href="<?php echo $base_path; ?>/views/toggle_dark_mode.php" class="toggle-dark-mode">
-                <?php echo $_SESSION['dark_mode'] ? '🌞' : '🌜'; ?>
-            </a>
         <?php endif; ?>
     </div>
 </header>
