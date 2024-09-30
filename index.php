@@ -1,6 +1,5 @@
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/nav.php'; ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,7 +10,7 @@
 <body>
     <main>
         <section class="hero">
-            <img src="<?php echo $base_path; ?>/assets\icons/image1.png" alt="Dados de RPG">
+            <img src="<?php echo $base_path; ?>/assets/icons/image1.png" alt="Dados de RPG">
             <div class="hero-content">
                 <h2>Bem-vindo à Tavola Redonda</h2>
                 <p>
@@ -32,5 +31,4 @@
             <p>&copy; 2024 Távola Redonda</p>
         </footer>
     </main>
-
 <?php include 'includes/footer.php'; ?>

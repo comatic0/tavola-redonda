@@ -9,14 +9,11 @@ function getAllTables($pdo) {
 }
 
 function getUserByEmail($pdo, $email) {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
-        $stmt->execute([$email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        return false;
-    }
+    $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
+    $stmt->execute([$email]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
 
 function getUsersInTable($pdo, $mesa_id) {
     try {
@@ -85,4 +82,5 @@ function setUserDarkMode($pdo, $user_id, $dark_mode) {
     $stmt = $pdo->prepare("UPDATE usuarios SET dark_mode = ? WHERE id = ?");
     $stmt->execute([$dark_mode, $user_id]);
 }
+
 ?>
