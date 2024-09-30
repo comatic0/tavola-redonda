@@ -31,7 +31,7 @@
 
 1. **Clone o repositório:**
    ```sh
-   git clone https://github.com/seu-usuario/tavola-redonda.git
+   git clone https://github.com/comatic0/tavola-redonda.git
    cd tavola-redonda
 
 2. **Configure o Banco de Dados:**
