@@ -22,6 +22,9 @@
                 </div>
             </div>
             <img src="<?php echo $base_path; ?>/assets/icons/user-icon.png" alt="User Icon">
+            <a href="<?php echo $base_path; ?>/views/toggle_dark_mode.php" class="toggle-dark-mode">
+                <?php echo $_SESSION['dark_mode'] ? '🌞' : '🌜'; ?>
+            </a>
         <?php else: ?>
             <div class="dropdown">
                 <button class="dropbtn">Minha Conta</button>
@@ -31,6 +34,9 @@
                 </div>
             </div>
             <img src="<?php echo $base_path; ?>/assets/icons/user-icon.png" alt="User Icon">
+            <a href="<?php echo $base_path; ?>/views/toggle_dark_mode.php" class="toggle-dark-mode">
+                <?php echo $_SESSION['dark_mode'] ? '🌞' : '🌜'; ?>
+            </a>
         <?php endif; ?>
     </div>
 </header>

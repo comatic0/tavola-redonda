@@ -2,16 +2,14 @@
 session_start();
 require '../includes/db.php';
 require '../includes/functions.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
-
     $user = getUserByEmail($pdo, $email);
-
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['dark_mode'] = getUserDarkMode($pdo, $user['id']);
         header('Location: ../index.php');
         exit();
     } else {
@@ -19,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/nav.php'; ?>
 <div class="form-container">
