@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/09/2024 às 23:24
+-- Tempo de geração: 30/09/2024 às 20:36
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -37,13 +37,6 @@ CREATE TABLE `mesas` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `mesas`
---
-
-INSERT INTO `mesas` (`id`, `nome`, `descricao`, `nome_do_mestre`, `numero_max_jogadores`, `categoria`, `user_id`) VALUES
-(2, 'testeetes', '1234', 'Testa', 12, 'Fantasia', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -54,14 +47,6 @@ CREATE TABLE `mesa_usuarios` (
   `mesa_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `mesa_usuarios`
---
-
-INSERT INTO `mesa_usuarios` (`mesa_id`, `user_id`) VALUES
-(2, 1),
-(2, 2);
 
 -- --------------------------------------------------------
 
@@ -74,16 +59,17 @@ CREATE TABLE `usuarios` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `profile_picture` varchar(255) DEFAULT 'user-icon.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `username`, `password`, `email`, `created_at`) VALUES
-(1, 'teste', '$2y$10$DZ9K0/nsp/fCmsbhKT2v5.THZklb/47jkz7uLJXAHZT32FEtiuk5y', 'teste@gmail.com', '2024-09-28 19:38:57'),
-(2, 'yuri', '$2y$10$09ksh9FxBXeCiobXerXjb.yvbGv1VcpNrgLB4sidnbiTdVMCbZ5ma', 'yuri.takahashi@uft.edu.br', '2024-09-28 19:40:33');
+INSERT INTO `usuarios` (`id`, `username`, `password`, `email`, `created_at`, `profile_picture`) VALUES
+(3, 'bailand0', '$2y$10$r5bIjL87pdRbVR3eS/9thOec4ZmFbehJF2uI3NQ.Y3NBe7qdmW7Za', 'bailando@gmail.com', '2024-09-30 16:35:58', 1, 'bailand0.png'),
+(4, 'FrodoBaggins', '$2y$10$cTnVluT6SqQuE2XL/z6L5OJBNi61Vd78ClQMAKwvxf8JTMgb.FI/2', 'frodo@gmail.com', '2024-09-30 17:19:29', 0, 'FrodoBaggins.png');
 
 --
 -- Índices para tabelas despejadas
@@ -123,7 +109,7 @@ ALTER TABLE `mesas`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para tabelas despejadas
