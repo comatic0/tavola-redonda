@@ -19,7 +19,7 @@
                 </p>
                 <div class="buttons">
                     <a href="<?php echo $base_path; ?>/views/add.php" class="btn">Criar nova mesa</a>
-                    <a href="#" class="btn">Ingressar em uma nova mesa</a>
+                    <a href="<?php echo $base_path; ?>/views/search.php" class="btn">Ingressar em uma nova mesa</a>
                 </div>
             </div>
         </section>
