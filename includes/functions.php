@@ -1,12 +1,19 @@
 <?php
+/**
+ * Summary of getAllTables
+ * @param mixed $pdo
+ * @return mixed
+ */
 function getAllTables($pdo) {
     try {
-        $stmt = $pdo->query("SELECT * FROM mesas");
+        $stmt = $pdo->prepare("SELECT * FROM mesas");
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        return false;
-    }
+        return [];
+        }
 }
+
 
 function getUserByEmail($pdo, $email) {
     $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
@@ -72,15 +79,8 @@ function deleteTable($pdo, $id) {
     }
 }
 
-function getUserDarkMode($pdo, $user_id) {
-    $stmt = $pdo->prepare("SELECT dark_mode FROM usuarios WHERE id = ?");
-    $stmt->execute([$user_id]);
-    return $stmt->fetchColumn();
+function searchTables($pdo, $search) {
+    $stmt = $pdo->prepare("SELECT * FROM mesas WHERE nome LIKE ? OR descricao LIKE ?");
+    $stmt->execute(['%' . $search . '%', '%' . $search . '%']);
+    return $stmt->fetchAll();
 }
-
-function setUserDarkMode($pdo, $user_id, $dark_mode) {
-    $stmt = $pdo->prepare("UPDATE usuarios SET dark_mode = ? WHERE id = ?");
-    $stmt->execute([$dark_mode, $user_id]);
-}
-
-?>
