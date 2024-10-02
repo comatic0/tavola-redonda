@@ -84,3 +84,13 @@ function searchTables($pdo, $search) {
     $stmt->execute(['%' . $search . '%', '%' . $search . '%']);
     return $stmt->fetchAll();
 }
+
+function getAllFichas($pdo) {
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM fichas");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return [];
+        }
+}
