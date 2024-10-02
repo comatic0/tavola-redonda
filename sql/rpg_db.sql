@@ -42,7 +42,7 @@ CREATE TABLE `mesas` (
 --
 
 INSERT INTO `mesas` (`id`, `nome`, `descricao`, `nome_do_mestre`, `numero_max_jogadores`, `categoria`, `user_id`) VALUES
-(2, 'testeetes', '1234', 'Testa', 12, 'Fantasia', 1);
+(2, `testeetes`, `1234`, `Testa`, 12, `Fantasia`, 1);
 
 -- --------------------------------------------------------
 
@@ -82,8 +82,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `username`, `password`, `email`, `created_at`) VALUES
-(1, 'teste', '$2y$10$DZ9K0/nsp/fCmsbhKT2v5.THZklb/47jkz7uLJXAHZT32FEtiuk5y', 'teste@gmail.com', '2024-09-28 19:38:57'),
-(2, 'yuri', '$2y$10$09ksh9FxBXeCiobXerXjb.yvbGv1VcpNrgLB4sidnbiTdVMCbZ5ma', 'yuri.takahashi@uft.edu.br', '2024-09-28 19:40:33');
+(1, `teste`, `$2y$10$DZ9K0/nsp/fCmsbhKT2v5.THZklb/47jkz7uLJXAHZT32FEtiuk5y`, `teste@gmail.com`, `2024-09-28 19:38:57`),
+(2, `yuri`, `$2y$10$09ksh9FxBXeCiobXerXjb.yvbGv1VcpNrgLB4sidnbiTdVMCbZ5ma`, `yuri.takahashi@uft.edu.br`, `2024-09-28 19:40:33`);
 
 --
 -- Índices para tabelas despejadas
@@ -146,3 +146,14 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE `fichas` (
+    `id_ficha` INT AUTO_INCREMENT PRIMARY KEY,
+    `nome_p` VARCHAR(255) NOT NULL,
+    `classe_p` VARCHAR(255) NOT NULL,
+    `nivel_p` INT NOT NULL,
+    `raca_p` VARCHAR(255) NOT NULL,
+    `descricao_p` TEXT,
+    `user_id` INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+); 
