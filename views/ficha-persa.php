@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt = $pdo->prepare("INSERT INTO fichas (nome, classe, nivel, raca, descricao, user_id) VALUES (?, ?, ?, ?, ?, ?)");
     if ($stmt->execute([$nome, $classe, $nivel, $raca, $descricao, $user_id])) {
-        header('Location: ../views/ficha-persa.php');
+        header('Location: ../views/index-ficha.php');
         exit();
     } else {
         $error = "Erro ao criar personagem.";
