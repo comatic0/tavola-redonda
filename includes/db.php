@@ -1,21 +1,18 @@
 <?php
-// função para carregar configurações do arquivo config.json
-function loadConfig($path) {
-    if (!file_exists($path)) {
-        throw new Exception('config.json file not found');
+if (!function_exists('loadConfig')) {
+    function loadConfig($path) {
+        if (!file_exists($path)) {
+            throw new Exception('config.json file not found');
+        }
+        $config = json_decode(file_get_contents($path), true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new Exception('Error parsing config.json');
+        }
+        return $config;
     }
-
-    $config = json_decode(file_get_contents($path), true);
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        throw new Exception('Error parsing config.json');
-    }
-
-    return $config;
 }
 
-// carregar configurações do arquivo config.json
 $config = loadConfig(__DIR__ . '/../config.json');
-
 $host = $config['DB_HOST'];
 $db = $config['DB_NAME'];
 $user = $config['DB_USER'];
