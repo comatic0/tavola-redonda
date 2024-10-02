@@ -1,38 +1,29 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: ../auth/login.php');
     exit();
 }
+require '../../controllers/FichaController.php';
 
-require '../includes/db.php';
-require '../includes/functions.php';
+$fichaController = new FichaController($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $classe = $_POST['classe'];
     $nivel = $_POST['nivel'];
     $raca = $_POST['raca'];
     $descricao = $_POST['descricao'];
-    $user_id = $_SESSION['user_id'];
-
-    $stmt = $pdo->prepare("INSERT INTO fichas (nome, classe, nivel, raca, descricao, user_id) VALUES (?, ?, ?, ?, ?, ?)");
-    if ($stmt->execute([$nome, $classe, $nivel, $raca, $descricao, $user_id])) {
-        header('Location: ../views/index-ficha.php');
-        exit();
-    } else {
-        $error = "Erro ao criar personagem.";
-    }
+    $error = $fichaController->createFicha($nome, $classe, $nivel, $raca, $descricao);
 }
 ?>
-
-<?php include '../includes/header.php'; ?>
-<?php include '../includes/nav.php'; ?>
+<?php include '../../includes/header.php'; ?>
+<?php include '../../includes/nav.php'; ?>
 <div class="form-container">
     <h2>Criar Personagem</h2>
     <?php if (isset($error)): ?>
         <p class="error"><?php echo $error; ?></p>
     <?php endif; ?>
-    <form action="ficha-persa.php" method="post">
+    <form action="create.php" method="post">
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
@@ -56,4 +47,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn">Criar Personagem</button>
     </form>
 </div>
-<?php include '../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>
