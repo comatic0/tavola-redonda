@@ -9,6 +9,13 @@ class AuthController {
         $this->userModel = new User($pdo);
     }
 
+    
+    public function getUserByEmail($pdo, $email) {
+        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function register($username, $email, $password) {
         if ($this->userModel->getUserByEmail($email)) {
             return "Email já está em uso.";
