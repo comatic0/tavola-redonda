@@ -14,17 +14,25 @@ class MesaController {
         if ($mesa_id && $user_id) {
             $this->mesaModel->leaveMesa($mesa_id, $user_id);
         }
-        header('Location: ../index.php');
+        header('Location: ../mesas/index.php');
         exit();
     }
-
+    
     public function joinMesa($mesa_id) {
         $user_id = $_SESSION['user_id'] ?? null;
         if ($mesa_id && $user_id) {
             $this->mesaModel->joinMesa($mesa_id, $user_id);
         }
-        header('Location: ../index.php');
+        header('Location: ../mesas/index.php');
         exit();
+    }
+
+    public function isUserInMesa($mesa_id, $user_id) {
+        return $this->mesaModel->isUserInMesa($mesa_id, $user_id);
+    }
+
+    public function getMesaParticipants($mesa_id) {
+        return $this->mesaModel->getMesaParticipants($mesa_id);
     }
 
     public function searchTables($search) {
@@ -43,6 +51,15 @@ class MesaController {
 
     public function isAtMaxCapacity($mesa_id) {
         return $this->mesaModel->isAtMaxCapacity($mesa_id);
+    }
+
+    public function createMesa($nome, $descricao, $categoria, $max_capacity, $user_id) {
+        $nome_do_mestre = $this->mesaModel->getUserNameById($user_id);
+        $mesa_id = $this->mesaModel->createMesa($nome, $descricao, $categoria, $max_capacity, $user_id, $nome_do_mestre);
+        if ($mesa_id) {
+            $this->mesaModel->joinMesa($mesa_id, $user_id); // Adiciona o mestre à mesa
+        }
+        return $mesa_id;
     }
 }
 ?>
