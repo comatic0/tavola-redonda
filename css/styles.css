@@ -457,3 +457,80 @@ footer {
 .table_card a.btn:hover {
     background-color: #a0522d;
 }
+
+.project-info {
+    margin: 20px auto;
+    max-width: 900px;
+    background-color: #FAEBD7;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.project-info h2 {
+    text-align: center;
+    color: #A0522D;
+    margin-bottom: 20px;
+}
+
+.project-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.project-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.project-table th,
+.project-table td {
+    padding: 10px;
+    border: 1px solid #A0522D;
+    text-align: left;
+}
+
+.project-table th {
+    background-color: #A0522D;
+    color: white;
+    font-weight: bold;
+}
+
+.project-table td {
+    background-color: #FFF;
+    color: #333;
+}
+.team-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+}
+.team-table th, .team-table td {
+    padding: 10px 15px;
+    background-color: #A0522D;
+    border-bottom: 1px solid #ddd;
+}
+.team-table th {
+    background-color: #A0522D;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.team-table td {
+    background-color: #FAEBD7;
+    color: #333;
+    text-align: center;
+}
+.team-table td:nth-child(2){
+    padding-left: 40px;
+}
+
+.team-table tr:hover {
+    background-color: #f5f5f5;
+}
+

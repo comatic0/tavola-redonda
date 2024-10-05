@@ -79,8 +79,26 @@ function deleteTable($pdo, $id) {
     }
 }
 
-function searchTables($pdo, $search) {
-    $stmt = $pdo->prepare("SELECT * FROM mesas WHERE nome LIKE ? OR descricao LIKE ?");
-    $stmt->execute(['%' . $search . '%', '%' . $search . '%']);
+function searchTables($pdo, $search, $filter) {
+    // Define a consulta SQL com base no filtro selecionado
+    if ($filter === 'nome_mesa') {
+        $sql = "SELECT * FROM mesas WHERE nome LIKE ?";
+    } elseif ($filter === 'nome_mestre') {
+        $sql = "SELECT * FROM mesas WHERE nome_do_mestre LIKE ?";
+    } elseif ($filter === 'categoria') {
+        $sql = "SELECT * FROM mesas WHERE categoria LIKE ?";
+    } else {
+        $sql = "SELECT * FROM mesas WHERE nome LIKE ? OR descricao LIKE ?";
+    }
+
+    $stmt = $pdo->prepare($sql);
+    
+        if ($filter === 'nome_mesa' || $filter === 'nome_mestre' || $filter === 'categoria') {
+        $stmt->execute(['%' . $search . '%']);
+    } else {
+        $stmt->execute(['%' . $search . '%', '%' . $search . '%']);
+    }
+
     return $stmt->fetchAll();
 }
+

@@ -10,8 +10,8 @@
     </div>
     <nav class="navbar">
         <a href="<?php echo $base_path; ?>/index.php" class="active">Página Principal</a>
-        <a href="<?php echo $base_path; ?>/views/index.php">Mesas</a>
-        <a href="#">Fichas</a>
+        <a href="<?php echo $base_path; ?>/views/index.php" class="active">Mesas</a>
+        <a href="#"class="active">Fichas</a>
     </nav>
     <div class="user">
         <?php if (isset($_SESSION['user_id'])): ?>

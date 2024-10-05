@@ -25,7 +25,9 @@
         </section>
         
         <section class="about">
-            <h2>O que nós somos?</h2>
+            <h2>
+                <a href="<?php echo $base_path; ?>/views/aboutUS.php" class="btn" >Quem nós somos?</a>
+            </h2>
         </section>
         <footer>
             <p>&copy; 2024 Távola Redonda</p>

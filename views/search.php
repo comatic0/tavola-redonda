@@ -8,11 +8,12 @@ if (!isset($_SESSION['user_id'])) {
 require '../includes/db.php';
 require '../includes/functions.php';
 
-$mesas = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $search = $_POST['search'];
-    $mesas = searchTables($pdo, $search);  // Função de busca nas mesas
+    $filter = $_POST['filter'];  
+    $mesas = searchTables($pdo, $search, $filter);  
 }
+
 
 ?>
 
@@ -22,13 +23,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="form-container">
     <h2>Buscar Mesas</h2>
     <form action="search.php" method="post">
-        <div class="form-group">
+        <div class="form-group" style="display: flex; align-items: center;">
             <label for="search">Procurar mesa:</label>
             <input type="text" id="search" name="search" required>
+            <select id="filter" name="filter" class="form-select" style="margin-left: 10px;">
+                <option value="nome_mesa">Nome da Mesa</option>
+                <option value="nome_mestre">Nome do Mestre</option>
+                <option value="categoria">Categoria</option>
+            </select>
         </div>
         <button type="submit" class="btn">Buscar</button>
     </form>
 </div>
+
 
 <div class="mesas-list">
     <?php if (!empty($mesas)): ?>
@@ -43,7 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endforeach; ?>
         </div>
     <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
-        <p>Nenhuma mesa encontrada.</p>
+        <p>
+            <div class="table_card">
+            Nenhuma mesa encontrada.
+            </div>
+        </p>
     <?php endif; ?>
 </div>
 
