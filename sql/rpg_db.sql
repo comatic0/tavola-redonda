@@ -33,6 +33,7 @@ CREATE TABLE `mesas` (
   `descricao` text NOT NULL,
   `nome_do_mestre` varchar(255) NOT NULL,
   `numero_max_jogadores` int(11) NOT NULL,
+  `data_da_sessao` varchar(11) NOT NULL,
   `categoria` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -41,8 +42,8 @@ CREATE TABLE `mesas` (
 -- Despejando dados para a tabela `mesas`
 --
 
-INSERT INTO `mesas` (`id`, `nome`, `descricao`, `nome_do_mestre`, `numero_max_jogadores`, `categoria`, `user_id`) VALUES
-(2, 'testeetes', '1234', 'Testa', 12, 'Fantasia', 1);
+INSERT INTO `mesas` (`id`, `nome`, `descricao`, `nome_do_mestre`, `numero_max_jogadores`, `data_da_sessao`, `categoria`, `user_id`) VALUES
+(2, 'testeetes', '1234', 'Testa', 12, '12/12/2024','Fantasia', 1);
 
 -- --------------------------------------------------------
 
