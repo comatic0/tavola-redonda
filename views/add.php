@@ -13,11 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descricao = $_POST['descricao'];
     $nome_do_mestre = $_POST['nome_do_mestre'];
     $numero_max_jogadores = $_POST['numero_max_jogadores'];
+    $data_da_sessao = $_POST['data_da_sessao'];
     $categoria = $_POST['categoria'];
     $user_id = $_SESSION['user_id'];
 
-    $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao, nome_do_mestre, numero_max_jogadores, categoria, user_id) VALUES (?, ?, ?, ?, ?, ?)");
-    if ($stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria, $user_id])) {
+    $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao, nome_do_mestre, numero_max_jogadores, data_da_sessao, categoria, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    if ($stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $data_da_sessao, $categoria, $user_id])) {
         header('Location: ../views/index.php');
         exit();
     } else {
@@ -50,6 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="numero_max_jogadores">Número Máximo de Jogadores:</label>
             <input type="number" id="numero_max_jogadores" name="numero_max_jogadores" required>
         </div>
+        <div class="form-group">
+            <label for="data_da_sessao">Data Da Sessão:</label>
+            <input type="date" id="data_da_sessao" name="data_da_sessao" required>
         <div class="form-group">
             <label for="categoria">Categoria:</label>
             <input type="text" id="categoria" name="categoria" required>

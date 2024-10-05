@@ -18,6 +18,7 @@
                     <th>Descrição</th>
                     <th>Mestre</th>
                     <th>Número Máximo de Jogadores</th>
+                    <th>Dia da sessão</th>
                     <th>Usuários</th>
                     <th>Ações</th>
                 </tr>
@@ -33,6 +34,7 @@
                         <td><?php echo htmlspecialchars($mesa['descricao']); ?></td>
                         <td><?php echo htmlspecialchars($mesa['nome_do_mestre']); ?></td>
                         <td><?php echo htmlspecialchars($mesa['numero_max_jogadores']); ?></td>
+                        <td><?php echo htmlspecialchars($mesa['data_da_sessao']); ?></td>
                         <td>
                             <?php
                             $users = getUsersInTable($pdo, $mesa['id']);
@@ -46,7 +48,6 @@
                                 <?php if (isset($_SESSION['user_id']) && $mesa['user_id'] == $_SESSION['user_id']): ?>
                                     <a href="edit.php?id=<?php echo $mesa['id']; ?>" class="btn-edit">Editar</a>
                                     <a href="delete.php?id=<?php echo $mesa['id']; ?>" class="btn-delete" onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
-                                    <a href="<?php echo $base_path; ?>/views/Calendario.php" class="btn-calendario">Marcar Seção</a>
                 
                                 <?php endif; ?>
                                 <?php if (isset($_SESSION['user_id'])): ?>

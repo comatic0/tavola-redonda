@@ -43,19 +43,19 @@ function getTableById($pdo, $id) {
     }
 }
 
-function addTable($pdo, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria) {
+function addTable($pdo, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $data_da_sessao, $categoria) {
     try {
-        $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao, nome_do_mestre, numero_max_jogadores, categoria) VALUES (?, ?, ?, ?, ?)");
-        return $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria]);
+        $stmt = $pdo->prepare("INSERT INTO mesas (nome, descricao, nome_do_mestre, numero_max_jogadores, data_da_sessao, categoria) VALUES (?, ?, ?, ?, ?, ?)");
+        return $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $data_da_sessao, $categoria]);
     } catch (PDOException $e) {
         return false;
     }
 }
 
-function updateTable($pdo, $id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria) {
+function updateTable($pdo, $id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores,$data_da_sessao, $categoria) {
     try {
-        $stmt = $pdo->prepare("UPDATE mesas SET nome = ?, descricao = ?, nome_do_mestre = ?, numero_max_jogadores = ?, categoria = ? WHERE id = ?");
-        $result = $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria, $id]);
+        $stmt = $pdo->prepare("UPDATE mesas SET nome = ?, descricao = ?, nome_do_mestre = ?, numero_max_jogadores = ?, data_da_sessao = ?, categoria = ? WHERE id = ?");
+        $result = $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $data_da_sessao, $categoria, $id]);
         
         if ($result) {
             error_log("Table with ID $id updated successfully.");
