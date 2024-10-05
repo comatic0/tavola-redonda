@@ -16,6 +16,7 @@ $mesas = $mesaController->getAllMesas();
                     <th>Nome</th>
                     <th>Categoria</th>
                     <th>Descrição</th>
+                    <th>Participantes</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -26,13 +27,29 @@ $mesas = $mesaController->getAllMesas();
                         <td><?php echo htmlspecialchars($mesa['categoria']); ?></td>
                         <td><?php echo htmlspecialchars($mesa['descricao']); ?></td>
                         <td>
+                            <?php
+                            $participantes = $mesaController->getMesaParticipants($mesa['id']);
+                            foreach ($participantes as $participante) {
+                                echo htmlspecialchars($participante['username']) . '<br>';
+                            }
+                            ?>
+                        </td>
+                        <td>
                             <?php if (isset($_SESSION['user_id'])): ?>
                                 <?php if ($_SESSION['user_id'] === $mesa['user_id']): ?>
                                     <a href="edit.php?id=<?php echo $mesa['id']; ?>" class="btn">Editar</a>
                                     <a href="delete.php?id=<?php echo $mesa['id']; ?>" class="btn">Excluir</a>
-                                <?php elseif (!$mesaController->isAtMaxCapacity($mesa['id'])): ?>
-                                    <a href="join.php?id=<?php echo $mesa['id']; ?>" class="btn">Ingressar</a>
+                                <?php else: ?>
+                                    <?php if ($mesaController->isUserInMesa($mesa['id'], $_SESSION['user_id'])): ?>
+                                        <a href="leave.php?id=<?php echo $mesa['id']; ?>" class="btn">Sair</a>
+                                    <?php else: ?>
+                                        <?php if (!$mesaController->isAtMaxCapacity($mesa['id'])): ?>
+                                            <a href="join.php?id=<?php echo $mesa['id']; ?>" class="btn">Ingressar</a>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php endif; ?>
+                            <?php else: ?>
+                                <a href="../auth/login.php" class="btn btn-disabled">Ingressar</a>
                             <?php endif; ?>
                         </td>
                     </tr>
