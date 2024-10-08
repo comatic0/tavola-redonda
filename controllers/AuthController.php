@@ -16,6 +16,11 @@ class AuthController {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getUserById($user_id) {
+        $stmt = $this->userModel->getUserById($user_id);
+        return $stmt;
+    }
+
     public function register($username, $email, $password) {
         if ($this->userModel->getUserByEmail($email)) {
             return "Email já está em uso.";

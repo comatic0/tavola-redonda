@@ -8,7 +8,7 @@ function initializeDatabase($pdo) {
             `username` VARCHAR(255) NOT NULL,
             `email` VARCHAR(255) NOT NULL,
             `password` VARCHAR(255) NOT NULL,
-            `profile_picture` VARCHAR(255),
+            `profile_picture` VARCHAR(255) DEFAULT 'user-icon.png',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )",
         "CREATE TABLE IF NOT EXISTS `mesas` (
@@ -16,6 +16,7 @@ function initializeDatabase($pdo) {
             `nome` VARCHAR(255) NOT NULL,
             `descricao` TEXT,
             `categoria` VARCHAR(255) NOT NULL,
+            `data_da_sessao` VARCHAR(11) NOT NULL,
             `max_capacity` INT NOT NULL DEFAULT 20,
             `user_id` INT,
             `nome_do_mestre` VARCHAR(255) NOT NULL,
@@ -41,7 +42,6 @@ function initializeDatabase($pdo) {
             FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
         )"
     ];
-
     foreach ($queries as $query) {
         $pdo->exec($query);
     }

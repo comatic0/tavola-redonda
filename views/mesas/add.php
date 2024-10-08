@@ -5,14 +5,17 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 require '../../controllers/MesaController.php';
+require '../../includes/db.php';
+
 $mesaController = new MesaController($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $categoria = $_POST['categoria'];
+    $data_da_sessao = $_POST['data_da_sessao'];
     $max_capacity = $_POST['max_capacity'];
     $user_id = $_SESSION['user_id'];
-    $mesaController->createMesa($nome, $descricao, $categoria, $max_capacity, $user_id);
+    $mesaController->createMesa($nome, $descricao, $categoria, $data_da_sessao, $max_capacity, $user_id);
     header('Location: index.php');
     exit();
 }
@@ -33,6 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-group">
             <label for="categoria">Categoria:</label>
             <input type="text" id="categoria" name="categoria" required>
+        </div>
+        <div class="form-group">
+            <label for="data_da_sessao">Data Da Sessão:</label>
+            <input type="date" id="data_da_sessao" name="data_da_sessao" required>
         </div>
         <div class="form-group">
             <label for="max_capacity">Capacidade Máxima de Jogadores:</label>

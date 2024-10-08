@@ -53,9 +53,9 @@ class MesaController {
         return $this->mesaModel->isAtMaxCapacity($mesa_id);
     }
 
-    public function createMesa($nome, $descricao, $categoria, $max_capacity, $user_id) {
+    public function createMesa($nome, $descricao, $categoria, $data_da_sessao, $max_capacity, $user_id) {
         $nome_do_mestre = $this->mesaModel->getUserNameById($user_id);
-        $mesa_id = $this->mesaModel->createMesa($nome, $descricao, $categoria, $max_capacity, $user_id, $nome_do_mestre);
+        $mesa_id = $this->mesaModel->createMesa($nome, $descricao, $categoria, $data_da_sessao, $max_capacity, $user_id, $nome_do_mestre);
         if ($mesa_id) {
             $this->mesaModel->joinMesa($mesa_id, $user_id); // Adiciona o mestre à mesa
         }

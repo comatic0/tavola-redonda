@@ -1,8 +1,11 @@
 <?php
 session_start();
+require '../../includes/db.php';
 require '../../controllers/MesaController.php';
+
 $mesaController = new MesaController($pdo);
 $mesas = $mesaController->getAllMesas();
+$user_id = $_SESSION['user_id'] ?? null;
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
@@ -17,6 +20,7 @@ $mesas = $mesaController->getAllMesas();
                     <th>Categoria</th>
                     <th>Descrição</th>
                     <th>Participantes</th>
+                    <th>Dia da sessão</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -29,27 +33,24 @@ $mesas = $mesaController->getAllMesas();
                         <td>
                             <?php
                             $participantes = $mesaController->getMesaParticipants($mesa['id']);
-                            foreach ($participantes as $participante) {
-                                echo htmlspecialchars($participante['username']) . '<br>';
-                            }
+                            foreach ($participantes as $participante):
                             ?>
+                                <div class="participant">
+                                    <img src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo htmlspecialchars($participante['profile_picture'] ?? 'user-icon.png'); ?>" alt="Profile Picture" class="profile-icon">
+                                    <span><?php echo htmlspecialchars($participante['username']); ?></span>
+                                </div>
+                            <?php endforeach; ?>
                         </td>
+                        <td><?php echo htmlspecialchars($mesa['data_da_sessao']); ?></td>
                         <td>
-                            <?php if (isset($_SESSION['user_id'])): ?>
-                                <?php if ($_SESSION['user_id'] === $mesa['user_id']): ?>
-                                    <a href="edit.php?id=<?php echo $mesa['id']; ?>" class="btn">Editar</a>
-                                    <a href="delete.php?id=<?php echo $mesa['id']; ?>" class="btn">Excluir</a>
+                            <?php if ($user_id && $mesaController->isUserInMesa($mesa['id'], $user_id)): ?>
+                                <?php if ($mesa['user_id'] != $user_id): ?>
+                                    <a href="<?php echo $base_path; ?>/views/mesas/leave.php?id=<?php echo $mesa['id']; ?>" class="btn">Sair da Sessão</a>
                                 <?php else: ?>
-                                    <?php if ($mesaController->isUserInMesa($mesa['id'], $_SESSION['user_id'])): ?>
-                                        <a href="leave.php?id=<?php echo $mesa['id']; ?>" class="btn">Sair</a>
-                                    <?php else: ?>
-                                        <?php if (!$mesaController->isAtMaxCapacity($mesa['id'])): ?>
-                                            <a href="join.php?id=<?php echo $mesa['id']; ?>" class="btn">Ingressar</a>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
+                                    <span>Você é o mestre</span>
                                 <?php endif; ?>
                             <?php else: ?>
-                                <a href="../auth/login.php" class="btn btn-disabled">Ingressar</a>
+                                <a href="<?php echo $base_path; ?>/views/mesas/join.php?id=<?php echo $mesa['id']; ?>" class="btn">Ingressar</a>
                             <?php endif; ?>
                         </td>
                     </tr>
@@ -57,8 +58,5 @@ $mesas = $mesaController->getAllMesas();
             </tbody>
         </table>
     </section>
-    <footer>
-        <p>&copy; 2024 Távola Redonda</p>
-    </footer>
 </main>
 <?php include '../../includes/footer.php'; ?>
