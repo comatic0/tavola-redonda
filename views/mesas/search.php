@@ -1,24 +1,19 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: ../auth/login.php');
     exit();
 }
-
-require '../includes/db.php';
-require '../includes/functions.php';
-
+require '../../controllers/MesaController.php';
+$mesaController = new MesaController($pdo);
 $mesas = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $search = $_POST['search'];
-    $mesas = searchTables($pdo, $search);  // Função de busca nas mesas
+    $mesas = $mesaController->searchTables($search);
 }
-
 ?>
-
-<?php include '../includes/header.php'; ?>
-<?php include '../includes/nav.php'; ?>
-
+<?php include '../../includes/header.php'; ?>
+<?php include '../../includes/nav.php'; ?>
 <div class="form-container">
     <h2>Buscar Mesas</h2>
     <form action="search.php" method="post">
@@ -29,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn">Buscar</button>
     </form>
 </div>
-
 <div class="mesas-list">
     <?php if (!empty($mesas)): ?>
         <h3>Resultados da busca:</h3>
@@ -38,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="table_card">
                     <?php echo htmlspecialchars($mesa['nome']); ?> -----
                     <?php echo htmlspecialchars($mesa['nome_do_mestre']); ?>
-                    <a href= "<?php echo $base_path; ?>/views/join.php" class="btn">Visualizar</a>
+                    <a href= "<?php echo $base_path; ?>/views/mesas/join.php" class="btn">Visualizar</a>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -46,5 +40,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>Nenhuma mesa encontrada.</p>
     <?php endif; ?>
 </div>
-
-<?php include '../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>

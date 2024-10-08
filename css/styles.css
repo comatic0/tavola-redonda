@@ -414,6 +414,13 @@ footer {
     margin-right: 10px;
 }
 
+.btn-disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .td_mesa{
     display: flex;
     flex-direction: column;
