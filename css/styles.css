@@ -473,3 +473,34 @@ footer {
 .table_card a.btn:hover {
     background-color: #a0522d;
 }
+
+.btn-calendario {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-calendario:hover {
+    background-color: #45a049;
+}
+
+.participant {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
