@@ -260,12 +260,21 @@ footer {
     color: #A0522D;
 }
 
-.btn-edit, .btn-delete {
+.btn-edit, .btn-delete, .btn-calendario {
     padding: 8px 12px;
     border-radius: 5px;
     text-decoration: none;
     color: #fff;
     margin-right: 5px;
+}
+
+.btn-calendario {
+    background-color: #a0522d;
+
+}
+
+.btn-calendario:hover {
+    background-color: #a04632 ;
 }
 
 .btn-edit {
