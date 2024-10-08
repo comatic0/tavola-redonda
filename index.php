@@ -1,5 +1,8 @@
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/nav.php'; ?>
+<?php
+require 'includes/init_db.php';
+include 'includes/header.php';
+include 'includes/nav.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,9 +21,8 @@
                     O projeto Tavola Redonda é uma aplicação web desenvolvida para facilitar o gerenciamento de mesas de RPG.
                 </p>
                 <div class="buttons">
-                    <a href="<?php echo $base_path; ?>/views/add.php" class="btn">Criar nova mesa</a>
-                    <a href="<?php echo $base_path; ?>/views/search.php" class="btn">Ingressar em uma nova mesa</a>
-                    
+                    <a href="<?php echo $base_path; ?>/views/mesas/add.php" class="btn">Criar nova mesa</a>
+                    <a href="<?php echo $base_path; ?>/views/mesas/search.php" class="btn">Ingressar em uma nova mesa</a>
                 </div>
             </div>
         </section>

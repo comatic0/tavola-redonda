@@ -10,15 +10,15 @@
     </div>
     <nav class="navbar">
         <a href="<?php echo $base_path; ?>/index.php" class="active">Página Principal</a>
-        <a href="<?php echo $base_path; ?>/views/index.php">Mesas</a>
-        <a href="<?php echo $base_path; ?>/views/ficha-persa.php">Fichas</a>
+        <a href="<?php echo $base_path; ?>/views/mesas/index.php">Mesas</a>
+        <a href="<?php echo $base_path; ?>/views/fichas/index.php">Fichas</a>
     </nav>
     <div class="user">
         <?php if (isset($_SESSION['user_id'])): ?>
             <div class="dropdown">
                 <button class="dropbtn"><?php echo htmlspecialchars($_SESSION['username']); ?></button>
                 <div class="dropdown-content">
-                    <a href="<?php echo $base_path; ?>/views/logout.php">Logout</a>
+                    <a href="<?php echo $base_path; ?>/views/auth/logout.php">Logout</a>
                 </div>
             </div>
             <a href="<?php echo $base_path; ?>/views/profile.php">
@@ -28,8 +28,8 @@
             <div class="dropdown">
                 <button class="dropbtn">Minha Conta</button>
                 <div class="dropdown-content">
-                    <a href="<?php echo $base_path; ?>/views/register.php">Registrar</a>
-                    <a href="<?php echo $base_path; ?>/views/login.php">Logar</a>
+                    <a href="<?php echo $base_path; ?>/views/auth/register.php">Registrar</a>
+                    <a href="<?php echo $base_path; ?>/views/auth/login.php">Logar</a>
                 </div>
             </div>
         <?php endif; ?>
