@@ -1,7 +1,7 @@
 <?php
 session_start();
-require '../includes/db.php';
-require '../controllers/AuthController.php';
+require '../../includes/db.php';
+require '../../controllers/AuthController.php';
 $authController = new AuthController($pdo);
 
 if (isset($_SESSION['steam_id'], $_SESSION['username'], $_SESSION['avatar_url'], $_SESSION['email'])) {
@@ -10,10 +10,9 @@ if (isset($_SESSION['steam_id'], $_SESSION['username'], $_SESSION['avatar_url'],
     $avatar_url = $_SESSION['avatar_url'];
     $email = $_SESSION['email'];
 
-    $password = bin2hex(random_bytes(8)); // Generate a random password
+    $password = bin2hex(random_bytes(8)); 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Save the profile picture to the assets/profile_pictures/ folder
     $profile_picture_filename = "{$username}.jpg";
     $profile_picture_path = __DIR__ . "/../../assets/profile_pictures/{$profile_picture_filename}";
     file_put_contents($profile_picture_path, file_get_contents($avatar_url));
