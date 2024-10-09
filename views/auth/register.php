@@ -1,9 +1,10 @@
 <?php
 session_start();
-require '../../controllers/AuthController.php';
 require '../../includes/db.php';
-
+require '../../controllers/AuthController.php';
 $authController = new AuthController($pdo);
+$steamApiKey = $config['STEAM_API_KEY'];
+$steamApiKeyValid = !empty($steamApiKey) && strlen($steamApiKey) === 20;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -40,11 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn">Registrar</button>
     </form>
-    <div class="steam-login">
-    <a href="steam_register.php" class="btn btn-steam">
-        <img src="<?php echo $base_path; ?>/assets/icons/steam-logo.png" alt="Steam Logo">
-        Registrar com Steam
-    </a>
+    <div class="steam-login <?php echo !$steamApiKeyValid ? 'btn-disabled' : ''; ?>">
+        <a href="steam_register.php" class="btn btn-steam" <?php echo !$steamApiKeyValid ? 'onclick="return false;"' : ''; ?>>
+            <img src="../../assets/icons/steam-logo.png" alt="Steam Logo">
+            Registrar com Steam
+        </a>
     </div>
 </div>
 <?php include '../../includes/footer.php'; ?>

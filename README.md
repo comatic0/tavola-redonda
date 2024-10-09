@@ -36,14 +36,15 @@
 
 2. **Configure o Banco de Dados:**
     - Crie um banco de dados MySQL.
-    - Atualize o arquivo `config.json` com as credenciais do banco de dados:
+    - Atualize o arquivo `config.json` com as credenciais do banco de dados e consiga a chave da API Steam, pode ser adquirida em https://steamcommunity.com/dev :
 
        ```json
        {
           "DB_HOST": "localhost",
           "DB_NAME": "rpg_db",
           "DB_USER": "root",
-          "DB_PASS": ""
+          "DB_PASS": "",
+          "STEAM_API_KEY": ""
        }
        ```
 

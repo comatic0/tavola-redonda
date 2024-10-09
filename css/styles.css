@@ -422,14 +422,6 @@ footer {
     border-radius: 50%;
     margin-right: 10px;
 }
-
-.btn-disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
 .td_mesa{
     display: flex;
     flex-direction: column;
@@ -509,6 +501,10 @@ footer {
     background-color: #ccc;
     color: #666;
     cursor: not-allowed;
+    opacity: 0.5;
+}
+.btn-disabled a {
+    pointer-events: none;
 }
 
 .password-wrapper {
