@@ -9,51 +9,59 @@ require '../../controllers/MesaController.php';
 $mesaController = new MesaController($pdo);
 $mesa_id = $_GET['id'] ?? null;
 $mesa = $mesaController->getMesaById($mesa_id);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    if (!is_numeric($id)) {
+        die('Invalid ID');
+    }
     $nome = $_POST['nome'];
     $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
-    $error = $mesaController->updateMesa($mesa_id, $nome, $categoria, $descricao);
+    $nome_do_mestre = $_POST['nome_do_mestre'];
+    $numero_max_jogadores = $_POST['max_capacity'];
+    $error = $mesaController->updateMesa($id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria);
 }
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
 <div class="form-container">
-    <h2>Editar Mesa</h2>
-    <?php if (isset($error)): ?>
-        <p class="error"><?php echo $error; ?></p>
-    <?php endif; ?>
-    <form action="edit.php?id=<?php echo $mesa_id; ?>" method="post">
+    <h2><?php echo $mesa['nome']?></h2>
+    <form method="post">
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($mesa['id']); ?>">
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($mesa['nome']); ?>" required>
-        </div>
-        <div class="form-group">
-            <label for="categoria">Categoria:</label>
-            <select id="categoria" name="categoria" onchange="toggleCustomCategory(this)">
-                <option value="Fantasia" <?php echo $mesa['categoria'] === 'Fantasia' ? 'selected' : ''; ?>>Fantasia</option>
-                <option value="Sci-Fi" <?php echo $mesa['categoria'] === 'Sci-Fi' ? 'selected' : ''; ?>>Sci-Fi</option>
-                <option value="Terror" <?php echo $mesa['categoria'] === 'Terror' ? 'selected' : ''; ?>>Terror</option>
-                <option value="Outro" <?php echo !in_array($mesa['categoria'], ['Fantasia', 'Sci-Fi', 'Terror']) ? 'selected' : ''; ?>>Outro</option>
-            </select>
-            <input type="text" id="categoria_custom" name="categoria_custom" style="display:<?php echo !in_array($mesa['categoria'], ['Fantasia', 'Sci-Fi', 'Terror']) ? 'block' : 'none'; ?>;" placeholder="Digite a categoria" value="<?php echo !in_array($mesa['categoria'], ['Fantasia', 'Sci-Fi', 'Terror']) ? htmlspecialchars($mesa['categoria']) : ''; ?>">
-        </div>
         <div class="form-group">
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao"><?php echo htmlspecialchars($mesa['descricao']); ?></textarea>
+        <div class="form-group">
+            <label for="nome_do_mestre">Mestre:</label>
+            <input type="text" id="nome_do_mestre" name="nome_do_mestre" value="<?php echo htmlspecialchars($mesa['nome_do_mestre']); ?>" required>
+        <div class="form-group">
+            <label for="max_capacity">Número Máximo de Jogadores:</label>
+            <input type="number" id="max_capacity" name="max_capacity" value="<?php echo htmlspecialchars($mesa['max_capacity']); ?>" required>
+        <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria" value="<?php echo htmlspecialchars($mesa['categoria']); ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="categoria">Jogadores:</label>
+            <?php
+                $users = $mesaController->getMesaParticipants($mesa_id);
+                foreach ($users as $user) {
+                    echo htmlspecialchars($user['username']); 
+                    ?>
+                    <a class="btn-leave" href="delete-user.php?mesa_id=<?php echo htmlspecialchars($mesa['id']); ?>&user_id=<?php echo htmlspecialchars($user['id']); ?>">Tirar jogador</a>
+                    <br>
+                    <br>
+                    <?php
+                }   
+            ?>     
         </div>
         <button type="submit" class="btn">Salvar</button>
-        <button class="back-button" onclick="window.location.href='../index.php'">Voltar</button>
+        <br>
+        <button class="btn" onclick="window.location.href='../index.php'">Voltar</button>
     </form>
 </div>
-<script>
-function toggleCustomCategory(select) {
-    var customCategoryInput = document.getElementById('categoria_custom');
-    if (select.value === 'Outro') {
-        customCategoryInput.style.display = 'block';
-    } else {
-        customCategoryInput.style.display = 'none';
-    }
-}
-</script>
 <?php include '../../includes/footer.php'; ?>
