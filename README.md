@@ -110,20 +110,17 @@ Exclusão de mesas.
 
 ### valor: 
 
-Possibilatar ao usuário o cadastro de personagens, tal como a edição e exclusão dos mesmos, funções adicionais no gerenciamento de mesas, possibilitando o ingresso de jogadores nas mesas, cadastro de mestres, login de usuários e mestres.
+Possibilatar ao usuário a busca por mesas existentes, o cadastro de personagens, funções adicionais no gerenciamento de mesas, possibilitando o ingresso de jogadores nas mesas, cadastro de mestres, login de usuários e mestres.
 
 ### Funcionalidades:
-Sistema para agendamento de horários e dias de sessões.
+Sistema para buscar por uma mesa existente no banco de dados:
+O usuário poderá ingressar em uma mesa que já existe procurando por ela
+
+Sistema para agendamento de horários e dias de sessões durante a criação de mesas.
 
 Gestão de Fichas de Personagens (Registro de Ficha de Personagem):
 
 Registro e criação de personagens, com detalhes como nome, descrição e controlador.
-
-Visualização e edição dos detalhes da ficha do personagem.
-
-Exclusão de personagens.
-
-Exportação de fichas para PDF, facilitando o compartilhamento e armazenamento.
 
 Possibilitar a exibição, alteração e exlusão do perfil.
 
