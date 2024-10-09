@@ -25,3 +25,112 @@ config.json
 # Ignore system files
 .DS_Store
 Thumbs.db
+=======
+config.json
+# Composer dependencies
+/vendor/
+
+# Node dependencies
+/node_modules/
+
+# PHPStorm project files
+.idea/
+
+# Laravel specific
+/storage/
+.env
+Homestead.yaml
+Homestead.json
+
+# Symfony specific
+/app/config/parameters.yml
+/app/config/parameters.php
+/var/
+/bin/
+/vendor/
+/web/bundles/
+/app/cache/*
+/app/logs/*
+/app/bootstrap.php.cache
+/app/config/parameters.yml
+/app/config/parameters.php
+/app/config/parameters.yml.dist
+/app/config/parameters.php.dist
+
+# CakePHP specific
+/tmp/cache/models/*
+/tmp/cache/persistent/*
+/tmp/cache/views/*
+/tmp/logs/*
+/tmp/sessions/*
+/tmp/tests/*
+/Vendor/
+/Config/database.php
+
+# Zend Framework specific
+/data/cache/
+/data/logs/
+/data/session/
+
+# Laravel specific
+/vendor/
+/node_modules/
+/public/storage
+/storage/*.key
+.env
+Homestead.yaml
+Homestead.json
+
+# Yii specific
+/vendor/
+/runtime/
+
+# FuelPHP specific
+/fuel/app/cache/
+/fuel/app/logs/
+/fuel/app/tmp/
+/fuel/vendor/
+/fuel/core/vendor/
+/fuel/packages/*/vendor/
+
+# Slim Framework specific
+/vendor/
+/logs/
+
+# CodeIgniter specific
+/application/cache/
+/application/logs/
+
+# Phalcon specific
+/cache/
+/logs/
+
+# PHPunit
+.phpunit.result.cache
+
+# Miscellaneous
+*.log
+*.cache
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+*.save
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.DS_Store
+*.idea
+*.project
+*.sublime-project
+*.sublime-workspace
+*.vscode
+*.phpunit.result.cache
+*.php_cs.cache
+*.php_cs.dist
+*.php_cs
+*.phpstorm.meta.php
+*.phpunit.result.cache
+*.phpunit.result.cache
