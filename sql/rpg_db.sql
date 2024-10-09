@@ -1,38 +1,45 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+-- Criação da tabela de usuários
+CREATE TABLE IF NOT EXISTS `usuarios` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `profile_picture` VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
+-- Criação da tabela de mesas
+CREATE TABLE IF NOT EXISTS `mesas` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `nome` VARCHAR(255) NOT NULL,
+    `descricao` TEXT,
+    `categoria` VARCHAR(255) NOT NULL,
+    `data_da_sessao` VARCHAR(11) NOT NULL,
+    `max_capacity` INT NOT NULL DEFAULT 20,
+    `user_id` INT,
+    `nome_do_mestre` VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
+);
 
-CREATE TABLE `mesas` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(255) NOT NULL,
-  `descricao` text NOT NULL,
-  `nome_do_mestre` varchar(255) NOT NULL,
-  `numero_max_jogadores` int(11) NOT NULL,
-  `categoria` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Criação da tabela de associação entre mesas e usuários
+CREATE TABLE IF NOT EXISTS `mesa_usuarios` (
+    `mesa_id` INT,
+    `user_id` INT,
+    PRIMARY KEY (`mesa_id`, `user_id`),
+    FOREIGN KEY (`mesa_id`) REFERENCES `mesas` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
+);
 
-INSERT INTO `mesas` (`id`, `nome`, `descricao`, `nome_do_mestre`, `numero_max_jogadores`, `categoria`) VALUES
-(18, 'Senhor dos Anéis 2', 'Tabletop RPG.', 'Gandalf', 14, 'Fantasia'),
-(30, 'Senhor dos Anéis', 'afawfsadfasdgasdg', 'Mago', 12, 'Fantasia');
-
-
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-ALTER TABLE `mesas`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `mesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
+-- Criação da tabela de fichas
+CREATE TABLE IF NOT EXISTS `fichas` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `nome` VARCHAR(255) NOT NULL,
+    `classe` VARCHAR(255) NOT NULL,
+    `nivel` INT NOT NULL,
+    `raca` VARCHAR(255) NOT NULL,
+    `descricao` TEXT,
+    `user_id` INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
+);
