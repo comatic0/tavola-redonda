@@ -535,3 +535,30 @@ footer {
     background-color: red;
     transition: width 0.3s;
 }
+
+.btn-steam {
+    background-color: #171a21; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-steam:hover {
+    background-color: #1b2838; 
+}
+
+.btn-steam img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}

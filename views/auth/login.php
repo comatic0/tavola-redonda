@@ -27,7 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn">Logar</button>
     </form>
     <div class="steam-login">
-        <a href="steam_login.php" class="btn">Logar com Steam</a>
-    </div>
+    <a href="steam_login.php" class="btn btn-steam">
+        <img src="<?php echo $base_path; ?>/assets/icons/steam-logo.png" alt="Steam Logo">
+        Logar com Steam
+    </a>
+</div>
 </div>
 <?php include '../../includes/footer.php'; ?>
