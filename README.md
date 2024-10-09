@@ -31,7 +31,7 @@
 
 1. **Clone o repositório:**
    ```sh
-   git clone https://github.com/comatic0/tavola-redonda.git
+   git clone https://github.com/seu-usuario/tavola-redonda.git
    cd tavola-redonda
 
 2. **Configure o Banco de Dados:**
@@ -78,28 +78,31 @@
 
 ### Sprint Planning
 ### Iteração 1
-Duração: 2 semanas 
-Início: 21/08/24
-Término: 04/09/24
 
-### Sprint 1:  Sistema de Gestão de Mesas e Personagens com Interface Intuitiva
+### Sprint 1:  Sistema de Gestão de Mesas 
 
 ### Valor da Sprint:
-Desenvolver uma interface completa e acessível que integre a criação e gestão de mesas e fichas de personagens. O sistema permitirá que mestres de RPG ou educadores possam facilmente registrar, editar e gerenciar suas mesas e fichas de personagens, além de oferecer uma experiência de usuário intuitiva e personalizável com modos noturno e claro.
+Desenvolver uma interface completa e acessível que integre a criação e gestão de mesas. O sistema permitirá que mestres de RPG ou educadores possam facilmente registrar, editar e gerenciar suas mesas e oferecer uma experiência de usuário intuitiva e personalizável.
 
 ### Funcionalidades:
 
-Opções de autenticação: Sign in, Sign up e Disconnect.
+Opções de autenticação: registro de usuário
 
 Interface e Usabilidade (Página Inicial):
 
 Criação de uma página inicial acessível, atraente e intuitiva que facilite a navegação pelos recursos.
 
-Alternar entre modos noturno e claro.
-
 Informações claras sobre o projeto, suas funcionalidades e objetivos.
 
+ Gestão de Mesas (Registro de Mesas):
 
+Registro e criação de mesas, com descrição detalhada da história, sistema de jogo, e outras opções personalizáveis.
+
+Visualização de informações atuais da mesa, etc.
+
+Edição e modificação de informações das mesas.
+
+Exclusão de mesas.
 
 ### Iteração 2:
 
