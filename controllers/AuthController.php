@@ -16,6 +16,22 @@ class AuthController {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function registerWithSteam($steam_id) {
+        $user = $this->userModel->getUserBySteamId($steam_id);
+        if (!$user) {
+            $username = 'SteamUser_' . $steam_id;
+            $email = $steam_id . '@steam.com';
+            $password = password_hash($steam_id, PASSWORD_DEFAULT);
+            $this->userModel->createUser($username, $email, $password, $steam_id);
+            $user = $this->userModel->getUserBySteamId($steam_id);
+        }
+        return $user;
+    }
+
+    public function loginWithSteam($steam_id) {
+        return $this->userModel->getUserBySteamId($steam_id);
+    }
+
     public function getUserById($user_id) {
         $stmt = $this->userModel->getUserById($user_id);
         return $stmt;

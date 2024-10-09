@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '../../controllers/AuthController.php';
-
 $authController = new AuthController($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -27,5 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn">Logar</button>
     </form>
+    <div class="steam-login">
+        <a href="steam_login.php" class="btn">Logar com Steam</a>
+    </div>
 </div>
 <?php include '../../includes/footer.php'; ?>

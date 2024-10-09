@@ -40,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn">Registrar</button>
     </form>
+    <div class="steam-login">
+        <a href="steam_register.php" class="btn">Registrar com Steam</a>
+    </div>
 </div>
 <?php include '../../includes/footer.php'; ?>
 <script>
@@ -67,29 +70,3 @@ function togglePasswordVisibility() {
     }
 }
 </script>
-<style>
-.password-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-.password-wrapper input {
-    flex: 1;
-    padding-right: 30px; /* Adiciona espaço para o ícone de olho */
-}
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-}
-.toggle-password img {
-    width: 20px;
-    height: 20px;
-}
-.password-strength {
-    height: 10px;
-    width: 0;
-    background-color: red;
-    transition: width 0.3s;
-}
-</style>
