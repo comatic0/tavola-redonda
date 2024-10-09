@@ -45,7 +45,7 @@ class MesaController {
 
     public function deleteMesa($mesa_id) {
         $this->mesaModel->deleteMesa($mesa_id);
-        header('Location: ../views/mesas/index.php');
+        header('Location: ../mesas/index.php');
         exit();
     }
 
@@ -60,6 +60,35 @@ class MesaController {
             $this->mesaModel->joinMesa($mesa_id, $user_id); // Adiciona o mestre à mesa
         }
         return $mesa_id;
+    }
+
+    public function updateMesa($id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria) {
+        $result = $this->mesaModel->updateTable($id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria);
+        if ($result) {
+            error_log("Table with ID $id updated successfully.");
+            header('Location: index.php');
+            exit();
+        } else {
+            error_log("Failed to update table with ID $id.");
+        }
+    }
+
+    public function getMesaById($mesa_id) {
+        $table = $this->mesaModel->getTableById($mesa_id);
+        if ($table) {
+            return $table;
+        } else {
+            exit();
+        }
+    }
+
+    public function delete($user_id, $mesa_id) {
+        if ($this->mesaModel->deleteUser($user_id, $mesa_id)) {
+            header('Location: edit.php?id=' . $mesa_id);
+        } else {
+            header('Location: edit.php?id=' . $mesa_id);
+            exit();
+        }
     }
 }
 ?>

@@ -1,11 +1,11 @@
 <?php
 session_start();
-require '../../controllers/FichaController.php';
-$fichaController = new FichaController($pdo);
-$ficha_id = $_GET['id'] ?? null;
-if ($ficha_id) {
-    $fichaController->deleteFicha($ficha_id);
-    header('Location: index.php');
-    exit();
+require '../../controllers/MesaController.php';
+
+$mesa_id = $_GET['id'] ?? null;
+
+if ($mesa_id) {
+    $mesaController = new MesaController($pdo);
+    $mesaController->deleteMesa($mesa_id);
 }
 ?>
