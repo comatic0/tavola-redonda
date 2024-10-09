@@ -30,24 +30,15 @@ $user_id = $_SESSION['user_id'] ?? null;
                         <td><?php echo htmlspecialchars($mesa['nome']); ?></td>
                         <td><?php echo htmlspecialchars($mesa['categoria']); ?></td>
                         <td><?php echo htmlspecialchars($mesa['descricao']); ?></td>
-                        <td>
-                            <?php
-                            $participantes = $mesaController->getMesaParticipants($mesa['id']);
-                            foreach ($participantes as $participante):
-                            ?>
-                                <div class="participant">
-                                    <img src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo htmlspecialchars($participante['profile_picture'] ?? 'user-icon.png'); ?>" alt="Profile Picture" class="profile-icon">
-                                    <span><?php echo htmlspecialchars($participante['username']); ?></span>
-                                </div>
-                            <?php endforeach; ?>
-                        </td>
+                        <td><?php echo htmlspecialchars($mesa['max_capacity']); ?></td>
                         <td><?php echo htmlspecialchars($mesa['data_da_sessao']); ?></td>
                         <td>
                             <?php if ($user_id && $mesaController->isUserInMesa($mesa['id'], $user_id)): ?>
                                 <?php if ($mesa['user_id'] != $user_id): ?>
                                     <a href="<?php echo $base_path; ?>/views/mesas/leave.php?id=<?php echo $mesa['id']; ?>" class="btn">Sair da Sessão</a>
                                 <?php else: ?>
-                                    <span>Você é o mestre</span>
+                                    <a href="<?php echo $base_path; ?>/views/mesas/edit.php?id=<?php echo $mesa['id']; ?>" class="btn">Editar</a>
+                                    <a href="<?php echo $base_path; ?>/views/mesas/delete.php?id=<?php echo $mesa['id']; ?>" class="btn">Excluir</a>
                                 <?php endif; ?>
                             <?php else: ?>
                                 <a href="<?php echo $base_path; ?>/views/mesas/join.php?id=<?php echo $mesa['id']; ?>" class="btn">Ingressar</a>

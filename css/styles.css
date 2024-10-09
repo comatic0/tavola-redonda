@@ -504,3 +504,9 @@ footer {
     border-radius: 50%;
     margin-right: 10px;
 }
+
+.btn-disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
