@@ -10,7 +10,7 @@ class FichaController {
         $user_id = $_SESSION['user_id'] ?? null;
         if ($user_id) {
             if ($this->fichaModel->createFicha($nome, $classe, $nivel, $raca, $descricao, $user_id)) {
-                header('Location: ../views/fichas/index.php');
+                header('Location: ../fichas/index.php');
                 exit();
             } else {
                 return "Erro ao criar personagem.";
@@ -19,6 +19,9 @@ class FichaController {
     }
     public function getAllFichas() {
         return $this->fichaModel->getAllFichas();
+    }
+    public function deleteFicha($id) {
+        return $this->fichaModel->deleteFicha($id);
     }
 }
 ?>

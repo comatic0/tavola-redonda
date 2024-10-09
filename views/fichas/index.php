@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '../../controllers/FichaController.php';
-
 $fichaController = new FichaController($pdo);
 $fichas = $fichaController->getAllFichas();
 ?>
@@ -11,6 +10,7 @@ $fichas = $fichaController->getAllFichas();
     <section class="table-view">
         <h1 class="evil-aura">Ficha de Personagem</h1>
         <p>Essas são as fichas de personagem cadastrados.</p>
+        <a href="create.php" class="btn">Criar Nova Ficha</a>
         <table class="styled-table">
             <thead>
                 <tr>
@@ -20,6 +20,7 @@ $fichas = $fichaController->getAllFichas();
                     <th>Raça</th>
                     <th>Descrição</th>
                     <th>Id</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +32,9 @@ $fichas = $fichaController->getAllFichas();
                         <td><?php echo htmlspecialchars($ficha['raca']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['descricao']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['user_id']); ?></td>
+                        <td>
+                            <a href="delete.php?id=<?php echo $ficha['id']; ?>" class="btn">Deletar</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
