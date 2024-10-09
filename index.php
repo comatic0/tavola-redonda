@@ -1,9 +1,37 @@
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/nav.php'; ?>
-
-<h1>Bem vindo à <span class="evil-aura">Távola Redonda</span></h1>
-<p>Aqui você pode gerenciar diferentes mesas de RPG.</p>
-<p>O projeto <strong>Távola Redonda</strong> é uma aplicação web desenvolvida para facilitar o gerenciamento de mesas de RPG. Com ele, você pode criar, editar e excluir mesas, além de visualizar todas as mesas disponíveis.</p>
-<p>Para mais informações e acesso ao código-fonte, visite o <a href="https://github.com/comatic0/tavola-redonda" target="_blank">repositório no GitHub</a>.</p>
-
+<?php
+require 'includes/init_db.php';
+include 'includes/header.php';
+include 'includes/nav.php';
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Távola Redonda</title>
+</head>
+<body>
+    <main>
+        <section class="hero">
+            <img src="<?php echo $base_path; ?>/assets/icons/image1.png" alt="Dados de RPG">
+            <div class="hero-content">
+                <h2>Bem-vindo à Tavola Redonda</h2>
+                <p>
+                    Aqui você pode gerenciar diferentes mesas de RPG.<br>
+                    O projeto Tavola Redonda é uma aplicação web desenvolvida para facilitar o gerenciamento de mesas de RPG.
+                </p>
+                <div class="buttons">
+                    <a href="<?php echo $base_path; ?>/views/mesas/add.php" class="btn">Criar nova mesa</a>
+                    <a href="<?php echo $base_path; ?>/views/mesas/search.php" class="btn">Ingressar em uma nova mesa</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="about">
+            <h2>O que nós somos?</h2>
+        </section>
+        <footer>
+            <p>&copy; 2024 Távola Redonda</p>
+        </footer>
+    </main>
 <?php include 'includes/footer.php'; ?>
