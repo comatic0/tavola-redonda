@@ -14,9 +14,9 @@ class Mesa {
 
     public function getMesaParticipants($mesa_id) {
         $stmt = $this->pdo->prepare("
-            SELECT u.username 
-            FROM mesa_usuarios mu
-            JOIN usuarios u ON mu.user_id = u.id
+            SELECT u.id, u.username 
+            FROM mesa_usuarios mu 
+            JOIN usuarios u ON mu.user_id = u.id 
             WHERE mu.mesa_id = ?
         ");
         $stmt->execute([$mesa_id]);
@@ -62,10 +62,27 @@ class Mesa {
         return $this->pdo->lastInsertId(); 
     }
 
+    public function updateTable($id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria) {
+        $stmt = $this->pdo->prepare("UPDATE mesas SET nome = ?, descricao = ?, nome_do_mestre = ?, max_capacity = ?, categoria = ? WHERE id = ?");
+        $result = $stmt->execute([$nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria, $id]);
+        return $result;
+    }
+
     public function getUserNameById($user_id) {
         $stmt = $this->pdo->prepare("SELECT username FROM usuarios WHERE id = ?");
         $stmt->execute([$user_id]);
         return $stmt->fetchColumn();
+    }
+
+    public function getTableById($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM mesas WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteUser($user_id, $mesa_id) {
+        $stmt = $this->pdo->prepare("DELETE FROM mesa_usuarios WHERE user_id = ? AND mesa_id = ?");
+        $stmt->execute([$user_id, $mesa_id]);
     }
 }
 ?>
