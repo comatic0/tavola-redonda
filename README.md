@@ -100,27 +100,28 @@ Alternar entre modos noturno e claro.
 Informações claras sobre o projeto, suas funcionalidades e objetivos.
 
 
-### Gestão de Mesas (Registro de Mesas):
 
-Registro e criação de mesas, com descrição detalhada da história, sistema de jogo, e outras opções personalizáveis.
+### Iteração 2:
 
-Visualização de informações atuais da mesa, incluindo jogadores, níveis de experiência, etc.
+### Sprint 1:
 
-Edição e modificação de informações das mesas e jogadores.
+### valor: 
 
-Exclusão de mesas e jogadores.
+Possibilatar ao usuário a busca por mesas existentes, o cadastro de personagens, funções adicionais no gerenciamento de mesas, possibilitando o ingresso de jogadores nas mesas, cadastro de mestres, login de usuários e mestres.
 
-Sistema para agendamento de horários e dias de sessões.
+### Funcionalidades:
+Sistema para buscar por uma mesa existente no banco de dados:
+O usuário poderá ingressar em uma mesa que já existe procurando por ela
+
+Sistema para agendamento de horários e dias de sessões durante a criação de mesas.
 
 Gestão de Fichas de Personagens (Registro de Ficha de Personagem):
 
 Registro e criação de personagens, com detalhes como nome, descrição e controlador.
 
-Visualização e edição dos detalhes da ficha do personagem.
+Possibilitar a exibição, alteração e exlusão do perfil.
 
-Exclusão de personagens.
-
-Exportação de fichas para PDF, facilitando o compartilhamento e armazenamento.
+Criação de uma página acessível, atraente e intuitiva.
 
 ### User Stories e Prototipação
 
