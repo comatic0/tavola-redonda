@@ -1,7 +1,7 @@
 <?php
 session_start();
-require '../../includes/db.php';
-require '../../controllers/AuthController.php';
+require '../includes/db.php';
+require '../controllers/AuthController.php';
 $authController = new AuthController($pdo);
 
 if (isset($_SESSION['steam_id'], $_SESSION['username'], $_SESSION['avatar_url'], $_SESSION['email'])) {
