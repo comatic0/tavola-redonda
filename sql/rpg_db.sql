@@ -1,8 +1,4 @@
--- Create database if it doesn't exist
-CREATE DATABASE IF NOT EXISTS `rpg_db`;
-USE `rpg_db`;
-
--- Create table `usuarios`
+-- Criação da tabela de usuários
 CREATE TABLE IF NOT EXISTS `usuarios` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(255) NOT NULL,
@@ -12,17 +8,21 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create table `mesas`
+-- Criação da tabela de mesas
 CREATE TABLE IF NOT EXISTS `mesas` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `nome` VARCHAR(255) NOT NULL,
     `descricao` TEXT,
+    `categoria` VARCHAR(255) NOT NULL,
+    `data_da_sessao` VARCHAR(11) NOT NULL,
+    `max_capacity` INT NOT NULL DEFAULT 20,
     `user_id` INT,
+    `nome_do_mestre` VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 );
 
--- Create table `mesa_usuarios`
+-- Criação da tabela de associação entre mesas e usuários
 CREATE TABLE IF NOT EXISTS `mesa_usuarios` (
     `mesa_id` INT,
     `user_id` INT,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `mesa_usuarios` (
     FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 );
 
--- Create table `fichas`
+-- Criação da tabela de fichas
 CREATE TABLE IF NOT EXISTS `fichas` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `nome` VARCHAR(255) NOT NULL,
