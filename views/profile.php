@@ -24,7 +24,12 @@ $user = $userModel->getUserById($_SESSION['user_id']);
     <?php include '../includes/nav.php'; ?>
     <div class="profile-container">
         <div class="profile-header">
-            <img src="../assets/profile_pictures/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture">
+            <div class="profile-header-image">
+                <img src="../assets/profile_headers/<?php echo htmlspecialchars($user['header_image'] ?? 'default-header.jpg'); ?>" alt="Header Image">
+            </div>
+            <div class="profile-picture">
+                <img src="../assets/profile_pictures/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture">
+            </div>
             <h1><?php echo htmlspecialchars($user['username']); ?></h1>
         </div>
         <div class="profile-info">

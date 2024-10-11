@@ -48,5 +48,9 @@ class User {
         $stmt = $this->pdo->prepare("UPDATE usuarios SET password = :password WHERE id = :id");
         $stmt->execute(['password' => $password, 'id' => $user_id]);
     }
+    public function updateUserHeaderImage($user_id, $header_image) {
+        $stmt = $this->pdo->prepare("UPDATE usuarios SET header_image = :header_image WHERE id = :id");
+        $stmt->execute(['header_image' => $header_image, 'id' => $user_id]);
+    }
 }
 ?>

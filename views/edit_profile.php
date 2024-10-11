@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bio = $_POST['bio'];
     $password = $_POST['password'];
     $profile_picture = $_FILES['profile_picture'];
+    $header_image = $_FILES['header_image'];
 
     // Check if username is already taken
     $existingUser = $userModel->getUserByUsername($username);
@@ -43,6 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $target_file = $target_dir . basename($profile_picture["name"]);
             move_uploaded_file($profile_picture["tmp_name"], $target_file);
             $userModel->updateUserProfilePicture($_SESSION['user_id'], basename($profile_picture["name"]));
+        }
+
+        // Update header image
+        if ($header_image['error'] === UPLOAD_ERR_OK) {
+            $target_dir = "../assets/profile_headers/";
+            $target_file = $target_dir . basename($header_image["name"]);
+            move_uploaded_file($header_image["tmp_name"], $target_file);
+            $userModel->updateUserHeaderImage($_SESSION['user_id'], basename($header_image["name"]));
         }
 
         header('Location: profile.php');
@@ -82,6 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label for="profile_picture">Profile Picture:</label>
                 <input type="file" id="profile_picture" name="profile_picture">
+            </div>
+            <div class="form-group">
+                <label for="header_image">Header Image:</label>
+                <input type="file" id="header_image" name="header_image">
             </div>
             <button type="submit" class="btn">Save Changes</button>
         </form>
