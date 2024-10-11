@@ -5,9 +5,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
     `email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
     `profile_picture` VARCHAR(255),
+    `steam_id` VARCHAR(255) UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
 -- Criação da tabela de mesas
 CREATE TABLE IF NOT EXISTS `mesas` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS `mesas` (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 );
-
 -- Criação da tabela de associação entre mesas e usuários
 CREATE TABLE IF NOT EXISTS `mesa_usuarios` (
     `mesa_id` INT,
@@ -30,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `mesa_usuarios` (
     FOREIGN KEY (`mesa_id`) REFERENCES `mesas` (`id`) ON DELETE CASCADE,
     FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 );
-
 -- Criação da tabela de fichas
 CREATE TABLE IF NOT EXISTS `fichas` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,

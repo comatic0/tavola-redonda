@@ -422,14 +422,6 @@ footer {
     border-radius: 50%;
     margin-right: 10px;
 }
-
-.btn-disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
 .td_mesa{
     display: flex;
     flex-direction: column;
@@ -509,4 +501,60 @@ footer {
     background-color: #ccc;
     color: #666;
     cursor: not-allowed;
+    opacity: 0.5;
+}
+.btn-disabled a {
+    pointer-events: none;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.password-wrapper input {
+    flex: 1;
+    padding-right: 30px; /* Adiciona espaço para o ícone de olho */
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+.toggle-password img {
+    width: 20px;
+    height: 20px;
+}
+.password-strength {
+    height: 10px;
+    width: 0;
+    background-color: red;
+    transition: width 0.3s;
+}
+
+.btn-steam {
+    background-color: #171a21; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-steam:hover {
+    background-color: #1b2838; 
+}
+
+.btn-steam img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }

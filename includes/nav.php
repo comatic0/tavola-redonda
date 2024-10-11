@@ -16,7 +16,7 @@
     <div class="user">
         <?php if (isset($_SESSION['user_id'])): ?>
             <div class="dropdown">
-                <button class="dropbtn"><?php echo htmlspecialchars($_SESSION['username']); ?></button>
+                <button class="dropbtn"><?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></button>
                 <div class="dropdown-content">
                     <a href="<?php echo $base_path; ?>/views/auth/logout.php">Logout</a>
                 </div>

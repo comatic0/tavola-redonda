@@ -1,3 +1,31 @@
+# Ignore composer dependencies
+/vendor/
+
+# Ignore environment variables
+.env
+
+# Ignore IDE specific files
+/.idea/
+/.vscode/
+
+# Ignore node dependencies
+/node_modules/
+
+# Ignore PHPStorm specific files
+/.phpstorm.meta.php
+
+# Ignore log files and temp files
+*.log
+*.cache
+*.tmp
+
+# Ignore config files
+config.json
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+=======
 config.json
 # Composer dependencies
 /vendor/
