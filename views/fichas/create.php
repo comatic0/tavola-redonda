@@ -12,8 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $classe = $_POST['classe'];
     $nivel = $_POST['nivel'];
     $raca = $_POST['raca'];
+    $magias = $_POST ['magias'];
     $descricao = $_POST['descricao'];
-    $error = $fichaController->createFicha($nome, $classe, $nivel, $raca, $descricao);
+    $error = $fichaController->createFicha($nome, $classe, $nivel, $raca, $magias, $descricao);
 }
 ?>
 <?php include '../../includes/header.php'; ?>
@@ -39,6 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-group">
             <label for="raca">Raça:</label>
             <input type="text" id="raca" name="raca" required>
+        </div>
+        <div class="form-group">
+            <label for="magias">Raça:</label>
+            <input type="text" id="magias" name="magias" required>
+        </div>
+        <div class="form-group">
+            <label for="magias">Raça:</label>
+            <input type="text" id="magias" name="magias" required>
         </div>
         <div class="form-group">
             <label for="descricao">Descrição:</label>

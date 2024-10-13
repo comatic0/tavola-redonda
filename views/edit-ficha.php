@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nivel = $_POST['nivel'];
     $atributos = json_encode($_POST['atributos']);
 
-    $stmt = $pdo->prepare("UPDATE fichas SET nome = ?, classe = ?, nivel = ?, atributos = ? WHERE id = ? AND user_id = ?");
-    if ($stmt->execute([$nome, $classe, $nivel, $atributos, $ficha_id, $user_id])) {
+    $stmt = $pdo->prepare("UPDATE fichas SET nome = ?, classe = ?, magias = ?, nivel = ?, atributos = ? WHERE id = ? AND user_id = ?");
+    if ($stmt->execute([$nome, $classe, $magias, $nivel, $atributos, $ficha_id, $user_id])) {
         header('Location: mesa.php?id=' . $ficha['mesa_id']);
         exit();
     } else {

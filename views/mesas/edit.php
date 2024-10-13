@@ -46,6 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button class="back-button" onclick="window.location.href='../index.php'">Voltar</button>
     </form>
 </div>
+<div class="form-group">
+            <label for="data_da_sessao">Data Da Sessão:</label>
+            <input type="date" id="data_da_sessao" name="data_da_sessao" required>
+        </div>
 <script>
 function toggleCustomCategory(select) {
     var customCategoryInput = document.getElementById('categoria_custom');

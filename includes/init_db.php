@@ -36,6 +36,7 @@ function initializeDatabase($pdo) {
             `classe` VARCHAR(255) NOT NULL,
             `nivel` INT NOT NULL,
             `raca` VARCHAR(255) NOT NULL,
+            `magias` TEXT,
             `descricao` TEXT,
             `user_id` INT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
