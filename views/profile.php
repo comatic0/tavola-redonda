@@ -25,7 +25,7 @@ $user = $userModel->getUserById($_SESSION['user_id']);
     <div class="profile-container">
         <div class="profile-header">
             <div class="profile-header-image">
-                <img src="../assets/profile_headers/<?php echo htmlspecialchars($user['header_image'] ?? 'default-header.jpg'); ?>" alt="Header Image">
+                <img src="../assets/profile_headers/<?php echo htmlspecialchars($user['header_image'] ?? 'default-header.jpg'); ?>" alt="Imagem de Cabeçalho">
             </div>
             <div class="profile-picture">
                 <img src="../assets/profile_pictures/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture">
@@ -36,9 +36,9 @@ $user = $userModel->getUserById($_SESSION['user_id']);
             <p><?php echo htmlspecialchars($user['bio'] ?? ''); ?></p>
         </div>
         <div class="profile-actions">
-            <a href="edit_profile.php" class="btn">Edit Profile</a>
-            <a href="#" class="btn">Follow</a>
-            <a href="#" class="btn">Message</a>
+            <a href="edit_profile.php" class="btn">Editar Perfil</a>
+            <a href="#" class="btn">Seguir</a>
+            <a href="#" class="btn">Mensagem</a>
         </div>
     </div>
     <?php include '../includes/footer.php'; ?>

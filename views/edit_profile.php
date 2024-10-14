@@ -10,7 +10,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $userModel = new User($pdo);
 $user = $userModel->getUserById($_SESSION['user_id']);
-$error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -19,44 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $profile_picture = $_FILES['profile_picture'];
     $header_image = $_FILES['header_image'];
 
-    // Check if username is already taken
-    $existingUser = $userModel->getUserByUsername($username);
-    if ($existingUser && $existingUser['id'] != $_SESSION['user_id']) {
-        $error = 'Username is already taken.';
-    } else {
-        // Update username
-        $userModel->updateUsername($_SESSION['user_id'], $username);
+    // Update user information
+    $userModel->updateUser($user['id'], $username, $bio, $password, $profile_picture, $header_image);
 
-        // Update bio
-        if (strlen($bio) <= 150) {
-            $userModel->updateUserBio($_SESSION['user_id'], $bio);
-        }
-
-        // Update password
-        if (!empty($password)) {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $userModel->updateUserPassword($_SESSION['user_id'], $hashedPassword);
-        }
-
-        // Update profile picture
-        if ($profile_picture['error'] === UPLOAD_ERR_OK) {
-            $target_dir = "../assets/profile_pictures/";
-            $target_file = $target_dir . basename($profile_picture["name"]);
-            move_uploaded_file($profile_picture["tmp_name"], $target_file);
-            $userModel->updateUserProfilePicture($_SESSION['user_id'], basename($profile_picture["name"]));
-        }
-
-        // Update header image
-        if ($header_image['error'] === UPLOAD_ERR_OK) {
-            $target_dir = "../assets/profile_headers/";
-            $target_file = $target_dir . basename($header_image["name"]);
-            move_uploaded_file($header_image["tmp_name"], $target_file);
-            $userModel->updateUserHeaderImage($_SESSION['user_id'], basename($header_image["name"]));
-        }
-
-        header('Location: profile.php');
-        exit();
+    // Update session profile picture if changed
+    if ($profile_picture['name']) {
+        $_SESSION['profile_picture'] = $profile_picture['name'];
     }
+
+    header('Location: profile.php');
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -64,41 +35,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
+    <title>Editar Perfil</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
     <?php include '../includes/nav.php'; ?>
-    <div class="profile-container">
-        <h2>Edit Profile</h2>
-        <?php if ($error): ?>
-            <p class="error"><?php echo $error; ?></p>
-        <?php endif; ?>
+    <div class="form-container">
+        <h2>Editar Perfil</h2>
         <form action="edit_profile.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="username">Username:</label>
+                <label for="username">Nome de Usuário:</label>
                 <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="bio">Bio:</label>
-                <textarea id="bio" name="bio" maxlength="150"><?php echo htmlspecialchars($user['bio'] ?? ''); ?></textarea>
+                <textarea id="bio" name="bio" maxlength="150"><?php echo htmlspecialchars($user['bio']); ?></textarea>
             </div>
             <div class="form-group">
-                <label for="password">New Password:</label>
+                <label for="password">Nova Senha:</label>
                 <input type="password" id="password" name="password">
             </div>
             <div class="form-group">
-                <label for="profile_picture">Profile Picture:</label>
+                <label for="profile_picture">Foto de Perfil:</label>
                 <input type="file" id="profile_picture" name="profile_picture">
             </div>
             <div class="form-group">
-                <label for="header_image">Header Image:</label>
+                <label for="header_image">Foto de Cabeçalho:</label>
                 <input type="file" id="header_image" name="header_image">
             </div>
-            <button type="submit" class="btn">Save Changes</button>
+            <button type="submit" class="btn">Salvar</button>
         </form>
     </div>
     <?php include '../includes/footer.php'; ?>
+    <script>
+        document.getElementById('profile_picture').addEventListener('change', function(event) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('user-profile-picture').src = e.target.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        });
+    </script>
 </body>
 </html>

@@ -86,8 +86,14 @@ class AuthController {
         }
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         if ($this->userModel->createUser($username, $email, $hashedPassword)) {
-            header('Location: ../auth/login.php');
-            exit();
+            $user = $this->userModel->getUserByEmail($email);
+            if ($user) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['profile_picture'] = $user['profile_picture'] ?? 'user-icon.png';
+                header('Location: ../../index.php');
+                exit();
+            }
         } else {
             return "Erro ao registrar usuário.";
         }
