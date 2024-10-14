@@ -16,5 +16,11 @@ class Ficha {
         $stmt = $this->pdo->prepare("DELETE FROM fichas WHERE id = ?");
         return $stmt->execute([$id]);
     }
+
+    public function getFichasByUserId($user_id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM fichas WHERE user_id = ?");
+        $stmt->execute([$user_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

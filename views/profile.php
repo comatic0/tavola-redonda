@@ -2,6 +2,8 @@
 session_start();
 require_once '../includes/db.php';
 require_once '../models/User.php';
+require_once '../models/Mesa.php';
+require_once '../models/Ficha.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../auth/login.php');
@@ -9,7 +11,13 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $userModel = new User($pdo);
+$mesaModel = new Mesa($pdo);
+$fichaModel = new Ficha($pdo);
+
 $user = $userModel->getUserById($_SESSION['user_id']);
+$creationDate = $userModel->getUserCreationDate($_SESSION['user_id']);
+$tables = $mesaModel->getTablesByUserId($_SESSION['user_id']);
+$fichas = $fichaModel->getFichasByUserId($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +39,34 @@ $user = $userModel->getUserById($_SESSION['user_id']);
                 <img src="../assets/profile_pictures/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture">
             </div>
             <h1><?php echo htmlspecialchars($user['username']); ?></h1>
+            <p>Data de criação do perfil: <?php echo htmlspecialchars($creationDate); ?></p>
         </div>
         <div class="profile-info">
             <p><?php echo htmlspecialchars($user['bio'] ?? ''); ?></p>
+        </div>
+        <div class="profile-tables">
+            <h2>Mesas</h2>
+            <?php if (!empty($tables)): ?>
+                <ul>
+                    <?php foreach ($tables as $table): ?>
+                        <li><?php echo htmlspecialchars($table['nome']); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Você não está em nenhuma mesa.</p>
+            <?php endif; ?>
+        </div>
+        <div class="profile-fichas">
+            <h2>Fichas</h2>
+            <?php if (!empty($fichas)): ?>
+                <ul>
+                    <?php foreach ($fichas as $ficha): ?>
+                        <li><?php echo htmlspecialchars($ficha['nome']); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Você não possui nenhuma ficha.</p>
+            <?php endif; ?>
         </div>
         <div class="profile-actions">
             <a href="edit_profile.php" class="btn">Editar Perfil</a>
