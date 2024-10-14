@@ -46,5 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn">Criar Personagem</button>
     </form>
+    <p>Criado por: <a href="../profile.php?id=<?php echo $_SESSION['user_id']; ?>"><?php echo htmlspecialchars($_SESSION['user_id']); ?></a></p>
 </div>
 <?php include '../../includes/footer.php'; ?>
