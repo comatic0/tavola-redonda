@@ -42,11 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="raca" name="raca" required>
         </div>
         <div class="form-group">
-            <label for="magias">Raça:</label>
-            <input type="text" id="magias" name="magias" required>
-        </div>
-        <div class="form-group">
-            <label for="magias">Raça:</label>
+            <label for="magias">Magias:</label>
             <input type="text" id="magias" name="magias" required>
         </div>
         <div class="form-group">
