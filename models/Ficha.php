@@ -16,11 +16,19 @@ class Ficha {
         $stmt = $this->pdo->prepare("DELETE FROM fichas WHERE id = ?");
         return $stmt->execute([$id]);
     }
-
     public function getFichasByUserId($user_id) {
         $stmt = $this->pdo->prepare("SELECT * FROM fichas WHERE user_id = ?");
         $stmt->execute([$user_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getFichaById($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM fichas WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function updateFicha($id, $nome, $classe, $nivel, $raca, $descricao) {
+        $stmt = $this->pdo->prepare("UPDATE fichas SET nome = ?, classe = ?, nivel = ?, raca = ?, descricao = ? WHERE id = ?");
+        return $stmt->execute([$nome, $classe, $nivel, $raca, $descricao, $id]);
     }
 }
 ?>

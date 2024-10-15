@@ -23,5 +23,18 @@ class FichaController {
     public function deleteFicha($id) {
         return $this->fichaModel->deleteFicha($id);
     }
-}
+    public function getFichaById($id) {
+        return $this->fichaModel->getFichaById($id);
+    }
+    public function updateFicha($id, $nome, $classe, $nivel, $raca, $descricao) {
+        $result = $this->fichaModel->updateFicha($id, $nome, $classe, $nivel, $raca, $descricao);
+        if ($result) {
+            error_log("Character with ID $id updated successfully.");
+            header('Location: ../fichas/index.php');
+            exit();
+        } else {
+            error_log("Failed to update character with ID $id.");
+        }
+    }
+} 
 ?>
