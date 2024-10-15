@@ -37,6 +37,7 @@ $fichas = $fichaController->getAllFichas();
                         <td>
                             <?php if ($ficha['user_id'] == $_SESSION['user_id']): ?>
                                 <a href="delete.php?id=<?php echo $ficha['id']; ?>" class="btn">Deletar</a>
+                                <a href="edit-ficha.php?id=<?php echo $ficha['id']; ?>" class="btn btn-primary">Editar</a>
                             <?php endif; ?>
                         </td>
                     </tr>
