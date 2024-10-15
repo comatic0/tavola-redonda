@@ -6,10 +6,10 @@ class FichaController {
     public function __construct($pdo) {
         $this->fichaModel = new Ficha($pdo);
     }
-    public function createFicha($nome, $classe, $nivel, $raca, $descricao) {
+    public function createFicha($nome, $classe, $nivel, $raca, $magias, $descricao) {
         $user_id = $_SESSION['user_id'] ?? null;
         if ($user_id) {
-            if ($this->fichaModel->createFicha($nome, $classe, $nivel, $raca, $descricao, $user_id)) {
+            if ($this->fichaModel->createFicha($nome, $classe, $nivel, $raca, $magias, $descricao, $user_id)) {
                 header('Location: ../views/fichas/index.php');
                 exit();
             } else {
