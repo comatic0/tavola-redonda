@@ -52,4 +52,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn">Criar Personagem</button>
     </form>
 </div>
-<?php include '../../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>""

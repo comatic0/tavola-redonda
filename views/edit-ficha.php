@@ -22,6 +22,7 @@ if (!$ficha) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $classe = $_POST['classe'];
+    $magias = $_POST['magias'];
     $nivel = $_POST['nivel'];
     $atributos = json_encode($_POST['atributos']);
 
@@ -54,6 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-group">
             <label for="nivel">Nível:</label>
             <input type="number" id="nivel" name="nivel" value="<?php echo $ficha['nivel']; ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="magias">Magias:</label>
+            <input type="text" id="magias" name="magias" value="<?php echo $ficha['magias']; ?>" required>
         </div>
         <div class="form-group">
             <label for="atributos">Atributos:</label>
