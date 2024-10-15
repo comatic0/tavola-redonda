@@ -5,7 +5,12 @@ require_once '../models/User.php';
 require_once '../models/Mesa.php';
 require_once '../models/Ficha.php';
 
-$user_id = $_GET['id'] ?? $_SESSION['user_id'];
+if (!isset($_GET['id'])) {
+    header('Location: ../index.php');
+    exit();
+}
+
+$user_id = $_GET['id'];
 
 $userModel = new User($pdo);
 $mesaModel = new Mesa($pdo);
@@ -65,11 +70,6 @@ $fichas = $fichaModel->getFichasByUserId($user_id);
                 <p>Este usuário não possui nenhuma ficha.</p>
             <?php endif; ?>
         </div>
-        <?php if ($user_id == $_SESSION['user_id']): ?>
-        <div class="profile-actions">
-            <a href="edit_profile.php" class="btn">Editar Perfil</a>
-        </div>
-        <?php endif; ?>
     </div>
     <?php include '../includes/footer.php'; ?>
 </body>

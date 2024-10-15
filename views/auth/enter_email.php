@@ -31,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <button type="submit" class="btn">Concluir</button>
         </form>
+        <?php if (isset($_SESSION['user_id'])) { ?>
+            <p>Perfil: <a href="../profile.php?id=<?php echo $_SESSION['user_id']; ?>"><?php echo htmlspecialchars($_SESSION['user_id']); ?></a></p>
+        <?php } ?>
     </div>
     <?php include '../../includes/footer.php'; ?>
 </body>

@@ -2,6 +2,7 @@
 session_start();
 require '../../includes/db.php';
 require '../../controllers/AuthController.php';
+
 $authController = new AuthController($pdo);
 $steamApiKey = $config['STEAM_API_KEY'];
 $steamApiKeyValid = !empty($steamApiKey) && strlen($steamApiKey) === 32;

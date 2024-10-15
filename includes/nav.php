@@ -22,7 +22,7 @@
                 </div>
             </div>
             <a href="<?php echo $base_path; ?>/views/profile.php">
-                <img src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo $_SESSION['profile_picture'] ?? 'user-icon.png'; ?>" alt="User Icon">
+                <img id="user-profile-picture" src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo $_SESSION['profile_picture'] ?? 'user-icon.png'; ?>" alt="User Icon">
             </a>
         <?php else: ?>
             <div class="dropdown">

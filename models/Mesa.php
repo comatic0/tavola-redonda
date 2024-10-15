@@ -111,5 +111,11 @@ class Mesa {
         $stmt = $this->pdo->prepare("DELETE FROM mesa_usuarios WHERE user_id = ? AND mesa_id = ?");
         $stmt->execute([$user_id, $mesa_id]);
     }
+
+    public function getTablesByUserId($user_id) {
+        $stmt = $this->pdo->prepare("SELECT mesas.* FROM mesas JOIN mesa_usuarios ON mesas.id = mesa_usuarios.mesa_id WHERE mesa_usuarios.user_id = ?");
+        $stmt->execute([$user_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

@@ -16,7 +16,7 @@ $fichas = $fichaController->getAllFichas();
                 <tr>
                     <th>Nome</th>
                     <th>Classe</th>
-                    <th>nivel</th>
+                    <th>Nível</th>
                     <th>Raça</th>
                     <th>Descrição</th>
                     <th>Id</th>
@@ -31,9 +31,13 @@ $fichas = $fichaController->getAllFichas();
                         <td><?php echo htmlspecialchars($ficha['nivel']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['raca']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['descricao']); ?></td>
-                        <td><?php echo htmlspecialchars($ficha['user_id']); ?></td>
                         <td>
-                            <a href="delete.php?id=<?php echo $ficha['id']; ?>" class="btn">Deletar</a>
+                            <a href="../profile.php?id=<?php echo $ficha['user_id']; ?>"><?php echo htmlspecialchars($ficha['user_id']); ?></a>
+                        </td>
+                        <td>
+                            <?php if ($ficha['user_id'] == $_SESSION['user_id']): ?>
+                                <a href="delete.php?id=<?php echo $ficha['id']; ?>" class="btn">Deletar</a>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
