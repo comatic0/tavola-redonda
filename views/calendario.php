@@ -11,7 +11,7 @@ $calendario = $calendarioController->gerarCalendario(date('n'), date('Y'));
 ?>
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/nav.php'; ?>
-<div class="calendario-container">
+<div class="calendario-container animate-hero">
     <h2>Calendário</h2>
     <?php echo $calendario; ?>
 </div>

@@ -7,7 +7,7 @@ $fichas = $fichaController->getAllFichas();
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
 <main>
-    <section class="table-view">
+    <section class="table-view animate-hero">
         <h1 class="evil-aura">Ficha de Personagem</h1>
         <p>Essas são as fichas de personagem cadastrados.</p>
         <a href="create.php" class="btn">Criar Nova Ficha</a>

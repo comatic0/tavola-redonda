@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
-<div class="form-container">
+<div class="form-container animate-hero">
     <h2>Buscar Mesas</h2>
     <form action="search.php" method="post">
         <div class="form-group">
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn">Buscar</button>
     </form>
 </div>
-<div class="mesas-list">
+<div class="mesas-list animate-hero">
     <?php if (!empty($mesas)): ?>
         <h3>Resultados da busca:</h3>
         <div class="table_results">

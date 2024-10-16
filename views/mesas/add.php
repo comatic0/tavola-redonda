@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
-<div class="form-container">
+<div class="form-container animate-hero">
     <h2>Criar Nova Mesa</h2>
     <form action="add.php" method="post">
         <div class="form-group">

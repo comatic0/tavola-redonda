@@ -27,7 +27,7 @@ $fichas = $fichaModel->getFichasByUserId($user_id);
 <body>
     <?php include '../includes/header.php'; ?>
     <?php include '../includes/nav.php'; ?>
-    <div class="profile-container">
+    <div class="profile-container animate-hero">
         <div class="profile-header">
             <div class="profile-header-image">
                 <img src="../assets/profile_headers/<?php echo htmlspecialchars($user['header_image'] ?? 'default-header.jpg'); ?>" alt="Imagem de Cabeçalho">

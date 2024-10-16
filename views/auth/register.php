@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
-<div class="form-container">
+<div class="form-container animate-hero">
     <h2>Registrar</h2>
     <?php if (isset($error)): ?>
         <p class="error"><?php echo $error; ?></p>
@@ -36,11 +36,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn">Registrar</button>
     </form>
-    <div class="steam-login <?php echo !$steamApiKeyValid ? 'btn-disabled' : ''; ?>">
-        <a href="steam_login.php" class="btn btn-steam" <?php echo !$steamApiKeyValid ? 'onclick="return false;"' : ''; ?>>
-            <img src="../../assets/icons/steam-logo.png" alt="Steam Logo">
-            Registrar com Steam
-        </a>
-    </div>
 </div>
 <?php include '../../includes/footer.php'; ?>
