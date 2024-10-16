@@ -73,7 +73,7 @@ main {
 }
 
 .hero img {
-    width: 50%;
+    width: 20%;
     border-radius: 10px;
 }
 
@@ -681,7 +681,7 @@ footer {
 
 .carousel {
     position: relative;
-    width: 100%;
+    width: 30%;
     max-width: 600px;
     margin: 0 auto;
     overflow: hidden;
