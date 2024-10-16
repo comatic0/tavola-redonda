@@ -640,3 +640,59 @@ footer {
     color: #fff;
     border: none;
 }
+
+/* ANIMAÇÕES */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-hero {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.animate-image {
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.animate-text {
+    animation: slideIn 2s ease-in-out;
+}
+
+.animate-button {
+    animation: slideIn 2.5s ease-in-out;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: auto;
+}
