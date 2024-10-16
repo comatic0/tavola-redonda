@@ -10,7 +10,7 @@ $user_id = $_SESSION['user_id'] ?? null;
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
 <main>
-    <section class="table-view">
+    <section class="table-view animate-hero">
         <h1 class="evil-aura">Mesas de RPG</h1>
         <p>Essas são as mesas cadastradas.</p>
         <table class="styled-table">

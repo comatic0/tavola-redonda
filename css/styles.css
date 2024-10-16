@@ -664,19 +664,19 @@ footer {
 }
 
 .animate-hero {
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 0.6s ease-in-out;
 }
 
 .animate-image {
-    animation: slideIn 1.5s ease-in-out;
+    animation: slideIn 0.8s ease-in-out;
 }
 
 .animate-text {
-    animation: slideIn 2s ease-in-out;
+    animation: slideIn 0.8s ease-in-out;
 }
 
 .animate-button {
-    animation: slideIn 2.5s ease-in-out;
+    animation: slideIn 0.8s ease-in-out;
 }
 
 .carousel {
@@ -695,4 +695,16 @@ footer {
 .carousel-image {
     min-width: 100%;
     height: auto;
+}
+
+.navbar a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background-color: #803927;
 }
