@@ -38,6 +38,7 @@ function initializeDatabase($pdo) {
             `nivel` INT NOT NULL,
             `raca` VARCHAR(255) NOT NULL,
             `descricao` TEXT,
+            `magias` TEXT,
             `user_id` INT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE

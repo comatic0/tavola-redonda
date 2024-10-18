@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `fichas` (
     `classe` VARCHAR(255) NOT NULL,
     `nivel` INT NOT NULL,
     `raca` VARCHAR(255) NOT NULL,
+    `magias` TEXT NOT NULL,
     `descricao` TEXT,
     `user_id` INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
