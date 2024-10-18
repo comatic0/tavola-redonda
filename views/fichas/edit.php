@@ -36,11 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $classe = $_POST['classe'];
     $nivel = $_POST['nivel'];
     $raca = $_POST['raca'];
+    $magias = $_post['magias'];
     $descricao = $_POST['descricao'];
-    $error = $fichaController->updateFicha($id, $nome, $classe, $nivel, $raca, $descricao);
+    $error = $fichaController->updateFicha($id, $nome, $classe, $nivel, $magias, $raca, $descricao);
 
-    $stmt = $pdo->prepare("UPDATE fichas SET nome = ?, classe = ?, nivel = ?, raca = ?, descricao = ? WHERE id = ? AND user_id = ?");
-    if ($stmt->execute([$nome, $classe, $nivel, $raca, $descricao, $ficha_id, $user_id])) {
+    $stmt = $pdo->prepare("UPDATE fichas SET nome = ?, classe = ?, nivel = ?, magias = ?, raca = ?, descricao = ? WHERE id = ? AND user_id = ?");
+    if ($stmt->execute([$nome, $classe, $nivel, $raca, $magias, $descricao, $ficha_id, $user_id])) {
         header('Location: mesa.php?id=' . $ficha['mesa_id']);
         exit();
     } else {
@@ -72,6 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-group">
             <label for="raca">Raça:</label>
             <input type="text" id="raca" name="raca" value="<?php echo htmlspecialchars($ficha['raca']); ?>" required>
+        </div>
+        <div class="formgroup">
+            <label for="magias">Magias:</label>
+         <input type="text" id="magias" name="magias" required>
         </div>
         <div class="form-group">
             <label for="descricao">Descrição:</label>
