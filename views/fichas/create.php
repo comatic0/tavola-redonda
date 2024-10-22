@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
-<div class="form-container">
+<div class="form-container animate-hero">
     <h2>Criar Personagem</h2>
     <?php if (isset($error)): ?>
         <p class="error"><?php echo $error; ?></p>

@@ -73,7 +73,7 @@ main {
 }
 
 .hero img {
-    width: 50%;
+    width: 20%;
     border-radius: 10px;
 }
 
@@ -639,4 +639,72 @@ footer {
     text-decoration: none;
     color: #fff;
     border: none;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-hero {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.animate-image {
+    animation: slideIn 0.8s ease-in-out;
+}
+
+.animate-text {
+    animation: slideIn 0.8s ease-in-out;
+}
+
+.animate-button {
+    animation: slideIn 0.8s ease-in-out;
+}
+
+.carousel {
+    position: relative;
+    width: 30%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: auto;
+}
+
+.navbar a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background-color: #803927;
 }

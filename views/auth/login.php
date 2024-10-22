@@ -14,15 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
-<div class="form-container">
-    <h2>Logar</h2>
+<div class="form-container animate-hero">
+    <h2>Login</h2>
     <?php if (isset($error)): ?>
         <p class="error"><?php echo $error; ?></p>
     <?php endif; ?>
     <form action="login.php" method="post">
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="username">Nome de Usuário:</label>
+            <input type="text" id="username" name="username" required>
         </div>
         <div class="form-group">
             <label for="password">Senha:</label>
@@ -30,11 +30,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn">Logar</button>
     </form>
-    <div class="steam-login <?php echo !$steamApiKeyValid ? 'btn-disabled' : ''; ?>">
-        <a href="steam_login.php" class="btn btn-steam" <?php echo !$steamApiKeyValid ? 'onclick="return false;"' : ''; ?>>
-            <img src="../../assets/icons/steam-logo.png" alt="Steam Logo">
-            Logar com Steam
-        </a>
-    </div>
 </div>
 <?php include '../../includes/footer.php'; ?>
