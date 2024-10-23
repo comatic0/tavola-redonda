@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="raca">Raça:</label>
             <input type="text" id="raca" name="raca" value="<?php echo htmlspecialchars($ficha['raca']); ?>" required>
         </div>
-        <div class="formgroup">
+        <div class="form-group">
             <label for="magias">Magias:</label>
          <input type="text" id="magias" name="magias" required>
         </div>

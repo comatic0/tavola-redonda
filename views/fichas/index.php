@@ -31,7 +31,7 @@ $fichas = $fichaController->getAllFichas();
                         <td><?php echo htmlspecialchars($ficha['classe']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['nivel']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['raca']); ?></td>
-                        <td><?php echo htmlspecialchars($fichas['magias']); ?></td>
+                        <td><?php echo htmlspecialchars($ficha['magias']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['descricao']); ?></td>
                         <td>
                             <a href="../profile.php?id=<?php echo $ficha['user_id']; ?>"><?php echo htmlspecialchars($ficha['user_id']); ?></a>

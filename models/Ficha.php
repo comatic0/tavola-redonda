@@ -6,7 +6,7 @@ class Ficha {
     }
     public function createFicha($nome, $classe, $nivel, $raca, $magias, $descricao, $user_id) {
         $stmt = $this->pdo->prepare("INSERT INTO fichas (nome, classe, nivel, raca, magias, descricao, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        return $stmt->execute([$nome, $classe, $nivel, $raca, $descricao, $user_id]);
+        return $stmt->execute([$nome, $classe, $nivel, $raca, $magias, $descricao, $user_id]);
     }
     public function getAllFichas() {
         $stmt = $this->pdo->query("SELECT * FROM fichas");

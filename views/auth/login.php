@@ -2,15 +2,27 @@
 session_start();
 require '../../includes/db.php';
 require '../../controllers/AuthController.php';
+
 $authController = new AuthController($pdo);
-$steamApiKey = $config['STEAM_API_KEY'];
-$steamApiKeyValid = !empty($steamApiKey) && strlen($steamApiKey) === 32;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $error = $authController->login($email, $password);
+    $username = $_POST['username'] ?? null;
+    $password = $_POST['password'] ?? null;
+
+    if ($username && $password) {
+        $loginSuccess = $authController->login($username, $password);
+        if ($loginSuccess) {
+            header('Location: ../../index.php');
+            exit();
+        } else {
+            $error = 'Nome de usuário ou senha incorretos.';
+        }
+    } else {
+        $error = 'Por favor, preencha todos os campos.';
+    }
 }
+
+$steamApiKeyValid = !empty($config['steam_api_key']);
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
@@ -21,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
     <form action="login.php" method="post">
         <div class="form-group">
-            <label for="username">Nome de Usuário:</label>
+            <label for="username">Email:</label>
             <input type="text" id="username" name="username" required>
         </div>
         <div class="form-group">
@@ -30,5 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn">Logar</button>
     </form>
+    <div class="steam-login <?php echo !$steamApiKeyValid ? 'btn-disabled' : ''; ?>">
+        <a href="steam_login.php" class="btn btn-steam" <?php echo !$steamApiKeyValid ? 'onclick="return false;"' : ''; ?>>
+            <img src="../../assets/icons/steam-logo.png" alt="Steam Logo">
+            Logar com Steam
+        </a>
+    </div>
 </div>
 <?php include '../../includes/footer.php'; ?>

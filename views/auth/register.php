@@ -36,5 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn">Registrar</button>
     </form>
+    <div class="steam-login <?php echo !$steamApiKeyValid ? 'btn-disabled' : ''; ?>">
+        <a href="steam_login.php" class="btn btn-steam" <?php echo !$steamApiKeyValid ? 'onclick="return false;"' : ''; ?>>
+            <img src="../../assets/icons/steam-logo.png" alt="Steam Logo">
+            Registrar com Steam
+        </a>
+    </div>
 </div>
 <?php include '../../includes/footer.php'; ?>
