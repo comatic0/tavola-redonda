@@ -502,6 +502,31 @@ footer {
     background-color: #ccc;
     color: #666;
     cursor: not-allowed;
+}
+/* Estilo dos itens de sugestão */
+.suggestion-item {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Hover para as sugestões */
+.suggestion-item:hover {
+    background-color: #A0522D;
+    color: white;
+}
+
+/* Estilo para a mensagem de "nenhuma mesa encontrada" */
+.no-results {
+    padding: 10px;
+    color: #A0522D;
+    font-size: 14px;
+}
+
     opacity: 0.5;
 }
 .btn-disabled a {
