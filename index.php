@@ -15,7 +15,7 @@ include 'includes/nav.php';
         <section class="hero">
             <img src="<?php echo $base_path; ?>/assets/icons/image1.png" alt="Dados de RPG">
             <div class="hero-content">
-                <h2>Bem-vindo à Tavola Redonda</h2>
+                <h2>Bem-vindo à Távola Redonda</h2>
                 <p>
                     Aqui você pode gerenciar diferentes mesas de RPG.<br>
                     O projeto Tavola Redonda é uma aplicação web desenvolvida para facilitar o gerenciamento de mesas de RPG.
