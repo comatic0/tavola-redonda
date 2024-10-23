@@ -9,6 +9,7 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5;
     color: #333;
+
 }
 
 .header {
@@ -72,7 +73,7 @@ main {
 }
 
 .hero img {
-    width: 50%;
+    width: 20%;
     border-radius: 10px;
 }
 
@@ -422,14 +423,6 @@ footer {
     border-radius: 50%;
     margin-right: 10px;
 }
-
-.btn-disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
 .td_mesa{
     display: flex;
     flex-direction: column;
@@ -534,3 +527,209 @@ footer {
     font-size: 14px;
 }
 
+    opacity: 0.5;
+}
+.btn-disabled a {
+    pointer-events: none;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.password-wrapper input {
+    flex: 1;
+    padding-right: 30px; /* Adiciona espaço para o ícone de olho */
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+.toggle-password img {
+    width: 20px;
+    height: 20px;
+}
+.password-strength {
+    height: 10px;
+    width: 0;
+    background-color: red;
+    transition: width 0.3s;
+}
+
+.btn-steam {
+    background-color: #171a21; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-steam:hover {
+    background-color: #1b2838; 
+}
+
+.btn-steam img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Profile Page Styles */
+.profile-container {
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-header-image {
+    width: 100%;
+    height: 0;
+    padding-top: 33.33%; /* Aspect ratio 3:1 */
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+}
+
+.profile-header-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-picture {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 24px;
+    margin-top: 60px; /* Adjust based on the profile picture size */
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-actions .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-hero {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.animate-image {
+    animation: slideIn 0.8s ease-in-out;
+}
+
+.animate-text {
+    animation: slideIn 0.8s ease-in-out;
+}
+
+.animate-button {
+    animation: slideIn 0.8s ease-in-out;
+}
+
+.carousel {
+    position: relative;
+    width: 30%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: auto;
+}
+
+.navbar a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background-color: #803927;
+}

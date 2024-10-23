@@ -9,20 +9,20 @@
         </a>
     </div>
     <nav class="navbar">
-        <a href="<?php echo $base_path; ?>/index.php" class="active">Página Principal</a>
-        <a href="<?php echo $base_path; ?>/views/mesas/index.php">Mesas</a>
-        <a href="<?php echo $base_path; ?>/views/fichas/index.php">Fichas</a>
+        <a href="<?php echo $base_path; ?>/index.php">Página Principal</a>
+        <a href="<?php echo $base_path; ?>/views/mesas/index.php" >Mesas</a>
+        <a href="<?php echo $base_path; ?>/views/fichas/index.php" >Fichas</a>
     </nav>
     <div class="user">
         <?php if (isset($_SESSION['user_id'])): ?>
             <div class="dropdown">
-                <button class="dropbtn"><?php echo htmlspecialchars($_SESSION['username']); ?></button>
+                <button class="dropbtn"><?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></button>
                 <div class="dropdown-content">
                     <a href="<?php echo $base_path; ?>/views/auth/logout.php">Logout</a>
                 </div>
             </div>
             <a href="<?php echo $base_path; ?>/views/profile.php">
-                <img src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo $_SESSION['profile_picture'] ?? 'user-icon.png'; ?>" alt="User Icon">
+                <img id="user-profile-picture" src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo $_SESSION['profile_picture'] ?? 'user-icon.png'; ?>" alt="User Icon">
             </a>
         <?php else: ?>
             <div class="dropdown">

@@ -1,54 +1,76 @@
 <?php
 session_start();
-require '../includes/db.php';
-require '../controllers/AuthController.php';
-require '../models/User.php';
+require_once '../includes/db.php';
+require_once '../models/User.php';
+require_once '../models/Mesa.php';
+require_once '../models/Ficha.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit();
-}
+$user_id = $_GET['id'] ?? $_SESSION['user_id'];
 
-$authController = new AuthController($pdo);
 $userModel = new User($pdo);
-$user_id = $_SESSION['user_id'];
-$user = $authController->getUserById($user_id);
+$mesaModel = new Mesa($pdo);
+$fichaModel = new Ficha($pdo);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_picture'])) {
-    $file = $_FILES['profile_picture'];
-    $maxFileSize = 128 * 1024; // 128 KB
-    if ($file['type'] === 'image/png' && $file['size'] <= $maxFileSize) {
-        $username = $user['username'];
-        $target_dir = "../assets/profile_pictures/";
-        $target_file = $target_dir . $username . ".png";
-        if (move_uploaded_file($file['tmp_name'], $target_file)) {
-            $userModel->updateUserProfilePicture($user_id, $username . ".png");
-            $_SESSION['profile_picture'] = $username . ".png";
-            header('Location: profile.php'); // Refresh the page
-            exit();
-        }
-    }
-}
+$user = $userModel->getUserById($user_id);
+$creationDate = $userModel->getUserCreationDate($user_id);
+$tables = $mesaModel->getTablesByUserId($user_id);
+$fichas = $fichaModel->getFichasByUserId($user_id);
 ?>
-<?php include '../includes/header.php'; ?>
-<?php include '../includes/nav.php'; ?>
-<main>
-    <section class="profile-view">
-        <h1>Perfil do Usuário</h1>
-        <div class="user-profile">
-            <img src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo htmlspecialchars($user['profile_picture'] ?? 'user-icon.png'); ?>" alt="Profile Picture">
-            <div>
-                <h2><?php echo htmlspecialchars($user['username']); ?></h2>
-                <p><?php echo htmlspecialchars($user['email']); ?></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <?php include '../includes/header.php'; ?>
+    <?php include '../includes/nav.php'; ?>
+    <div class="profile-container animate-hero">
+        <div class="profile-header">
+            <div class="profile-header-image">
+                <img src="../assets/profile_headers/<?php echo htmlspecialchars($user['header_image'] ?? 'default-header.jpg'); ?>" alt="Imagem de Cabeçalho">
             </div>
+            <div class="profile-picture">
+                <img src="../assets/profile_pictures/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture">
+            </div>
+            <h1><?php echo htmlspecialchars($user['username']); ?></h1>
+            <p>Data de criação do perfil: <?php echo htmlspecialchars($creationDate); ?></p>
         </div>
-        <form action="profile.php" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="profile_picture">Alterar Foto de Perfil:</label>
-                <input type="file" id="profile_picture" name="profile_picture" accept="image/png">
-            </div>
-            <button type="submit" class="btn">Atualizar Perfil</button>
-        </form>
-    </section>
-</main>
-<?php include '../includes/footer.php'; ?>
+        <div class="profile-info">
+            <p><?php echo htmlspecialchars($user['bio'] ?? ''); ?></p>
+        </div>
+        <div class="profile-tables">
+            <h2>Mesas</h2>
+            <?php if (!empty($tables)): ?>
+                <ul>
+                    <?php foreach ($tables as $table): ?>
+                        <li><?php echo htmlspecialchars($table['nome']); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Este usuário não está em nenhuma mesa.</p>
+            <?php endif; ?>
+        </div>
+        <div class="profile-fichas">
+            <h2>Fichas</h2>
+            <?php if (!empty($fichas)): ?>
+                <ul>
+                    <?php foreach ($fichas as $ficha): ?>
+                        <li><?php echo htmlspecialchars($ficha['nome']); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Este usuário não possui nenhuma ficha.</p>
+            <?php endif; ?>
+        </div>
+        <?php if ($user_id == $_SESSION['user_id']): ?>
+        <div class="profile-actions">
+            <a href="edit_profile.php" class="btn">Editar Perfil</a>
+        </div>
+        <?php endif; ?>
+    </div>
+    <?php include '../includes/footer.php'; ?>
+</body>
+</html>

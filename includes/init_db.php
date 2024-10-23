@@ -9,6 +9,7 @@ function initializeDatabase($pdo) {
             `email` VARCHAR(255) NOT NULL,
             `password` VARCHAR(255) NOT NULL,
             `profile_picture` VARCHAR(255) DEFAULT 'user-icon.png',
+            `steam_id` VARCHAR(255) UNIQUE,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )",
         "CREATE TABLE IF NOT EXISTS `mesas` (
@@ -37,6 +38,7 @@ function initializeDatabase($pdo) {
             `nivel` INT NOT NULL,
             `raca` VARCHAR(255) NOT NULL,
             `descricao` TEXT,
+            `magias` TEXT,
             `user_id` INT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
