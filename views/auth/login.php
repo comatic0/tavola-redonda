@@ -2,13 +2,10 @@
 session_start();
 require '../../includes/db.php';
 require '../../controllers/AuthController.php';
-
 $authController = new AuthController($pdo);
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? null;
     $password = $_POST['password'] ?? null;
-
     if ($username && $password) {
         $loginSuccess = $authController->login($username, $password);
         if ($loginSuccess) {
@@ -21,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Por favor, preencha todos os campos.';
     }
 }
-
 $steamApiKeyValid = !empty($config['steam_api_key']);
 ?>
 <?php include '../../includes/header.php'; ?>
@@ -38,7 +34,10 @@ $steamApiKeyValid = !empty($config['steam_api_key']);
         </div>
         <div class="form-group">
             <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" required>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required>
+                <img src="../../assets/icons/eye-icon.png" class="toggle-password" onclick="togglePasswordVisibility('password')" alt="Mostrar Senha">
+            </div>
         </div>
         <button type="submit" class="btn">Logar</button>
     </form>
@@ -50,3 +49,16 @@ $steamApiKeyValid = !empty($config['steam_api_key']);
     </div>
 </div>
 <?php include '../../includes/footer.php'; ?>
+<script>
+function togglePasswordVisibility(id) {
+    const passwordField = document.getElementById(id);
+    const toggleIcon = passwordField.nextElementSibling;
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        toggleIcon.src = '../../assets/icons/eye-slash-icon.png';
+    } else {
+        passwordField.type = 'password';
+        toggleIcon.src = '../../assets/icons/eye-icon.png';
+    }
+}
+</script>
