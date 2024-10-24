@@ -733,3 +733,15 @@ footer {
 .navbar a:hover {
     background-color: #803927;
 }
+
+.form-group.remember-me {
+    display: 
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form-group.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+    align-items: left;
+    text-align: left;
+}

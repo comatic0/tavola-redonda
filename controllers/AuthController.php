@@ -99,12 +99,19 @@ class AuthController {
         }
     }
 
-    public function login($email, $password) {
+    public function login($email, $password, $rememberMe = false) {
         $user = $this->userModel->getUserByEmail($email);
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['profile_picture'] = $user['profile_picture'] ?? 'user-icon.png';
+    
+            if ($rememberMe) {
+                setcookie('user_id', $user['id'], time() + (86400 * 30), "/"); // 30 days
+                setcookie('username', $user['username'], time() + (86400 * 30), "/");
+                setcookie('profile_picture', $user['profile_picture'] ?? 'user-icon.png', time() + (86400 * 30), "/");
+            }
+    
             header('Location: ../../index.php');
             exit();
         } else {
@@ -115,6 +122,12 @@ class AuthController {
     public function logout() {
         session_start();
         session_destroy();
+    
+        // Remove cookies
+        setcookie('user_id', '', time() - 3600, "/");
+        setcookie('username', '', time() - 3600, "/");
+        setcookie('profile_picture', '', time() - 3600, "/");
+    
         header('Location: ../auth/login.php');
         exit();
     }

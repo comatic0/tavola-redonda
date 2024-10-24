@@ -3,7 +3,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $base_path = '/tavola-redonda';
-$_SESSION['profile_picture'] = $_SESSION['profile_picture'] ?? 'user-icon.png';
+if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_id'])) {
+    $_SESSION['user_id'] = $_COOKIE['user_id'];
+    $_SESSION['username'] = $_COOKIE['username'];
+    $_SESSION['profile_picture'] = $_COOKIE['profile_picture'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
