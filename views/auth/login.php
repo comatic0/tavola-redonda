@@ -41,10 +41,10 @@ $steamApiKeyValid = !empty($config['steam_api_key']);
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <div class="form-group">
-            <input type="checkbox" id="remember_me" name="remember_me">
+        <div class="form-group remember-me">
             <label for="remember_me">Lembrar-me</label>
-        </div>
+            <input type="checkbox" align="left" id="remember_me" name="remember_me">
+    </div>
         <button type="submit" class="btn">Logar</button>
     </form>
     <div class="steam-login <?php echo !$steamApiKeyValid ? 'btn-disabled' : ''; ?>">
