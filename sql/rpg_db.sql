@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Criação da tabela de mesas
 CREATE TABLE IF NOT EXISTS `mesas` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `nome` VARCHAR(255) NOT NULL,
+    `nome` VARCHAR(20) NOT NULL,
     `descricao` TEXT,
     `categoria` VARCHAR(255) NOT NULL,
     `data_da_sessao` VARCHAR(11) NOT NULL,

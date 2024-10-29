@@ -527,8 +527,6 @@ footer {
     font-size: 14px;
 }
 
-    opacity: 0.5;
-}
 .btn-disabled a {
     pointer-events: none;
 }
@@ -733,3 +731,100 @@ footer {
 .navbar a:hover {
     background-color: #803927;
 }
+
+.mesas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    }
+
+.mesa-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a0522d; /* Cor marrom */
+    padding: 1rem;
+    border-radius: 8px;
+    }
+
+.mesa-nome {
+    font-size: 1.2rem;
+    color: #fff;
+    }
+
+
+.mesa-popup {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    }
+
+.popup-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    }
+    .mesa-item {
+        display: flex; /* Use flexbox para o layout */
+        justify-content: space-between; /* Espaço entre o texto e os botões */
+        align-items: center; /* Alinha verticalmente */
+        margin-bottom: 10px; /* Espaço entre as mesas, se necessário */
+    }
+    
+    .mesa-botoes {
+        display: flex; /* Agrupa os botões em linha */
+        gap: 20px; /* Define um espaço entre os botões */
+    }
+    
+    .mesa-detalhes-btn,
+    .mesa-editar-btn,
+    .mesa-delete-btn {
+        width: 30px;
+        height: 30px;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .mesa-detalhes-btn {
+        background-color: #1eb826; 
+    }
+    
+    .mesa-editar-btn {
+        background-color: #2d8fa0; 
+        text-decoration: none;
+    }
+    
+    .mesa-delete-btn {
+        background-color: #be1616; 
+        text-decoration: none;
+    }
+    
+    
+.mesa-detalhes-btn i,
+.mesa-delete-btn i,
+.mesa-editar-btn i {
+    color: #fff; /* Cor branca para o ícone */
+    font-size: 1rem; /* Ajuste o tamanho conforme necessário */
+    }
+    
