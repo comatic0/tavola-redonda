@@ -6,8 +6,10 @@ $authController = new AuthController($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? null;
     $password = $_POST['password'] ?? null;
+    $rememberMe = isset($_POST['remember_me']);
+
     if ($username && $password) {
-        $loginSuccess = $authController->login($username, $password);
+        $loginSuccess = $authController->login($username, $password, $rememberMe);
         if ($loginSuccess) {
             header('Location: ../../index.php');
             exit();
@@ -39,6 +41,10 @@ $steamApiKeyValid = !empty($config['steam_api_key']);
                 <img src="../../assets/icons/eye-icon.png" class="toggle-password" onclick="togglePasswordVisibility('password')" alt="Mostrar Senha">
             </div>
         </div>
+        <div class="form-group remember-me">
+            <label for="remember_me">Lembrar-me</label>
+            <input type="checkbox" align="left" id="remember_me" name="remember_me">
+    </div>
         <button type="submit" class="btn">Logar</button>
     </form>
     <div class="steam-login <?php echo !$steamApiKeyValid ? 'btn-disabled' : ''; ?>">

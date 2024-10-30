@@ -527,8 +527,6 @@ footer {
     font-size: 14px;
 }
 
-    opacity: 0.5;
-}
 .btn-disabled a {
     pointer-events: none;
 }
@@ -752,4 +750,16 @@ footer {
     cursor: pointer;
     font-size: 18px;
     color: #007bff;
+}
+
+.form-group.remember-me {
+    display: 
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form-group.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+    align-items: left;
+    text-align: left;
 }
