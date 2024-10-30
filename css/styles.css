@@ -527,8 +527,6 @@ footer {
     font-size: 14px;
 }
 
-    opacity: 0.5;
-}
 .btn-disabled a {
     pointer-events: none;
 }
@@ -734,8 +732,27 @@ footer {
     background-color: #803927;
 }
 
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    flex: 1;
+    padding-right: 30px; /* Espaço para o ícone */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff;
+}
+
 .form-group.remember-me {
-    display: 
     align-items: center;
     justify-content: flex-start;
 }
