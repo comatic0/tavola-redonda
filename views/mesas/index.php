@@ -43,10 +43,14 @@ $user_id = $_SESSION['user_id'] ?? null;
                             <?php else: ?>
                                 <a href="<?php echo $base_path; ?>/views/mesas/join.php?id=<?php echo $mesa['id']; ?>" class="btn">Ingressar</a>
                             <?php endif; ?>
+                            
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
+                    <div class="buttons">
+                    <a href="<?php echo $base_path; ?>/views/mesas/add.php" class="btn-creat-mesa animate-button">Criar mesa</a>
+                     </div>
         </table>
     </section>
 </main>

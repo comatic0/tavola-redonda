@@ -1,4 +1,7 @@
-<?php $base_path = '/tavola-redonda'; ?>
+<?php 
+$base_path = '/tavola-redonda'; 
+include 'includes/notificacao.php'; 
+?>
 <header class="header">
     <div class="logo">
         <a href="<?php echo $base_path; ?>/index.php">
@@ -24,6 +27,14 @@
             <a href="<?php echo $base_path; ?>/views/profile.php">
                 <img id="user-profile-picture" src="<?php echo $base_path; ?>/assets/profile_pictures/<?php echo $_SESSION['profile_picture'] ?? 'user-icon.png'; ?>" alt="User Icon">
             </a>
+            <div class="notification">
+                <a href="#" class="bell">
+                    <img src="<?php echo $base_path; ?>/assets/icons/xininho.png" alt="Notificações">
+                    <?php if ($mensagem): ?>
+                        <span class="tooltip"><?php echo $mensagem; ?></span>
+                    <?php endif; ?>
+                </a>
+            </div>
         <?php else: ?>
             <div class="dropdown">
                 <button class="dropbtn">Minha Conta</button>
