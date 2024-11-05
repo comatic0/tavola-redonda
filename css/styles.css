@@ -785,3 +785,36 @@ footer {
     visibility: visible;
     opacity: 1;
 }
+
+.bell {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bell img {
+    width: 24px; /* Ajuste o tamanho conforme necessário */
+    height: 24px;
+}
+
+.notification .tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posiciona o tooltip acima do ícone */
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.notification:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
