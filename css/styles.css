@@ -541,9 +541,6 @@ footer {
     color: #A0522D;
     font-size: 14px;
 }
-
-    opacity: 0.5; {
-}
 .btn-disabled a {
     pointer-events: none;
 }
@@ -817,4 +814,33 @@ footer {
 .notification:hover .tooltip {
     visibility: visible;
     opacity: 1;
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    flex: 1;
+    padding-right: 30px; /* Espaço para o ícone */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.form-group.remember-me {
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form-group.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+    align-items: left;
+    text-align: left;
 }
