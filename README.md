@@ -148,7 +148,17 @@ Visualização individual das mesas - Emanuel
 
 Melhorias na personalização de Fichas de Personagens - Henrique
 
-Criação e integração de API Interna - Yuri
+Criação e integração de API Interna, Lembrar Usuário e Exibir/esconder senha, Refatoração de Pull Requests - Yuri
+
+## Iteração 3 - Finalização
+
+| **Nome**                                | **Features**                                    | **Code Review** |   
+|-----------------------------------------|----------------------------------------------|----------------------------------------------|
+| Yuri Barbosa Takahashi                  | Code Review, Refatoração de Pull Requests (merging), API para requisições HTML (Get, Put, Post, Delete), Lembrar usuário, Exibir/esconder senha. | Thiago Soares Ribeiro Nunes de Carvalho |
+| Henrique Wendler Gomes                  | Code Review, Atribuição de Imagens para Fichas| Yuri Barbosa Takahashi |
+| Vitor Leal Ferreira                     | Sistema de Notificações no Agendamento de Mesas, Botão de Criar Mesas| Henrique Wendler Gomes, Yuri Barbosa Takahashi |
+| Emanuel Badaró Fonseca                  | Visualização individual de fichas, melhorias no front-end das mesas e Pop-ups para mesas.| Yuri Barbosa Takahashi |
+| Thiago Soares Ribeiro Nunes de Carvalho                  | Sistema de submissão de mapas.| Emanuel Badaró Fonseca, Yuri Barbosa Takahashi |
 
 ### Iteração 4:
 
@@ -165,18 +175,6 @@ Dark mode - Emanuel
 Sistema para "rolar" dados - Vitor Leal
 
 Utilização de Tokens para Login - Yuri
-
-
-
-## Equipe
-
-| **Nome**                                | **Features**                                    | **Code Review** |   
-|-----------------------------------------|----------------------------------------------|----------------------------------------------|
-| Yuri Barbosa Takahashi                  | Code Review, Refatoração de Pull Requests (merging), API para requisições HTML (Get, Put, Post, Delete), Lembrar usuário, Exibir/esconder senha. | Thiago Soares Ribeiro Nunes de Carvalho |
-| Henrique Wendler Gomes                  | Code Review, Atribuição de Imagens para Fichas| Yuri Barbosa Takahashi |
-| Vitor Leal Ferreira                     | Sistema de Notificações no Agendamento de Mesas, Botão de Criar Mesas| Henrique Wendler Gomes, Yuri Barbosa Takahashi |
-| Emanuel Badaró Fonseca                  | Visualização individual de fichas, melhorias no front-end das mesas e Pop-ups para mesas.| Yuri Barbosa Takahashi |
-| Thiago Soares Ribeiro Nunes de Carvalho                  | Sistema de submissão de mapas.| Emanuel Badaró Fonseca, Yuri Barbosa Takahashi |
 
 ### User Stories e Prototipação
 
