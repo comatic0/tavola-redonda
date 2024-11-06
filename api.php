@@ -19,26 +19,46 @@ switch ($method) {
         break;
     case 'POST':
         $data = json_decode(file_get_contents('php://input'), true);
-        $nome = $data['nome'];
-        $descricao = $data['descricao'];
-        $categoria = $data['categoria'];
-        $data_da_sessao = $data['data_da_sessao'];
-        $max_capacity = $data['max_capacity'];
-        $user_id = $data['user_id'];
-        $mesaController->createMesa($nome, $descricao, $categoria, $data_da_sessao, $max_capacity, $user_id);
-        echo json_encode(['message' => 'Mesa criada com sucesso']);
+        error_log("Received POST data: " . print_r($data, true)); // Log the received data
+        if (json_last_error() === JSON_ERROR_NONE) {
+            $nome = $data['nome'] ?? null;
+            $descricao = $data['descricao'] ?? null;
+            $categoria = $data['categoria'] ?? null;
+            $data_da_sessao = $data['data_da_sessao'] ?? null;
+            $max_capacity = $data['max_capacity'] ?? null;
+            $user_id = $data['user_id'] ?? null;
+
+            if ($nome && $descricao && $categoria && $data_da_sessao && $max_capacity && $user_id) {
+                $mesaController->createMesa($nome, $descricao, $categoria, $data_da_sessao, $max_capacity, $user_id);
+                echo json_encode(['message' => 'Mesa criada com sucesso']);
+            } else {
+                echo json_encode(['message' => 'Dados incompletos'], JSON_UNESCAPED_UNICODE);
+            }
+        } else {
+            echo json_encode(['message' => 'Erro ao decodificar JSON'], JSON_UNESCAPED_UNICODE);
+        }
         break;
     case 'PUT':
         if (isset($_GET['id'])) {
             $data = json_decode(file_get_contents('php://input'), true);
-            $id = $_GET['id'];
-            $nome = $data['nome'];
-            $descricao = $data['descricao'];
-            $categoria = $data['categoria'];
-            $data_da_sessao = $data['data_da_sessao'];
-            $max_capacity = $data['max_capacity'];
-            $mesaController->updateMesa($id, $nome, $descricao, $categoria, $data_da_sessao, $max_capacity);
-            echo json_encode(['message' => 'Mesa atualizada com sucesso']);
+            error_log("Received PUT data: " . print_r($data, true)); // Log the received data
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $id = $_GET['id'];
+                $nome = $data['nome'] ?? null;
+                $descricao = $data['descricao'] ?? null;
+                $categoria = $data['categoria'] ?? null;
+                $data_da_sessao = $data['data_da_sessao'] ?? null;
+                $max_capacity = $data['max_capacity'] ?? null;
+
+                if ($nome && $descricao && $categoria && $data_da_sessao && $max_capacity) {
+                    $mesaController->updateMesa($id, $nome, $descricao, $categoria, $data_da_sessao, $max_capacity);
+                    echo json_encode(['message' => 'Mesa atualizada com sucesso']);
+                } else {
+                    echo json_encode(['message' => 'Dados incompletos'], JSON_UNESCAPED_UNICODE);
+                }
+            } else {
+                echo json_encode(['message' => 'Erro ao decodificar JSON'], JSON_UNESCAPED_UNICODE);
+            }
         }
         break;
     case 'DELETE':

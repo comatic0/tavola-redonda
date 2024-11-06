@@ -5,7 +5,6 @@ function getSessionDate($user_id) {
         error_log("Erro: Banco de dados não encontrado em $db_path");
         return null;
     }
-
     try {
         $pdo = new PDO('sqlite:' . $db_path); 
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -32,11 +31,16 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-$data_da_sessao = getSessionDate($_SESSION['user_id']); 
-$mensagem = ""; 
-if ($data_da_sessao && isSessionApproaching($data_da_sessao)) {
-    $mensagem = "A sua sessão está se aproximando em " . $data_da_sessao . "!";
+$mensagem = ""; // Default message
+
+if (isset($_SESSION['user_id'])) {
+    $data_da_sessao = getSessionDate($_SESSION['user_id']); 
+    if ($data_da_sessao && isSessionApproaching($data_da_sessao)) {
+        $mensagem = "A sua sessão está se aproximando em " . $data_da_sessao . "!";
+    } else {
+        $mensagem = "Não há sessões próximas.";
+    }
 } else {
-    $mensagem = "Não há sessões próximas.";
+    $mensagem = null; // No message for unlogged users
 }
 ?>
