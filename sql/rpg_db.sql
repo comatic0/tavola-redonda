@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `fichas` (
     `raca` VARCHAR(255) NOT NULL,
     `magias` TEXT NOT NULL,
     `descricao` TEXT,
+    `imagem` VARCHAR(255),
     `user_id` INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE

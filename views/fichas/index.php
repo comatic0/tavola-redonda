@@ -6,6 +6,19 @@ $fichas = $fichaController->getAllFichas();
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
+<style>
+    .circular-image {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+    .name-with-image {
+        display: flex;
+        align-items: center;
+    }
+</style>
 <main>
     <section class="table-view animate-hero">
         <h1 class="evil-aura">Ficha de Personagem</h1>
@@ -27,7 +40,10 @@ $fichas = $fichaController->getAllFichas();
             <tbody>
                 <?php foreach ($fichas as $ficha): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($ficha['nome']); ?></td>
+                        <td class="name-with-image">
+                            <img src="<?php echo htmlspecialchars($ficha['imagem'] ?: '../../assets/personagens_pictures/user-icon.png'); ?>" alt="Imagem do Personagem" class="circular-image">
+                            <?php echo htmlspecialchars($ficha['nome']); ?>
+                        </td>
                         <td><?php echo htmlspecialchars($ficha['classe']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['nivel']); ?></td>
                         <td><?php echo htmlspecialchars($ficha['raca']); ?></td>

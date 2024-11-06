@@ -4,9 +4,9 @@ class Ficha {
     public function __construct($pdo) {
         $this->pdo = $pdo;
     }
-    public function createFicha($nome, $classe, $nivel, $raca, $magias, $descricao, $user_id) {
-        $stmt = $this->pdo->prepare("INSERT INTO fichas (nome, classe, nivel, raca, magias, descricao, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        return $stmt->execute([$nome, $classe, $nivel, $raca, $magias, $descricao, $user_id]);
+    public function createFicha($nome, $classe, $nivel, $raca, $magias, $descricao, $imagem, $user_id) {
+        $stmt = $this->pdo->prepare("INSERT INTO fichas (nome, classe, nivel, raca, magias, descricao, imagem, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        return $stmt->execute([$nome, $classe, $nivel, $raca, $magias, $descricao, $imagem, $user_id]);
     }
     public function getAllFichas() {
         $stmt = $this->pdo->query("SELECT * FROM fichas");
@@ -26,9 +26,9 @@ class Ficha {
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function updateFicha($id, $nome, $classe, $nivel, $raca, $descricao) {
-        $stmt = $this->pdo->prepare("UPDATE fichas SET nome = ?, classe = ?, nivel = ?, magias = ?, raca = ?, descricao = ? WHERE id = ?");
-        return $stmt->execute([$nome, $classe, $nivel, $raca, $magias, $descricao, $id]);
+    public function updateFicha($id, $nome, $classe, $nivel, $raca, $magias, $descricao, $imagem) {
+        $stmt = $this->pdo->prepare("UPDATE fichas SET nome = ?, classe = ?, nivel = ?, magias = ?, raca = ?, descricao = ?, imagem = ? WHERE id = ?");
+        return $stmt->execute([$nome, $classe, $nivel, $raca, $magias, $descricao, $imagem, $id]);
     }
 }
 ?>
