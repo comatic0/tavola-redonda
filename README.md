@@ -123,19 +123,50 @@ Possibilatar ao usuário a busca por mesas existentes, o cadastro de personagens
 
 ### Funcionalidades:
 Sistema para buscar por uma mesa existente no banco de dados:
-O usuário poderá ingressar em uma mesa que já existe procurando por ela
+O usuário poderá ingressar em uma mesa que já existe procurando por ela - Emanuel
 
-Sistema para agendamento de horários e dias de sessões durante a criação de mesas.
+Sistema para agendamento de horários e dias de sessões durante a criação de mesas - Vitor Leal
 
-Gestão de Fichas de Personagens (Registro de Ficha de Personagem):
+Gestão de Fichas de Personagens (Registro de Ficha de Personagem)- Henrique
 
-Registro e criação de personagens, com detalhes como nome, descrição e controlador.
 
-Possibilitar a exibição, alteração e exlusão do perfil.
+### Iteração 3:
 
-Criação de uma página acessível, atraente e intuitiva.
+### Sprint 1:
 
-### Iteração 2 - Finalização
+### valor:
+
+Possibilitar ao usuário melhores interações com o sistema, como uma visualização mais limpa das mesas, uma maior personalização de personagens, e adição de mesas. O sistema também fornece acesso a um sistema de notificações e a possibilidade de utilizar uma api interna para obter informações do site.   
+
+### Funcionalidades:
+
+Submissão e deleção de mapas - Thiago
+
+Sistema de notificações - Vitor Leal
+
+Visualização individual das mesas - Emanuel
+
+Melhorias na personalização de Fichas de Personagens - Henrique
+
+Criação e integração de API Interna - Yuri
+
+### Iteração 4:
+
+### valor: Possibilitar o usuário criar diferentes mesas e fichas de acordo com o sistema escolhido, fornecer melhores experiencias durante as secções, acesso a uma melhor acessibilidade visual, também possibilitar formas mais faceis e eficientes de realizar o Login
+
+### funcionalidades:
+
+Melhorias no sistema de criação de Fichas de Personagem - Diferentes modelos para diferentes sistemas - Henrique
+
+Melhorias no sistema de criação de Mesas - Diferentes modelos para diferentes sistemas - Thiago
+
+Dark mode - Emanuel 
+
+Sistema para "rolar" dados - Vitor Leal
+
+Utilização de Tokens para Login - Yuri
+
+
 
 ## Equipe
 
