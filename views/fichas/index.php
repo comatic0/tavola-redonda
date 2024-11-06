@@ -15,7 +15,6 @@ $fichas = $fichaController->getAllFichas();
         margin-right: 10px;
     }
     .name-with-image {
-        display: flex;
         align-items: center;
     }
 </style>
@@ -41,7 +40,7 @@ $fichas = $fichaController->getAllFichas();
                 <?php foreach ($fichas as $ficha): ?>
                     <tr>
                         <td class="name-with-image">
-                            <img src="<?php echo htmlspecialchars($ficha['imagem'] ?: '../../assets/personagens_pictures/user-icon.png'); ?>" alt="Imagem do Personagem" class="circular-image">
+                            <img src="<?php echo htmlspecialchars($ficha['imagem'] ?: '../../assets/profile_pictures/user-icon.png'); ?>" class="circular-image">
                             <?php echo htmlspecialchars($ficha['nome']); ?>
                         </td>
                         <td><?php echo htmlspecialchars($ficha['classe']); ?></td>
