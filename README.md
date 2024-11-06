@@ -139,13 +139,13 @@ Criação de uma página acessível, atraente e intuitiva.
 
 ## Equipe
 
-| **Nome**                                | **Features**                                    |
-|-----------------------------------------|----------------------------------------------|
-| Yuri Barbosa Takahashi                  | Code Review, Refatoração de Pull Requests (merging), API para requisições HTML (Get, Put, Post, Delete), Lembrar usuário, Exibir/esconder senha. |
-| Henrique Wendler Gomes                  | Code Review, Atribuição de Imagens para Fichas|
-| Vitor Leal Ferreira                     | Sistema de Notificações no Agendamento de Mesas, Botão de Criar Mesas|
-| Emanuel Badaró Fonseca                  | Visualização individual de fichas, melhorias no front-end das mesas e Pop-ups para mesas.|
-| Thiago Soares Ribeiro Nunes de Carvalho                  | Sistema de submissão de mapas.|
+| **Nome**                                | **Features**                                    | **Code Review** |   
+|-----------------------------------------|----------------------------------------------|----------------------------------------------|
+| Yuri Barbosa Takahashi                  | Code Review, Refatoração de Pull Requests (merging), API para requisições HTML (Get, Put, Post, Delete), Lembrar usuário, Exibir/esconder senha. | Thiago Soares Ribeiro Nunes de Carvalho |
+| Henrique Wendler Gomes                  | Code Review, Atribuição de Imagens para Fichas| Yuri Barbosa Takahashi |
+| Vitor Leal Ferreira                     | Sistema de Notificações no Agendamento de Mesas, Botão de Criar Mesas| Henrique Wendler Gomes, Yuri Barbosa Takahashi |
+| Emanuel Badaró Fonseca                  | Visualização individual de fichas, melhorias no front-end das mesas e Pop-ups para mesas.| Yuri Barbosa Takahashi |
+| Thiago Soares Ribeiro Nunes de Carvalho                  | Sistema de submissão de mapas.| Emanuel Badaró Fonseca, Yuri Barbosa Takahashi |
 
 ### User Stories e Prototipação
 
