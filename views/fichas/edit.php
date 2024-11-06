@@ -36,9 +36,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $classe = $_POST['classe'];
     $nivel = $_POST['nivel'];
     $raca = $_POST['raca'];
-    $magias = $_post['magias'];
+    $magias = $_POST['magias'];
     $descricao = $_POST['descricao'];
-    $error = $fichaController->updateFicha($id, $nome, $classe, $nivel, $magias, $raca, $descricao);
+    if (!empty($_FILES['imagem']['name'])) {
+        $imagem = $_FILES['imagem']['name'];
+        $imagem_tmp = $_FILES['imagem']['tmp_name'];
+        $imagem_path = '../../assets/personagens_pictures/' . $imagem;
+        // Verificar se a pasta de destino existe, se não, criar a pasta
+        if (!is_dir('../../assets/personagens_pictures')) {
+            mkdir('../../assets/personagens_pictures', 0777, true);
+        }
+        if (move_uploaded_file($imagem_tmp, $imagem_path)) {
+            echo "Imagem enviada com sucesso.";
+        } else {
+            echo "Erro ao enviar a imagem.";
+        }
+    } else {
+        $imagem_path = $ficha['imagem'] ?: '../../assets/personagens_pictures/user-icon.png';
+    }
+    $error = $fichaController->updateFicha($id, $nome, $classe, $nivel, $raca, $magias, $descricao, $imagem_path);
 
     $stmt = $pdo->prepare("UPDATE fichas SET nome = ?, classe = ?, nivel = ?, magias = ?, raca = ?, descricao = ? WHERE id = ? AND user_id = ?");
     if ($stmt->execute([$nome, $classe, $nivel, $raca, $magias, $descricao, $ficha_id, $user_id])) {
@@ -56,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (isset($error)): ?>
         <p class="error"><?php echo $error; ?></p>
     <?php endif; ?>
-    <form action="edit.php?id=<?php echo $ficha_id; ?>" method="post">
+    <form action="edit.php?id=<?php echo $ficha_id; ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $ficha_id; ?>">
         <div class="form-group">
             <label for="nome">Nome do Personagem:</label>
@@ -76,7 +92,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
             <label for="magias">Magias:</label>
-         <input type="text" id="magias" name="magias" required>
+            <input type="text" id="magias" name="magias" required>
+        </div>
+        <div class="form-group">
+            <label for="imagem">Imagem:</label>
+            <input type="file" id="imagem" name="imagem">
         </div>
         <div class="form-group">
             <label for="descricao">Descrição:</label>
