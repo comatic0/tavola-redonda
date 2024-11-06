@@ -6,10 +6,9 @@ class FichaController {
     public function __construct($pdo) {
         $this->fichaModel = new Ficha($pdo);
     }
-    public function createFicha($nome, $classe, $nivel, $raca, $magias, $descricao) {
-        $user_id = $_SESSION['user_id'] ?? null;
+    public function createFicha($nome, $classe, $nivel, $raca, $magias, $descricao, $imagem, $user_id) {
         if ($user_id) {
-            if ($this->fichaModel->createFicha($nome, $classe, $nivel, $raca, $magias, $descricao, $user_id)) {
+            if ($this->fichaModel->createFicha($nome, $classe, $nivel, $raca, $magias, $descricao, $imagem, $user_id)) {
                 header('Location: ../fichas/index.php');
                 exit();
             } else {
@@ -26,8 +25,8 @@ class FichaController {
     public function getFichaById($id) {
         return $this->fichaModel->getFichaById($id);
     }
-    public function updateFicha($id, $nome, $classe, $nivel, $raca, $magias, $descricao) {
-        $result = $this->fichaModel->updateFicha($id, $nome, $classe, $nivel, $magias, $raca, $descricao);
+    public function updateFicha($id, $nome, $classe, $nivel, $raca, $magias, $descricao, $imagem) {
+        $result = $this->fichaModel->updateFicha($id, $nome, $classe, $nivel, $raca, $magias, $descricao, $imagem);
         if ($result) {
             error_log("Character with ID $id updated successfully.");
             header('Location: ../fichas/index.php');

@@ -123,28 +123,58 @@ Possibilatar ao usuário a busca por mesas existentes, o cadastro de personagens
 
 ### Funcionalidades:
 Sistema para buscar por uma mesa existente no banco de dados:
-O usuário poderá ingressar em uma mesa que já existe procurando por ela
+O usuário poderá ingressar em uma mesa que já existe procurando por ela - Emanuel
 
-Sistema para agendamento de horários e dias de sessões durante a criação de mesas.
+Sistema para agendamento de horários e dias de sessões durante a criação de mesas - Vitor Leal
 
-Gestão de Fichas de Personagens (Registro de Ficha de Personagem):
+Gestão de Fichas de Personagens (Registro de Ficha de Personagem)- Henrique
 
-Registro e criação de personagens, com detalhes como nome, descrição e controlador.
 
-Possibilitar a exibição, alteração e exlusão do perfil.
+### Iteração 3:
 
-Criação de uma página acessível, atraente e intuitiva.
+### Sprint 1:
 
-### Iteração 2 - Finalização
+### valor:
 
-## Equipe
+Possibilitar ao usuário melhores interações com o sistema, como uma visualização mais limpa das mesas, uma maior personalização de personagens, e adição de mesas. O sistema também fornece acesso a um sistema de notificações e a possibilidade de utilizar uma api interna para obter informações do site.   
 
-| **Nome**                                | **Features**                                    |
-|-----------------------------------------|----------------------------------------------|
-| Yuri Barbosa Takahashi                  | Code Review, Refatoração de Pull Requests (merging), API para requisições HTML (Get, Put, Post, Delete), Lembrar usuário, Exibir/esconder senha. |
-| Henrique Wendler Gomes                  | Code Review                   |
-| Vitor Leal Ferreira                     | Sistema de Notificações no Agendamento de Mesas, Botão de Criar Mesas|
-| Emanuel Badaró Fonseca                  | Visualização individual de fichas, melhorias no front-end das mesas e Pop-ups para mesas.|
+### Funcionalidades:
+
+Submissão e deleção de mapas - Thiago
+
+Sistema de notificações - Vitor Leal
+
+Visualização individual das mesas - Emanuel
+
+Melhorias na personalização de Fichas de Personagens - Henrique
+
+Criação e integração de API Interna, Lembrar Usuário e Exibir/esconder senha, Refatoração de Pull Requests - Yuri
+
+## Iteração 3 - Finalização
+
+| **Nome**                                | **Features**                                    | **Code Review** |   
+|-----------------------------------------|----------------------------------------------|----------------------------------------------|
+| Yuri Barbosa Takahashi                  | Code Review, Refatoração de Pull Requests (merging), API para requisições HTML (Get, Put, Post, Delete), Lembrar usuário, Exibir/esconder senha. | Thiago Soares Ribeiro Nunes de Carvalho |
+| Henrique Wendler Gomes                  | Code Review, Atribuição de Imagens para Fichas| Yuri Barbosa Takahashi |
+| Vitor Leal Ferreira                     | Sistema de Notificações no Agendamento de Mesas, Botão de Criar Mesas| Henrique Wendler Gomes, Yuri Barbosa Takahashi |
+| Emanuel Badaró Fonseca                  | Visualização individual de fichas, melhorias no front-end das mesas e Pop-ups para mesas.| Yuri Barbosa Takahashi |
+| Thiago Soares Ribeiro Nunes de Carvalho                  | Sistema de submissão de mapas.| Emanuel Badaró Fonseca, Yuri Barbosa Takahashi |
+
+### Iteração 4:
+
+### valor: Possibilitar o usuário criar diferentes mesas e fichas de acordo com o sistema escolhido, fornecer melhores experiencias durante as secções, acesso a uma melhor acessibilidade visual, também possibilitar formas mais faceis e eficientes de realizar o Login
+
+### funcionalidades:
+
+Melhorias no sistema de criação de Fichas de Personagem - Diferentes modelos para diferentes sistemas - Henrique
+
+Melhorias no sistema de criação de Mesas - Diferentes modelos para diferentes sistemas - Thiago
+
+Dark mode - Emanuel 
+
+Sistema para "rolar" dados - Vitor Leal
+
+Utilização de Tokens para Login - Yuri
 
 ### User Stories e Prototipação
 
