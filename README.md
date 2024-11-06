@@ -135,6 +135,17 @@ Possibilitar a exibição, alteração e exlusão do perfil.
 
 Criação de uma página acessível, atraente e intuitiva.
 
+### Iteração 2 - Finalização
+
+## Equipe
+
+| **Nome**                                | **Features**                                    |
+|-----------------------------------------|----------------------------------------------|
+| Yuri Barbosa Takahashi                  | Code Review, Refatoração de Pull Requests (merging), API para requisições HTML (Get, Put, Post, Delete), Lembrar usuário, Exibir/esconder senha. |
+| Henrique Wendler Gomes                  | Code Review                   |
+| Vitor Leal Ferreira                     | Sistema de Notificações no Agendamento de Mesas, Botão de Criar Mesas|
+| Emanuel Badaró Fonseca                  | Visualização individual de fichas, melhorias no front-end das mesas e Pop-ups para mesas.|
+
 ### User Stories e Prototipação
 
 link do figma:
