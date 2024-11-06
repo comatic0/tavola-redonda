@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
+    $data_da_sessao = $_POST['data_da_sessao'];
     $nome_do_mestre = $_POST['nome_do_mestre'];
     $numero_max_jogadores = $_POST['max_capacity'];
-    $error = $mesaController->updateMesa($id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria);
+    $error = $mesaController->updateMesa($id, $nome, $descricao, $nome_do_mestre, $numero_max_jogadores, $categoria, $data_da_sessao);
 }
 ?>
 <?php include '../../includes/header.php'; ?>
@@ -47,6 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="number" id="max_capacity" name="max_capacity" value="<?php echo htmlspecialchars($mesa['max_capacity']); ?>" required>
         </div>
         <div class="form-group">
+            <label for="data_da_sessao">Data da Sessão:</label>
+            <input type="date" id="data_da_sessao" name="data_da_sessao" value="<?php echo htmlspecialchars($mesa['data_da_sessao']); ?>" required>
+        </div>
+        <div class="form-group">
             <label for="categoria">Categoria:</label>
             <input type="text" id="categoria" name="categoria" value="<?php echo htmlspecialchars($mesa['categoria']); ?>" required>
         </div>
@@ -66,8 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php
                     }
                     ?>
-                    <br>
-                    <br>
+                    <br><br>
                     <?php
                 }   
             ?>     
