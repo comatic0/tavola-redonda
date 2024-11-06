@@ -31,19 +31,20 @@
 
 1. **Clone o repositório:**
    ```sh
-   git clone https://github.com/seu-usuario/tavola-redonda.git
+   git clone https://github.com/comatic0/tavola-redonda.git
    cd tavola-redonda
 
 2. **Configure o Banco de Dados:**
     - Crie um banco de dados MySQL.
-    - Atualize o arquivo `config.json` com as credenciais do banco de dados:
+    - Atualize o arquivo `config.json` com as credenciais do banco de dados e consiga a chave da API Steam, pode ser adquirida em https://steamcommunity.com/dev :
 
        ```json
        {
           "DB_HOST": "localhost",
           "DB_NAME": "rpg_db",
           "DB_USER": "root",
-          "DB_PASS": ""
+          "DB_PASS": "",
+          "STEAM_API_KEY": ""
        }
        ```
 
@@ -60,6 +61,14 @@
        2. Vá para a aba "Importar".
        3. Clique em "Escolher arquivo" e selecione o arquivo `sql/rpg_db.sql`
        4. Clique em "Executar" para importar o arquivo e criar as tabelas.
+3. **Configurando o XAMPP & Composer**
+   - Vá no painel de administração do XAMPP, e altere o `php.ini`
+   - Procure a linha `;extension=gd`, tire o `;` e salve-a apenas como `extension=gd`
+   - Reinicie o Apache.
+   - Instale o Composer em https://getcomposer.org/Composer-Setup.exe
+   - Acesse a pasta do repositório e rode o comando `composer install`
+   ![Code_RC65hAP9po](https://github.com/user-attachments/assets/c5087ad8-7f38-4718-b4d2-2bc09950d3af)
+
 3. **Inicie o Servidor:**
    - Se estiver usando o XAMPP (que atualmente é utilizado pelos desenvolvedores), mova a pasta do projeto para o diretório `htdocs`.
    - Acesse `http://localhost/tavola-redonda` no seu navegador.
@@ -125,6 +134,17 @@ Registro e criação de personagens, com detalhes como nome, descrição e contr
 Possibilitar a exibição, alteração e exlusão do perfil.
 
 Criação de uma página acessível, atraente e intuitiva.
+
+### Iteração 2 - Finalização
+
+## Equipe
+
+| **Nome**                                | **Features**                                    |
+|-----------------------------------------|----------------------------------------------|
+| Yuri Barbosa Takahashi                  | Code Review, Refatoração de Pull Requests (merging), API para requisições HTML (Get, Put, Post, Delete), Lembrar usuário, Exibir/esconder senha. |
+| Henrique Wendler Gomes                  | Code Review                   |
+| Vitor Leal Ferreira                     | Sistema de Notificações no Agendamento de Mesas, Botão de Criar Mesas|
+| Emanuel Badaró Fonseca                  | Visualização individual de fichas, melhorias no front-end das mesas e Pop-ups para mesas.|
 
 ### User Stories e Prototipação
 

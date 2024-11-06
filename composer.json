@@ -1,0 +1,5 @@
+{
+    "require": {
+        "iignatov/lightopenid": "^1.0"
+    }
+}

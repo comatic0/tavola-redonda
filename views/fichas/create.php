@@ -12,13 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $classe = $_POST['classe'];
     $nivel = $_POST['nivel'];
     $raca = $_POST['raca'];
+    $magias = $_POST['magias'];
     $descricao = $_POST['descricao'];
-    $error = $fichaController->createFicha($nome, $classe, $nivel, $raca, $descricao);
+    $error = $fichaController->createFicha($nome, $classe, $nivel, $raca, $magias, $descricao);
 }
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
-<div class="form-container">
+<div class="form-container animate-hero">
     <h2>Criar Personagem</h2>
     <?php if (isset($error)): ?>
         <p class="error"><?php echo $error; ?></p>
@@ -41,10 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="raca" name="raca" required>
         </div>
         <div class="form-group">
+            <label for="magias">Magias:</label>
+            <input type="text" id="magias" name="magias" required>
+        </div>
+        <div class="form-group">
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao"></textarea>
         </div>
         <button type="submit" class="btn">Criar Personagem</button>
     </form>
+    <p>Criado por: <a href="../profile.php?id=<?php echo $_SESSION['user_id']; ?>"><?php echo htmlspecialchars($_SESSION['user_id']); ?></a></p>
 </div>
 <?php include '../../includes/footer.php'; ?>

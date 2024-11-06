@@ -76,5 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br>
         <button class="btn" onclick="window.location.href='../index.php'">Voltar</button>
     </form>
+    <p>Editado por: <a href="../profile.php?id=<?php echo $_SESSION['user_id']; ?>"><?php echo htmlspecialchars($_SESSION['user_id']); ?></a></p>
 </div>
 <?php include '../../includes/footer.php'; ?>
