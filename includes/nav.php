@@ -12,6 +12,7 @@
         <a href="<?php echo $base_path; ?>/index.php">Página Principal</a>
         <a href="<?php echo $base_path; ?>/views/mesas/index.php" >Mesas</a>
         <a href="<?php echo $base_path; ?>/views/fichas/index.php" >Fichas</a>
+        <a href="<?php echo $base_path; ?>/views/mapas/index.php" >Mapas</a>
     </nav>
     <div class="user">
         <?php if (isset($_SESSION['user_id'])): ?>

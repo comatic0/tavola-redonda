@@ -42,3 +42,13 @@ CREATE TABLE IF NOT EXISTS `fichas` (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 );
+-- Criação da tabela de mapas
+CREATE TABLE IF NOT EXISTS `mapas` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `nome` VARCHAR(255) NOT NULL,
+    `caminho` VARCHAR(255) NOT NULL,
+    `tipo` VARCHAR(50) NOT NULL,
+    `user_id` INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
+);

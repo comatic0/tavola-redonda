@@ -525,8 +525,6 @@ footer {
     padding: 10px;
     color: #A0522D;
     font-size: 14px;
-}
-
     opacity: 0.5;
 }
 .btn-disabled a {
@@ -732,4 +730,43 @@ footer {
 
 .navbar a:hover {
     background-color: #803927;
+}
+
+/*MAPAS*/
+
+.map-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.map-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden; 
+    text-align: center; 
+}
+
+.map-details {
+    padding: 10px;
+    position: center;
+  }
+
+.map-item {
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.map-btn {
+    text-decoration: none;
+    padding: 8px 14px;
+    font-size: 14px;
+    background-color: #a04632;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
 }
