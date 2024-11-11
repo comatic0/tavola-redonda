@@ -3,6 +3,8 @@ session_start();
 require '../../includes/db.php';
 require '../../controllers/MesaController.php';
 
+use controllers\MesaController;
+
 $mesaController = new MesaController($pdo);
 $mesas = $mesaController->getAllMesas();
 $user_id = $_SESSION['user_id'] ?? null;

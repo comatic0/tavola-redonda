@@ -2,6 +2,8 @@
 session_start();
 require '../../controllers/MesaController.php';
 
+use controllers\MesaController;
+
 $mesa_id = $_GET['mesa_id'] ?? null;
 $user_id = $_GET['user_id'] ?? null;
 

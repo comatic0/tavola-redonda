@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 require '../../controllers/FichaController.php';
 require '../../includes/db.php';
+use controllers\FichaController;
 
 $fichaController = new FichaController($pdo);
 $ficha_id = $_GET['id'] ?? null;

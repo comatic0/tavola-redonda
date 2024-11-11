@@ -1,6 +1,11 @@
 <?php
+namespace controllers;
+
 require_once __DIR__ . '/../models/Ficha.php';
 require_once __DIR__ . '/../includes/db.php';
+
+use models\Ficha;
+
 class FichaController {
     private $fichaModel;
     public function __construct($pdo) {

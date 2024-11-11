@@ -1,4 +1,8 @@
 <?php
+namespace models; 
+
+use PDO;
+
 class User {
     private $pdo;
     public function __construct($pdo) {
@@ -14,11 +18,6 @@ class User {
         $stmt->execute([$username]);
         return $stmt->fetch();
     }
-    public function getUserBySteamId($steam_id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE steam_id = ?");
-        $stmt->execute([$steam_id]);
-        return $stmt->fetch();
-    }
     public function getUserById($user_id) {
         $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE id = :id");
         $stmt->execute(['id' => $user_id]);
@@ -28,9 +27,9 @@ class User {
         }
         return $user;
     }
-    public function createUser($username, $email, $password, $steam_id = null) {
-        $stmt = $this->pdo->prepare("INSERT INTO usuarios (username, email, password, steam_id) VALUES (?, ?, ?, ?)");
-        return $stmt->execute([$username, $email, $password, $steam_id]);
+    public function createUser($username, $email, $password) {
+        $stmt = $this->pdo->prepare("INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)");
+        return $stmt->execute([$username, $email, $password]);
     }
     public function updateUserProfilePicture($user_id, $profile_picture) {
         $stmt = $this->pdo->prepare("UPDATE usuarios SET profile_picture = :profile_picture WHERE id = :id");
