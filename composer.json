@@ -1,5 +1,14 @@
 {
     "require": {
         "iignatov/lightopenid": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "controllers\\": "controllers/",
+            "models\\": "models/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }

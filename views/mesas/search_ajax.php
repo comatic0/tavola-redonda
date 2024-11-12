@@ -1,5 +1,6 @@
 <?php
 require '../../controllers/MesaController.php';
+use controllers\MesaController;
 $mesaController = new MesaController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {

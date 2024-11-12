@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 require '../../controllers/FichaController.php';
 require '../../includes/db.php'; // Adicionar a inclusão do arquivo de conexão com o banco de dados
+use controllers\FichaController;
 
 $fichaController = new FichaController($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

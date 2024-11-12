@@ -1,6 +1,10 @@
 <?php
+namespace controllers;
+
 require_once __DIR__ . '/../models/Mesa.php';
 require_once __DIR__ . '/../includes/db.php';
+
+use models\Mesa;
 
 class MesaController {
     private $mesaModel;

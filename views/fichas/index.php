@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../../controllers/FichaController.php';
+use controllers\FichaController;
 $fichaController = new FichaController($pdo);
 $fichas = $fichaController->getAllFichas();
 ?>

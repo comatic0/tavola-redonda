@@ -7,6 +7,8 @@ if (!isset($_SESSION['user_id'])) {
 require '../../controllers/MesaController.php';
 require '../../includes/db.php';
 
+use controllers\MesaController;
+
 $mesaController = new MesaController($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
