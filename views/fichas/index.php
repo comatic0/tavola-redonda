@@ -3,6 +3,8 @@ session_start();
 require '../../controllers/FichaController.php';
 $fichaController = new FichaController($pdo);
 $fichas = $fichaController->getAllFichas();
+$classes = $fichaController->fetchDndData('classes');
+$races = $fichaController->fetchDndData('races');
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
