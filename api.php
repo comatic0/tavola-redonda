@@ -1,7 +1,7 @@
 <?php
 require 'includes/db.php';
 require 'controllers/MesaController.php';
-
+use Controllers\MesaController;
 header('Content-Type: application/json');
 
 $method = $_SERVER['REQUEST_METHOD'];
