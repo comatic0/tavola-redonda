@@ -62,6 +62,97 @@ $fichas = $fichaController->getAllFichas();
                 <?php endforeach; ?>
             </tbody>
         </table>
+    
+    <form method="post" action="">
+            <button type="submit" name="rollDiceD4" class="btn-dice">Rolar D4</button>
+        </form>
+        <?php
+        if (isset($_POST['rollDiceD4'])) {
+            $result = rand(1, 4);
+            echo '<p>Resultado: ' . $result . '</p>';
+        }
+        ?> <form method="post" action="">
+        <button type="submit" name="rollDiceD6" class="btn-dice">Rolar D6</button>
+    
+    </form>
+    <?php
+    if (isset($_POST['rollDiceD6'])) {
+        $result = rand(1, 6);
+        echo '<p>Resultado: ' . $result . '</p>';
+    }
+    ?>
+        <form method="post" action="">
+            <button type="submit" name="rollDiceD8" class="btn-dice">Rolar D8</button>
+        
+        </form>
+
+        <?php
+        if (isset($_POST['rollDiceD8'])) {
+            $result = rand(1, 8);
+            echo '<p>Resultado: ' . $result . '</p>';
+
+        }
+        ?>
+
+<form method="post" action="">
+            <button type="submit" name="rollDiceD10" class="btn-dice">Rolar D10</button>
+        </form>
+        <?php
+        if (isset($_POST['rollDiceD10'])) {
+            $result = rand(1, 10);
+            echo '<p>Resultado: ' . $result . '</p>';
+
+        }
+        ?>
+        <form method="post" action="">
+            <button type="submit" name="rollDiceD12" class="btn-dice">Rolar D12</button>
+        </form>
+        <?php
+        if (isset($_POST['rollDiceD12'])) {
+            $result = rand(1, 12);
+            echo '<p>Resultado: ' . $result . '</p>';
+
+        }
+        ?>
+
+<form method="post" action="">
+            <button type="submit" name="rollDiceD20" class="btn-dice">Rolar D20</button>
+        </form>
+        <?php
+        if (isset($_POST['rollDiceD20'])) {
+            $result = rand(1, 20);
+            echo '<p>Resultado: ' . $result . '</p>';
+
+        }
+        ?>
+
+<form method="post" action="">
+            <button type="submit" name="rollDiceD100" class="btn-dice">Rolar D100</button>
+        </form>
+        <?php
+        if (isset($_POST['rollDiceD100'])) {
+            $result = rand(1, 100);
+            echo '<p>Resultado: ' . $result . '</p>';
+
+        }
+        ?>
+
+<form method="post" action="">
+            <label for="customDice">Numero de lados:</label>
+            <input type="number" id="customDice" name="customDice" min="1"  class="fourm-group" required>
+            <button type="submit" name="rollCustomDice" class="btn-dice">Rolar Dado Personalizado</button>
+        </form>
+        <?php
+        if (isset($_POST['rollCustomDice'])) {
+            $sides = intval($_POST['customDice']);
+            if ($sides > 0) {
+                $result = rand(1, $sides);
+                echo '<p>Resultado: ' . $result . '</p>';
+            } else {
+                echo '<p>Por favor, insira um número válido de lados.</p>';
+            }
+        }
+        ?>
     </section>
     <footer>
         <p>&copy; 2024 Távola Redonda</p>
