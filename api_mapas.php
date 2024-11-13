@@ -13,13 +13,13 @@ switch ($method) {
             $mapa = $mapaController->getMapaById($_GET['id']);
             echo json_encode($mapa);
         } else {
-            $mesas = $mapaController->listarMapas();
-            echo json_encode($mapa);
+            $mapas = $mapaController->listarMapas();
+            echo json_encode($mapas);
         }
         break;
     case 'POST':
         $data = json_decode(file_get_contents('php://input'), true);
-        error_log("Received POST data: " . print_r($data, true)); // Log the received data
+        error_log("Received POST data: " . print_r($data, true));
         if (json_last_error() === JSON_ERROR_NONE) {
             $nome = $data['nome'] ?? null;
             $imagem = $data['imagem'] ?? null;
