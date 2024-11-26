@@ -73,4 +73,15 @@ class UserTest extends TestCase {
         $result = $this->user->getUserById($userId);
         $this->assertEquals($expectedUser, $result);
     }
+}  }
+
+     public function testRegisterWeakPassword() {
+        $username = 'testuser';
+        $email = 'test@example.com';
+        $password = '123';  
+
+        $result = $this->user->register($username, $email, $password);
+        
+        $this->assertEquals('A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula e um número.', $result);
+    }
 }
