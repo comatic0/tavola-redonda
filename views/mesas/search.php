@@ -5,6 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 require '../../controllers/MesaController.php';
+use controllers\MesaController;
 $mesaController = new MesaController($pdo);
 $mesas = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

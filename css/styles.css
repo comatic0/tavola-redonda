@@ -1177,3 +1177,19 @@ footer {
     align-items: left;
     text-align: left;
 }
+
+.btn-dice {
+    text-decoration: none;
+
+    padding: 10px 20px;
+
+    background-color: #a04632;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 4px;
+}
+
+.btn-dice:hover {
+    background-color: #803927;
+}

@@ -7,6 +7,8 @@ if (!isset($_SESSION['user_id'])) {
 require '../../controllers/MesaController.php';
 require '../../includes/db.php';
 
+use controllers\MesaController;
+
 $mesaController = new MesaController($pdo);
 $mesa_id = $_GET['id'] ?? null;
 $mesa = $mesaController->getMesaById($mesa_id);
