@@ -40,5 +40,10 @@ class FichaController {
             error_log("Failed to update character with ID $id.");
         }
     }
+    public function fetchDndData($endpoint) {
+        $url = "https://www.dnd5eapi.co/api/$endpoint";
+        $response = file_get_contents($url);
+        return json_decode($response, true);
+    }
 } 
 ?>

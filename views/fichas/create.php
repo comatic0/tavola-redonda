@@ -9,6 +9,8 @@ require '../../includes/db.php'; // Adicionar a inclusão do arquivo de conexão
 use controllers\FichaController;
 
 $fichaController = new FichaController($pdo);
+$classes = $fichaController->fetchDndData('classes');
+$races = $fichaController->fetchDndData('races');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $classe = $_POST['classe'];
@@ -50,7 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
             <label for="classe">Classe:</label>
-            <input type="text" id="classe" name="classe" required>
+            <select id="classe" name="classe" required>
+                <?php foreach ($classes['results'] as $class): ?>
+                    <option value="<?php echo $class['name']; ?>"><?php echo $class['name']; ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
             <label for="nivel">Nível:</label>
@@ -58,7 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
             <label for="raca">Raça:</label>
-            <input type="text" id="raca" name="raca" required>
+            <select id="raca" name="raca" required>
+                <?php foreach ($races['results'] as $race): ?>
+                    <option value="<?php echo $race['name']; ?>"><?php echo $race['name']; ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
             <label for="magias">Magias:</label>

@@ -4,6 +4,8 @@ require '../../controllers/FichaController.php';
 use controllers\FichaController;
 $fichaController = new FichaController($pdo);
 $fichas = $fichaController->getAllFichas();
+$classes = $fichaController->fetchDndData('classes');
+$races = $fichaController->fetchDndData('races');
 ?>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/nav.php'; ?>
