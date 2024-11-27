@@ -1,6 +1,7 @@
 {
     "require": {
-        "iignatov/lightopenid": "^1.0"
+        "iignatov/lightopenid": "^1.0",
+        "google/apiclient": "2.0"
     },
     "autoload": {
         "psr-4": {
@@ -9,6 +10,6 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^11.4"
     }
 }
