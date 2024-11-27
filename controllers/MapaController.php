@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../models/Mapa.php';
 require_once __DIR__ . '/../includes/db.php';
 
+use models\Mapa;
+
 class MapaController {
     private $mapaModel;
     public function __construct($pdo) {
