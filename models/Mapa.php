@@ -18,8 +18,7 @@ class Mapa {
         $stmt = $this->pdo->prepare("DELETE FROM mapas WHERE id = :id");
         $stmt->execute([':id' => $mapa_id]);
     }
-
-    public function getTableById($id) {
+    public function getMapaById($id) {
         $stmt = $this->pdo->prepare("SELECT * FROM mapas WHERE id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -30,10 +29,6 @@ class Mapa {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getTableById($id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM mapas WHERE id = ?");
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+
 }
 ?>
