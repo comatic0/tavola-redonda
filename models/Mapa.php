@@ -1,4 +1,8 @@
 <?php
+namespace models;
+
+use PDO;
+
 class Mapa {
     private $pdo;
     public function __construct($pdo) {
@@ -19,6 +23,11 @@ class Mapa {
         $stmt = $this->pdo->prepare("SELECT * FROM mapas");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getTableById($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM mapas WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 ?>
