@@ -34,6 +34,15 @@ class MapaController {
         }
     }
 
+    public function getMapaById($mapa_id) {
+        $table = $this->mapaModel->getTableById($mapa_id);
+        if ($table) {
+            return $table;
+        } else {
+            exit();
+        }
+    }
+
     public function deleteMapa($mapa_id) {
         $this->mapaModel->deleteMapa($mapa_id);
         header('Location: ../mapas/index.php');
