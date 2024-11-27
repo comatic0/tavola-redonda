@@ -19,6 +19,12 @@ class Mapa {
         $stmt->execute([':id' => $mapa_id]);
     }
 
+    public function getTableById($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM mapas WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getAllMapas() {
         $stmt = $this->pdo->prepare("SELECT * FROM mapas");
         $stmt->execute();
