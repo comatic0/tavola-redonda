@@ -176,7 +176,39 @@ Sistema para "rolar" dados - Vitor Leal
 
 Utilização de Tokens para Login - Yuri
 
+## Testes Unitários
+
+| **Nome**                                | **Testes**                                    | **Status**
+|-----------------------------------------|-----------------------------------------------|----------------------------------------------|
+| Yuri Barbosa Takahashi                  | Criação de Mesas                              | Concluído                                    |
+| Yuri Barbosa Takahashi                  | Criação de Usuário                            | Concluído                                    |
+| Henrique Wendler Gomes                  | Criação de Ficha                              | Concluído                                    |
+| Henrique Wendler Gomes                  | Deleção de Ficha                              | Concluído                                    |
+| Henrique Wendler Gomes                  | Atualização de Ficha                          | Concluído                                    |
+| Vitor Leal Ferreira                     | Funcionamento da rolagem de dados             | Concluído                                    |
+| Emanuel Badaró Fonseca                  | Verificação de Autenticidade de senha         | Concluído                                    |
+| Thiago Soares Ribeiro Nunes de Carvalho | Upload de Mapa                                | Concluído                                    |
+| Thiago Soares Ribeiro Nunes de Carvalho | Deleção de Mapa                               | Concluído                                    |
+
+## API Interna e Externa
+
+| **Nome**                                | **Funcionalidade e Consumo**                          | **Origem**
+|-----------------------------------------|-------------------------------------------------------|----------------------------------------------|
+| Yuri Barbosa Takahashi                  | Permite acesso as informações das Mesas               | Interna                                      |
+| Henrique Wendler Gomes                  | Permite acesso as classes existentes do sistema D&D5e | Externa                                      |
+| Emanuel Badaró Fonseca                  | Permite acesso as informações das Fichas de Personagem| Interna                                      |
+| Thiago Soares Ribeiro Nunes de Carvalho | Permite acesso as informações dos Mapas               | Interna                                      |
+
+
+
+
+
+
+
 ### User Stories e Prototipação
 
 link do figma:
 https://www.figma.com/proto/XRtVmx6cYXFqCAnXDwrnau/Tabula-Redonda?node-id=0-1&t=FSuhYp1hLdezC1Qp-1
+
+
+
