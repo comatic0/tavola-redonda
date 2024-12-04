@@ -1,6 +1,11 @@
 <?php
+namespace controllers;
+
 require_once __DIR__ . '/../models/Ficha.php';
 require_once __DIR__ . '/../includes/db.php';
+
+use models\Ficha;
+
 class FichaController {
     private $fichaModel;
     public function __construct($pdo) {
@@ -34,6 +39,11 @@ class FichaController {
         } else {
             error_log("Failed to update character with ID $id.");
         }
+    }
+    public function fetchDndData($endpoint) {
+        $url = "https://www.dnd5eapi.co/api/$endpoint";
+        $response = file_get_contents($url);
+        return json_decode($response, true);
     }
 } 
 ?>

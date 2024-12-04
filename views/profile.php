@@ -5,6 +5,11 @@ require_once '../models/User.php';
 require_once '../models/Mesa.php';
 require_once '../models/Ficha.php';
 
+use controllers\AuthController;
+use models\User;
+use models\Mesa;
+use models\Ficha;
+
 $user_id = $_GET['id'] ?? $_SESSION['user_id'];
 
 $userModel = new User($pdo);

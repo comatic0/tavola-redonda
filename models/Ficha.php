@@ -1,4 +1,8 @@
 <?php
+namespace models;
+
+use PDO;
+
 class Ficha {
     private $pdo;
     public function __construct($pdo) {

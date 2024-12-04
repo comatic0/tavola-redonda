@@ -3,6 +3,9 @@ session_start();
 require_once '../includes/db.php';
 require_once '../models/User.php';
 
+use models\User;
+
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../auth/login.php');
     exit();

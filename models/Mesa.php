@@ -1,4 +1,10 @@
 <?php
+namespace models; 
+
+use PDO;
+
+use controllers\MesaController;
+
 class Mesa {
     private $pdo;
 

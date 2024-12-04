@@ -6,8 +6,11 @@ if (!isset($_SESSION['user_id'])) {
 }
 require '../../controllers/FichaController.php';
 require '../../includes/db.php';
+use controllers\FichaController;
 
 $fichaController = new FichaController($pdo);
+$classes = $fichaController->fetchDndData('classes');
+$races = $fichaController->fetchDndData('races');
 $ficha_id = $_GET['id'] ?? null;
 
 if (!$ficha_id) {
@@ -80,7 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
             <label for="classe">Classe:</label>
-            <input type="text" id="classe" name="classe" value="<?php echo htmlspecialchars($ficha['classe']); ?>" required>
+            <select id="classe" name="classe" required>
+                <?php foreach ($classes['results'] as $class): ?>
+                    <option value="<?php echo $class['name']; ?>" <?php echo $class['name'] == $ficha['classe'] ? 'selected' : ''; ?>><?php echo $class['name']; ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
             <label for="nivel">Nível:</label>
@@ -88,11 +95,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
             <label for="raca">Raça:</label>
-            <input type="text" id="raca" name="raca" value="<?php echo htmlspecialchars($ficha['raca']); ?>" required>
+            <select id="raca" name="raca" required>
+                <?php foreach ($races['results'] as $race): ?>
+                    <option value="<?php echo $race['name']; ?>" <?php echo $race['name'] == $ficha['raca'] ? 'selected' : ''; ?>><?php echo $race['name']; ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
             <label for="magias">Magias:</label>
-            <input type="text" id="magias" name="magias" required>
+            <input type="text" id="magias" name="magias" value="<?php echo htmlspecialchars($ficha['magias']); ?>" required>
         </div>
         <div class="form-group">
             <label for="imagem">Imagem:</label>

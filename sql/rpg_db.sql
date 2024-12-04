@@ -53,3 +53,11 @@ CREATE TABLE IF NOT EXISTS `mapas` (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 );
+-- Criação da tabela de associação entre mesas e mapas
+CREATE TABLE IF NOT EXISTS `mesa_mapas` (
+    `mesa_id` INT,
+    `mapa_id` INT,
+    FOREIGN KEY (`mesa_id`) REFERENCES `mesas` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`mapa_id`) REFERENCES `mapas` (`id`) ON DELETE CASCADE,
+    PRIMARY KEY (`mesa_id`, `mapa_id`)
+);
